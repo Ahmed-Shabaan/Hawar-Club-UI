@@ -1,0 +1,116 @@
+/*==============================================================================
+    Layout / Footer
+    Logo sits above the divider line (Figma)
+==============================================================================*/
+
+.footer {
+    position: relative;
+    padding-bottom: 2rem;
+    padding-top: 0;
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    overflow-x: clip;
+    @include transition(background-color, 0.25s);
+
+    // full-width divider — 100% not 100vw (avoids horizontal scrollbar)
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--footer-border);
+        pointer-events: none;
+    }
+
+    .width-container {
+        position: relative;
+        width: 100%;
+    }
+}
+
+/*======================================
+    Logo — centered, sits on the divider
+======================================*/
+
+.footer-logo-wrap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding-inline: 16px;
+    @include transition(background-color, 0.25s);
+}
+
+.footer-logo {
+    width: 85px;
+    height: 85px;
+    display: block;
+}
+
+/*======================================
+    Divider row — line + content under it
+======================================*/
+
+.footer-row {
+    @include flex(space-between, center);
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+}
+
+.footer-title {
+    margin: 0;
+    flex: 0 1 auto;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--footer-text);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.copyright {
+    margin: 0;
+    flex: 1 1 240px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--footer-muted);
+    text-align: start;
+}
+
+.footer-social {
+    @include flex(flex-end, center);
+    flex: 1 1 240px;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+
+    .social-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--footer-text);
+        margin-inline-end: 0.25rem;
+    }
+
+    a {
+        @extend %flex-center;
+        @include circle(36px);
+        background: var(--footer-icon-bg);
+        color: var(--footer-icon-color);
+        @include transition;
+
+        i {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        &:hover {
+            background: $primary;
+            color: $white;
+        }
+    }
+}

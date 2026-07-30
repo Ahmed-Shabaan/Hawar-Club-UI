@@ -1,0 +1,298 @@
+/*==============================================================================
+    Layout / Navbar
+==============================================================================*/
+
+.header {
+    position: relative;
+    z-index: 999;
+}
+
+.navbar {
+    height: $navbar-height;
+    padding: 0;
+    background: var(--navbar-bg);
+    border-bottom: 1px solid var(--navbar-border);
+    @include transition(background-color, 0.25s);
+
+    .width-container {
+        width: 100%;
+        height: 100%;
+        @include flex(space-between, center);
+        flex-wrap: nowrap;
+        gap: 1.5rem;
+    }
+
+    &.sticky {
+        position: fixed;
+        inset: 0 0 auto;
+        width: 100%;
+        background: var(--navbar-bg);
+        box-shadow: $shadow-md;
+    }
+}
+
+/*======================================
+    Brand
+======================================*/
+
+.navbar-brand {
+    @include flex(flex-start, center);
+    gap: 0.75rem;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+
+    .logo {
+        width: 56px;
+        height: auto;
+        @include transition;
+    }
+
+    .brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+
+    .brand-name {
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: var(--navbar-text);
+        text-transform: uppercase;
+    }
+
+    .brand-sub {
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--navbar-text);
+        opacity: 0.85;
+        white-space: nowrap;
+    }
+
+    &:hover {
+        .logo {
+            transform: scale(1.04);
+        }
+
+        .brand-name,
+        .brand-sub {
+            color: var(--navbar-text);
+        }
+    }
+}
+
+/*======================================
+    Navigation Links
+======================================*/
+
+.navbar-nav {
+    @include flex(center, center);
+    gap: 2rem;
+    margin: 0;
+
+    .nav-item {
+        position: relative;
+    }
+
+    .nav-link {
+        position: relative;
+        padding: 0;
+        height: $navbar-height;
+        @include flex(center, center);
+        color: var(--navbar-text);
+        font-size: 0.95rem;
+        font-weight: 400;
+        white-space: nowrap;
+        @include transition;
+
+        &:hover,
+        &.active {
+            color: $primary;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset-inline-start: 0;
+            bottom: 22px;
+            width: 0;
+            height: 2px;
+            background: $primary;
+            border-radius: 20px;
+            @include transition;
+        }
+
+        &:hover::after,
+        &.active::after {
+            width: 100%;
+        }
+    }
+
+    // Hover dropdown — عن النادي
+    .nav-item.has-dropdown {
+
+        &:hover,
+        &:focus-within {
+            > .nav-link {
+                color: $primary;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+
+            > .nav-dropdown {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .nav-dropdown {
+        position: absolute;
+        top: 100%;
+        inset-inline-start: 0;
+        z-index: 1000;
+        min-width: 180px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background: var(--dropdown-bg);
+        border: 1px solid var(--dropdown-border);
+        box-shadow: $shadow-md;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px);
+        @include transition;
+
+        li {
+            border-bottom: 1px solid var(--dropdown-border);
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        a {
+            display: block;
+            padding: 0.85rem 1.15rem;
+            color: var(--dropdown-text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            @include transition;
+
+            &:hover,
+            &.active {
+                background: $primary;
+                color: $white;
+            }
+        }
+    }
+}
+
+/*======================================
+    Actions (search / theme / lang / CTA)
+======================================*/
+
+.navbar-actions {
+    @include flex(center, center);
+    gap: 0.85rem;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    @extend %flex-center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    color: var(--navbar-text);
+    @include transition;
+
+    i {
+        font-size: 1.15rem;
+        line-height: 1;
+    }
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+.language {
+    @include flex(center, center);
+    gap: 0.35rem;
+    color: var(--navbar-text);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    @include transition;
+
+    i {
+        font-size: 1rem;
+    }
+
+    .bi-chevron-down {
+        font-size: 0.7rem;
+    }
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+.btn-membership {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.15rem;
+    background: $primary;
+    color: $white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: 0;
+    border-radius: $radius-sm;
+    white-space: nowrap;
+    @include transition;
+
+    &:hover {
+        background: $primary-dark;
+        color: $white;
+    }
+}
+
+/*======================================
+    Mobile Toggle
+======================================*/
+
+.navbar-toggler {
+    border: 0;
+    background: transparent;
+    padding: 0.25rem;
+    color: var(--navbar-text);
+    box-shadow: none;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        background-image: none;
+        @include flex(center, center);
+
+        &::before {
+            content: "\F479";
+            font-family: "bootstrap-icons";
+            font-size: 1.5rem;
+            color: var(--navbar-text);
+        }
+    }
+}

@@ -1,0 +1,221 @@
+/*======================================
+    Large tablets & down (< 992px)
+======================================*/
+
+@include respond-down(lg) {
+html {
+        font-size: 15px; // 1rem = 15px
+    }
+    // ---- Navbar ----
+    // Row 1: logo (start) + toggler (end)
+    // Row 2: navbar-actions
+    // Row 3: collapse menu
+    .navbar {
+        height: auto;
+        min-height: 72px;
+        padding-block: 0.75rem;
+
+        .width-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            column-gap: 0.75rem;
+            row-gap: 0.75rem;
+        }
+    }
+
+    .navbar-brand {
+        order: 1;
+        margin-inline-end: auto; // keep logo at start, push toggler to end
+
+        .logo {
+            width: 48px;
+        }
+
+        .brand-name {
+            font-size: 1.15rem;
+        }
+    }
+
+    .navbar-toggler {
+        order: 2;
+        display: block;
+        margin-inline-start: 0;
+    }
+
+    .navbar-actions {
+        order: 3;
+        flex: 0 0 100%;
+        width: 100%;
+        justify-content: space-around;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--navbar-border);
+
+        .btn-membership {
+            padding: 0.45rem 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .language span {
+            display: none;
+        }
+    }
+
+    .navbar-collapse {
+        order: 4;
+        flex: 0 0 100%;
+        width: 100%;
+        margin-top: 0;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--navbar-border);
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        .nav-link {
+            height: auto;
+            padding: 0.85rem 0;
+            justify-content: flex-start;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        .nav-item.has-dropdown {
+            > .nav-dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: 0;
+                margin-inline-start: 0.75rem;
+                margin-bottom: 0.5rem;
+                background: transparent;
+                min-width: 0;
+            }
+
+            > .nav-dropdown a {
+                padding: 0.65rem 0.85rem;
+            }
+        }
+    }
+
+    // ---- Footer ----
+    .footer {
+        padding-bottom: 1.75rem;
+        padding-top: 0;
+        text-align: center;
+    }
+
+    .footer-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        padding-top: 1.5rem;
+    }
+
+    .copyright,
+    .footer-social,
+    .footer-title {
+        flex: 0 0 auto;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-title {
+        white-space: normal;
+        order: -1;
+    }
+
+    .width-container {
+        padding-inline: 16px;
+    }
+}
+
+/*======================================
+    Tablets & phones (< 768px)
+======================================*/
+
+@include respond-down(md) {
+html {
+        font-size: 14px; // 1rem = 14px
+    }
+    // ---- About President: full content, no scrollbar ----
+    .about-president {
+        padding-block: 1.5rem 2rem;
+
+        .president-image img {
+            height: auto;
+            max-height: none;
+        }
+
+        .president-scroll {
+            max-height: none !important;
+            height: auto;
+            overflow: visible;
+        }
+
+        .president-details {
+            max-height: none !important;
+            height: auto;
+            overflow: visible !important;
+            padding-inline-end: 0;
+        }
+
+        .president-scrollbar {
+            display: none !important;
+        }
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+}
+
+/*======================================
+    Small phones (< 576px)
+======================================*/
+
+@include respond-down(sm) {
+html {
+        font-size: 13px; // 1rem = 13px
+    }
+    .navbar-actions {
+        .btn-membership {
+            padding: 0.4rem 0.6rem;
+            font-size: 0.75rem;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+        }
+    }
+
+    .card{
+        img{
+            height: 400px !important;
+        }
+    }
+
+    .footer-logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .copyright {
+        font-size: 0.8rem;
+    }
+}

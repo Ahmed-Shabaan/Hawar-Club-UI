@@ -1,0 +1,125 @@
+// English styles — import Arabic base, then LTR / EN overrides
+@import "styleAR";
+
+    // EN / LTR base
+html[lang="en"],
+[dir="ltr"] {
+    direction: ltr;
+}
+
+html[lang="en"] body,
+[dir="ltr"] body,
+[dir="ltr"] {
+    text-align: left;
+    letter-spacing: 0.01em;
+}
+
+    // Navbar
+[dir="ltr"] {
+    .navbar-nav {
+        .nav-dropdown {
+            inset-inline-start: 0;
+            inset-inline-end: auto;
+            min-width: 200px;
+        }
+    }
+
+    .language {
+        flex-direction: row;
+        gap: 0.4rem;
+    }
+}
+
+    // Breadcrumb + Page title
+[dir="ltr"] {
+    .breadcrumb {
+        justify-content: flex-start;
+
+        .breadcrumb-item {
+            + .breadcrumb-item::before {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                content: "/";
+            }
+        }
+    }
+
+}
+
+/*==============================================================================
+    Footer
+==============================================================================*/
+
+[dir="ltr"] {
+    .footer-row {
+        flex-direction: row;
+    }
+
+    .footer-title {
+        text-align: center;
+        white-space: normal;
+        max-width: 280px;
+    }
+
+    .footer-social {
+        justify-content: flex-end;
+
+        .social-label {
+            margin-inline-end: 0.35rem;
+            margin-inline-start: 0;
+        }
+    }
+
+    .footer-logo-wrap {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 992px) {
+    [dir="ltr"] {
+        .footer-row {
+            flex-direction: column;
+        }
+
+        .copyright,
+        .footer-social,
+        .footer-title {
+            text-align: center;
+            justify-content: center;
+        }
+    }
+}
+
+/*==============================================================================
+    About President
+==============================================================================*/
+
+[dir="ltr"] {
+    .about-president {
+        .president-details {
+            padding-inline-end: 1rem;
+            padding-inline-start: 0;
+
+            ul {
+                padding-left: 1.25rem;
+                padding-right: 0;
+            }
+        }
+
+        .president-scrollbar {
+            inset-inline-end: 0;
+            inset-inline-start: auto;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    [dir="ltr"] {
+        .about-president {
+            .president-details {
+                padding-inline-end: 0;
+            }
+        }
+    }
+}

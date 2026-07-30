@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 96" fill="none">
+  <path d="M40 2L74 16V44C74 68 58 88 40 94C22 88 6 68 6 44V16L40 2Z" fill="#0A1A2F" stroke="#E68A00" stroke-width="3"/>
+  <path d="M40 18L58 26V44C58 58 48 70 40 74C32 70 22 58 22 44V26L40 18Z" fill="#E68A00"/>
+  <text x="40" y="52" text-anchor="middle" fill="#FFFFFF" font-family="Arial,sans-serif" font-size="14" font-weight="700">HSC</text>
+</svg>
