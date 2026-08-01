@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>دليل Hawar Club UI — من البداية حتى العرض أونلاين</title>
+  <style>
+    @page { size: A4; margin: 18mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      color: #0a1a2f;
+      line-height: 1.7;
+      font-size: 12pt;
+      margin: 0;
+      padding: 24px;
+    }
+    h1 { font-size: 22pt; margin: 0 0 8px; color: #0a1a2f; }
+    h2 {
+      font-size: 14pt;
+      margin: 28px 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e68a00;
+      color: #0a1a2f;
+    }
+    h3 { font-size: 12pt; margin: 16px 0 8px; color: #334155; }
+    p, li { margin: 6px 0; }
+    ul, ol { padding-right: 22px; }
+    code, pre {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 10pt;
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    code { padding: 1px 5px; }
+    pre {
+      padding: 12px 14px;
+      overflow-x: auto;
+      border: 1px solid #e2e8f0;
+      white-space: pre-wrap;
+      direction: ltr;
+      text-align: left;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 11pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: right;
+    }
+    th { background: #0a1a2f; color: #fff; }
+    .meta { color: #64748b; margin-bottom: 24px; }
+    .links a { color: #c97400; }
+    .box {
+      background: #fff8ef;
+      border: 1px solid #f5d9a8;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin: 14px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>دليل كامل: من بداية المشروع حتى العرض أونلاين</h1>
+  <p class="meta">نادي الحوار للألعاب الرياضية — Hawar Club UI</p>
+
+  <h2>1) تجهيز المشروع محلياً</h2>
+  <ol>
+    <li>إنشاء مجلد المشروع: <code>Hawar Club UI</code></li>
+    <li>تنظيم الملفات:
+      <ul>
+        <li><code>index.html</code> / <code>aboutPresident.html</code></li>
+        <li><code>css/</code> (Bootstrap + SCSS)</li>
+        <li><code>js/</code> (theme, main, slick, jquery)</li>
+        <li><code>images/</code> / <code>fonts/</code></li>
+      </ul>
+    </li>
+    <li>هيكل الـ SCSS:
+      <ul>
+        <li><code>css/styleAR.scss</code> → كل الستايلات العامة</li>
+        <li><code>css/Layout/navbar.scss</code></li>
+        <li><code>css/Layout/footer.scss</code></li>
+        <li><code>css/Layout/responsive.scss</code></li>
+        <li><code>css/styleEN.scss</code> → يستورد styleAR ثم تعديلات الإنجليزية</li>
+      </ul>
+    </li>
+    <li>Compile بعد أي تعديل SCSS:</li>
+  </ol>
+  <pre>npx sass css/styleAR.scss css/styleAR.css
+npx sass css/styleEN.scss css/styleEN.css</pre>
+  <ol start="5">
+    <li>فتح الصفحات محلياً (Live Server أو فتح الملف في المتصفح)</li>
+  </ol>
+
+  <h2>2) ما تم بناؤه في الواجهة</h2>
+  <ol>
+    <li>Navbar عربي RTL + Dark/Light</li>
+    <li>Footer مع خط بعرض كامل ولوجو يقطعه</li>
+    <li>Theme (فاتح افتراضي) عبر <code>js/theme.js</code></li>
+    <li>Breadcrumb + عنوان الصفحة</li>
+    <li>صفحة الرؤساء (صورة + تفاصيل + scrollbar مخصص)</li>
+    <li>Slick Slider للرؤساء + dots مخصصة</li>
+    <li>Responsive (موبايل: ترتيب اللوجو / التوجلر / الأكشنز)</li>
+  </ol>
+
+  <h2>3) رفع المشروع على GitHub</h2>
+
+  <h3>أ) تثبيت الأدوات</h3>
+  <ol>
+    <li>تثبيت Git من: https://git-scm.com/</li>
+    <li>تثبيت GitHub CLI من: https://cli.github.com/</li>
+  </ol>
+
+  <h3>ب) تهيئة Git داخل المشروع</h3>
+  <pre>cd "D:\3S Software\Hawar Club UI"
+git init</pre>
+  <ol start="3">
+    <li>إنشاء <code>.gitignore</code> (تجاهل node_modules وملفات النظام)</li>
+    <li>إضافة الملفات وعمل أول commit:</li>
+  </ol>
+  <pre>git add -A
+git commit -m "Initial commit: Hawar Club UI with SCSS, RTL/LTR themes, and president pages"
+git branch -M main</pre>
+
+  <h3>ج) تسجيل الدخول لـ GitHub</h3>
+  <pre>gh auth login</pre>
+  <p>أو عبر Device Login:</p>
+  <ol>
+    <li>افتح https://github.com/login/device</li>
+    <li>أدخل الكود الظاهر في التيرمينال</li>
+    <li>وافق على الصلاحيات لحساب Ahmed-Shabaan</li>
+  </ol>
+
+  <h3>د) إنشاء الريبو والرفع</h3>
+  <pre>gh repo create Hawar-Club-UI --public --source=. --remote=origin
+git push -u origin main</pre>
+  <div class="box links">
+    رابط الريبو: https://github.com/Ahmed-Shabaan/Hawar-Club-UI
+  </div>
+
+  <h2>4) إضافة README</h2>
+  <ol>
+    <li>إنشاء ملف <code>README.md</code> (وصف المشروع + طريقة التشغيل)</li>
+    <li>Commit و Push:</li>
+  </ol>
+  <pre>git add README.md
+git commit -m "Add README and document GitHub Pages preview URL."
+git push origin main</pre>
+
+  <h2>5) تفعيل GitHub Pages (عرض أونلاين)</h2>
+  <ol>
+    <li>من GitHub: Settings → Pages<br>أو عبر الأمر:</li>
+  </ol>
+  <pre>gh api -X POST repos/Ahmed-Shabaan/Hawar-Club-UI/pages -f build_type=legacy -f source[branch]=main -f source[path]=/</pre>
+  <ol start="2">
+    <li>المصدر: فرع <code>main</code> من المجلد <code>/</code></li>
+    <li>انتظر دقيقة أو دقيقتين للـ build</li>
+  </ol>
+  <div class="box links">
+    <strong>رابط الموقع:</strong> https://ahmed-shabaan.github.io/Hawar-Club-UI/<br><br>
+    صفحات مباشرة:<br>
+    - الرئيسية: https://ahmed-shabaan.github.io/Hawar-Club-UI/index.html<br>
+    - الرؤساء: https://ahmed-shabaan.github.io/Hawar-Club-UI/aboutPresident.html
+  </div>
+
+  <h2>6) تحديثات لاحقة (دورة العمل اليومية)</h2>
+  <pre># عدّل الملفات
+npx sass css/styleAR.scss css/styleAR.css
+npx sass css/styleEN.scss css/styleEN.css
+
+git add -A
+git commit -m "وصف التعديل"
+git push origin main</pre>
+  <p>بعد الـ push، GitHub Pages بيتحدث تلقائي خلال دقايق.</p>
+
+  <h2>ملخص سريع</h2>
+  <table>
+    <thead>
+      <tr><th>الخطوة</th><th>النتيجة</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>بناء الواجهة محلياً</td><td>HTML + SCSS + JS</td></tr>
+      <tr><td>git init + commit</td><td>نسخة محفوظة محلياً</td></tr>
+      <tr><td>gh auth login</td><td>ربط بحساب GitHub</td></tr>
+      <tr><td>git push</td><td>رفع الكود</td></tr>
+      <tr><td>تفعيل Pages</td><td>موقع أونلاين</td></tr>
+    </tbody>
+  </table>
+
+  <h2>روابط مهمة</h2>
+  <ul class="links">
+    <li>المستودع: https://github.com/Ahmed-Shabaan/Hawar-Club-UI</li>
+    <li>المعاينة: https://ahmed-shabaan.github.io/Hawar-Club-UI/</li>
+    <li>الحساب: https://github.com/Ahmed-Shabaan</li>
+  </ul>
+
+</body>
+</html>

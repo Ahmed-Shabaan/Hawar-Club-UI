@@ -599,7 +599,7 @@ button {
 
             img {
                 height: 37rem;
-
+                object-position: top;
             }
         }
 
@@ -706,6 +706,7 @@ button {
                 img {
                     height: 500px;
                     display: block;
+                    object-position: top;
                 }
 
             }
