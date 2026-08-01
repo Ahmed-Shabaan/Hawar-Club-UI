@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hawar Club — معاينة الشاشات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --bg: #071422;
+      --panel: #0d1f33;
+      --panel-2: #122942;
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #f4f7fb;
+      --muted: #a8b6c7;
+      --primary: #da8900;
+      --primary-dark: #c97400;
+      --frame: #050d18;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: "Cairo", sans-serif;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(218, 137, 0, 0.18), transparent 55%),
+        linear-gradient(160deg, #071422 0%, #0a1a2f 45%, #061018 100%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 20, 34, 0.85);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 42px;
+      height: auto;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border: 0;
+      border-radius: 8px;
+      padding: 0.55rem 0.95rem;
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--panel-2);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn:hover { background: #1a3550; }
+    .btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-icon {
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 0;
+    }
+
+    .sidebar {
+      border-inline-end: 1px solid var(--line);
+      background: rgba(13, 31, 51, 0.65);
+      padding: 1rem;
+      overflow: auto;
+    }
+
+    .sidebar h2 {
+      margin: 0 0 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .screen-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .screen-item {
+      width: 100%;
+      text-align: start;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.85rem 0.95rem;
+      background: var(--panel);
+      color: var(--text);
+      font: inherit;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+    }
+
+    .screen-item:hover {
+      border-color: rgba(218, 137, 0, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .screen-item.is-active {
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(218, 137, 0, 0.18), rgba(13, 31, 51, 0.9));
+      box-shadow: 0 0 0 1px rgba(218, 137, 0, 0.25);
+    }
+
+    .screen-item .label {
+      display: block;
+      font-weight: 800;
+      font-size: 0.98rem;
+    }
+
+    .screen-item .hint {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .preview-wrap {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+      padding: 1rem 1.15rem 1.15rem;
+      gap: 0.85rem;
+    }
+
+    .preview-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .preview-meta h1 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .preview-meta p {
+      margin: 0.15rem 0 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .flipper {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .counter {
+      min-width: 3.5rem;
+      text-align: center;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .frame-shell {
+      flex: 1;
+      min-height: 0;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--frame);
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      position: relative;
+    }
+
+    .frame-shell iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+      display: block;
+    }
+
+    .frame-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--frame);
+      color: var(--muted);
+      font-weight: 600;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .frame-shell.is-loading .frame-loading {
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+      }
+
+      .sidebar {
+        border-inline-end: 0;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 0.75rem;
+      }
+
+      .screen-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0.35rem;
+      }
+
+      .screen-item {
+        min-width: 180px;
+        flex: 0 0 auto;
+      }
+
+      .preview-wrap {
+        min-height: 70vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="images/logo.png" alt="Hawar Club" onerror="this.src='assets/Images/logo.svg'">
+      <div class="brand-text">
+        <strong>HAWAR</strong>
+        <span>معاينة شاشات الموقع</span>
+      </div>
+    </div>
+    <div class="top-actions">
+      <a class="btn" id="openLive" href="#" target="_blank" rel="noopener">
+        <i class="bi bi-box-arrow-up-left"></i>
+        فتح مباشر
+      </a>
+      <a class="btn btn-primary" id="openFull" href="#">
+        <i class="bi bi-arrows-fullscreen"></i>
+        دخول للصفحة
+      </a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>اختر شاشة</h2>
+      <ul class="screen-list" id="screenList"></ul>
+    </aside>
+
+    <main class="preview-wrap">
+      <div class="preview-meta">
+        <div>
+          <h1 id="screenTitle">—</h1>
+          <p id="screenHint">—</p>
+        </div>
+        <div class="flipper">
+          <button type="button" class="btn btn-icon" id="prevBtn" aria-label="السابق">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+          <span class="counter" id="counter">1 / 1</span>
+          <button type="button" class="btn btn-icon" id="nextBtn" aria-label="التالي">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="frame-shell is-loading" id="frameShell">
+        <div class="frame-loading">جاري التحميل...</div>
+        <iframe id="preview" title="معاينة الصفحة"></iframe>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var LIVE_BASE = "https://ahmed-shabaan.github.io/Hawar-Club-UI/";
+      var isPages = /github\.io/i.test(location.hostname);
+      var base = isPages ? LIVE_BASE : "";
+
+      var screens = [
+        {
+          id: "home",
+          label: "الرئيسية",
+          hint: "الصفحة الرئيسية للموقع",
+          file: "index.html"
+        },
+        {
+          id: "history",
+          label: "تاريخ النادي",
+          hint: "المحتوى + مكتبة الصور والـ Popup",
+          file: "aboutHistory.html"
+        },
+        {
+          id: "presidents",
+          label: "رؤساء النادي",
+          hint: "سلايدر الرؤساء وتفاصيل الرئيس",
+          file: "aboutPresident.html"
+        }
+      ];
+
+      var index = 0;
+      var list = document.getElementById("screenList");
+      var frame = document.getElementById("preview");
+      var shell = document.getElementById("frameShell");
+      var title = document.getElementById("screenTitle");
+      var hint = document.getElementById("screenHint");
+      var counter = document.getElementById("counter");
+      var openFull = document.getElementById("openFull");
+      var openLive = document.getElementById("openLive");
+      var prevBtn = document.getElementById("prevBtn");
+      var nextBtn = document.getElementById("nextBtn");
+
+      function urlFor(screen) {
+        return base + screen.file;
+      }
+
+      function liveUrlFor(screen) {
+        return LIVE_BASE + screen.file.replace(/^\//, "");
+      }
+
+      function renderList() {
+        list.innerHTML = "";
+        screens.forEach(function (screen, i) {
+          var li = document.createElement("li");
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "screen-item" + (i === index ? " is-active" : "");
+          btn.innerHTML =
+            '<span class="label">' + screen.label + "</span>" +
+            '<span class="hint">' + screen.hint + "</span>";
+          btn.addEventListener("click", function () {
+            show(i);
+          });
+          li.appendChild(btn);
+          list.appendChild(li);
+        });
+      }
+
+      function show(i) {
+        index = (i + screens.length) % screens.length;
+        var screen = screens[index];
+        shell.classList.add("is-loading");
+        title.textContent = screen.label;
+        hint.textContent = screen.hint;
+        counter.textContent = index + 1 + " / " + screens.length;
+        openFull.href = urlFor(screen);
+        openLive.href = liveUrlFor(screen);
+        frame.src = urlFor(screen);
+        renderList();
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+      }
+
+      frame.addEventListener("load", function () {
+        shell.classList.remove("is-loading");
+      });
+
+      prevBtn.addEventListener("click", function () {
+        show(index - 1);
+      });
+      nextBtn.addEventListener("click", function () {
+        show(index + 1);
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") show(index - 1);
+        if (e.key === "ArrowLeft") show(index + 1);
+      });
+
+      show(0);
+    })();
+  </script>
+</body>
+</html>
