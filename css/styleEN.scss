@@ -114,12 +114,12 @@ html[lang="en"] body,
     }
 }
 
-@media (max-width: 768px) {
-    [dir="ltr"] {
-        .about-president {
-            .president-details {
-                padding-inline-end: 0;
-            }
-        }
+/*==============================================================================
+    Image Gallery / shared LTR tweaks
+==============================================================================*/
+
+[dir="ltr"] {
+    .page-title {
+        text-align: left;
     }
 }

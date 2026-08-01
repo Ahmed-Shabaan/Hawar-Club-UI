@@ -127,6 +127,7 @@ $breakpoints: (
     --border: #E8ECF0;
     --shadow: #{$shadow-md};
     --card-bg: rgba(255, 255, 255, 1);
+    --overlay-bg: rgba(255, 255, 255, .7);
 
 
     --navbar-bg: #FFFFFF;
@@ -164,6 +165,8 @@ $breakpoints: (
     --border: #1A2F4A;
     --shadow: none;
     --card-bg: rgba(4, 22, 45, 1);
+    --overlay-bg: rgba(4, 22, 45, 0.7);
+
 
     --navbar-bg: #05162B;
     --navbar-text: #FFFFFF;
@@ -226,6 +229,10 @@ body {
     @include transition(background-color, 0.25s);
 }
 
+.object-fit-cover {
+    object-fit: cover;
+}
+
 main {
     flex: 1 0 auto;
 }
@@ -262,6 +269,7 @@ button {
     max-width: $container-width;
     margin-inline: auto;
     padding-inline: 24px;
+    position: relative;
 }
 
 /*==============================================================================
@@ -270,6 +278,201 @@ button {
 
 @import "Layout/navbar";
 @import "Layout/footer";
+
+/*==============================================================================
+    Global Image Gallery + Lightbox (class-based, reusable)
+    Must stay above responsive so breakpoint flex widths win.
+==============================================================================*/
+
+.image-gallery {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.image-gallery-viewport {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    // Keep borders visible while the track translates (avoids clip flicker)
+    padding: 2px;
+    margin: -2px;
+}
+
+.image-gallery-track {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    transition: transform 0.35s ease;
+}
+
+.image-gallery-item {
+    flex: 0 0 calc((100% - 4rem) / 5); // 5 visible, 4 gaps of 1rem
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 16px;
+    overflow: visible;
+    outline: none;
+
+    &:focus-visible {
+        box-shadow: 0 0 0 3px rgba($primary, 0.45);
+    }
+}
+
+.image-gallery-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 0;
+    // Stable "border" under overflow + transform (avoids paint flicker)
+    box-shadow: 0 0 0 1px $primary;
+    @include transition(transform);
+}
+
+.image-gallery-item:hover .image-gallery-thumb {
+    transform: scale(1.02);
+}
+
+.image-gallery-arrow {
+    @extend %flex-center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: $primary;
+    color: $white;
+    cursor: pointer;
+    @include transition;
+
+    i {
+        font-size: 1.15rem;
+        line-height: 1;
+    }
+
+    &:hover:not(:disabled) {
+        background: $primary-dark;
+        color: $white;
+    }
+
+    &:disabled,
+    &.is-muted {
+        opacity: 0.35;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &[hidden] {
+        display: none !important;
+    }
+}
+
+.gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+
+    &[hidden] {
+        display: none !important;
+    }
+}
+
+.gallery-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 22, 43, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.gallery-lightbox-close {
+    position: absolute;
+    top: 1.25rem;
+    inset-inline-end: 1.25rem;
+    z-index: 2;
+    @extend %flex-center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: $white;
+    cursor: pointer;
+
+    i {
+        font-size: 1.5rem;
+    }
+}
+
+.gallery-lightbox-prev,
+.gallery-lightbox-next {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    @extend %flex-center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: $white;
+    cursor: pointer;
+    @include transition;
+
+    i {
+        font-size: 2.25rem;
+        line-height: 1;
+    }
+
+    &:disabled,
+    &.is-muted {
+        opacity: 0.3;
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+.gallery-lightbox-prev {
+    inset-inline-start: 1rem;
+}
+
+.gallery-lightbox-next {
+    inset-inline-end: 1rem;
+}
+
+.gallery-lightbox-figure {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    width: 30rem;
+    height: 30rem;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid $primary;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.gallery-lightbox-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
 @import "Layout/responsive";
 
 /*==============================================================================
@@ -396,8 +599,7 @@ button {
 
             img {
                 height: 37rem;
-                object-fit: cover;
-                object-position: top;
+
             }
         }
 
@@ -475,6 +677,7 @@ button {
 
     .president-slider {
         .slider {
+
             // Prevent border clip during slide transition
             .slick-list {
                 padding: 4px 0 8px;
@@ -485,7 +688,7 @@ button {
                 padding: 0 1.5rem;
                 margin: 0 !important; // override m-md-3 — margins get clipped by slick
 
-                > div {
+                >div {
                     height: 100%;
                 }
             }
@@ -498,14 +701,39 @@ button {
                 height: 100%;
                 box-shadow: none;
                 @include transition(border-color, 0.25s);
+                font-size: 1.4rem;
 
                 img {
                     height: 500px;
-                    object-fit: cover;
-                    object-position: top;
                     display: block;
                 }
+
             }
+        }
+    }
+}
+
+
+// About History Section
+.about-history {
+    background-image: url('../images/about/about history/HistoryBg.png');
+    background-size: cover;
+
+    .overlay {
+        z-index: 0;
+        pointer-events: none;
+        background-color: var(--overlay-bg);
+    }
+
+    .width-container {
+        z-index: 1;
+        font-size: 14px;
+    }
+
+    .bg {
+        img {
+            height: 32rem;
+            border: 1px solid var(--primary);
         }
     }
 }
