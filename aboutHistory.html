@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-title="pageHistoryTitle">تاريخ النادي</title>
+    <script src="js/lang-boot.js"></script>
+
+    <link rel="stylesheet" href="css/slick-theme.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+
+    <link rel="stylesheet" href="fonts/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link id="mainStylesheet" rel="stylesheet" href="css/styleAR.css">
+    <script>
+        if (window.__hawarLang === "en") {
+            document.getElementById("mainStylesheet").href = "css/styleEN.css";
+        }
+    </script>
+</head>
+
+<body class="page-history">
+
+    <!-- ===== Navbar ===== -->
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="width-container">
+
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/Images/logo.svg" alt="Hawar Club" class="logo">
+                    <span class="brand-text">
+                        <span class="brand-name">HAWAR</span>
+                        <span class="brand-sub" data-i18n="brandSub">نادي الحوار للألعاب الرياضية</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html" data-i18n="home">الرئيسية</a>
+                        </li>
+                        <li class="nav-item has-dropdown">
+                            <a class="nav-link active" href="#" data-i18n="about">عن النادي</a>
+                            <ul class="nav-dropdown">
+                                <li>
+                                    <a href="aboutPresident.html" data-i18n="presidents">رؤساء النادي</a>
+                                </li>
+                                <li>
+                                    <a href="aboutHistory.html" data-i18n="history">تاريخ النادي</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الأخبار</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">تواصل معنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">كن عضواً</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="navbar-actions">
+
+                    <button type="button" class="icon-btn" aria-label="بحث">
+                        <i class="bi bi-search"></i>
+                    </button>
+
+                    <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
+                        <i class="bi bi-moon" id="themeIcon"></i>
+                    </button>
+
+                    <div class="language d-flex align-items-center" role="button" tabindex="0" aria-label="اللغة">
+                        <i class="bi bi-chevron-down"></i>
+                        <span>AR</span>
+                        <i class="bi bi-globe"></i>
+                    </div>
+
+                    <a href="#" class="btn-membership" data-i18n="renew">تجديد العضوية</a>
+
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ===== About History ===== -->
+    <section class="about-history hawar-body pb-5 pt-3 position-relative">
+        <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+        <!-- BreadCrumb -->
+        <div class="width-container mb-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" data-i18n="crumbHome">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="#" data-i18n="crumbAbout">عن النادي</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="crumbHistory">تاريخ النادي</li>
+                </ol>
+            </nav>
+
+            <h1 class="page-title" data-i18n="pageHistoryTitle">تاريخ النادي</h1>
+        </div>
+
+        <div class="width-container mb-4">
+            <div class="bg">
+                <img class="image-bg w-100 object-fit-cover rounded-3" src="images/about/about history/HistoryBg.png"
+                    alt="صورة تاريخ النادى">
+            </div>
+        </div>
+
+        <div class="width-container mb-4">
+            <p>يعود تاريخ نادي الحوار للألعاب الرياضية بالمنصورة إلى بداية التسعينيات، ويمثل رحلة كفاح إداري وإنشائي
+                تحول خلالها النادي من مجرد فكرة إلى واحد من أكبر وأهم الصروح الرياضية والاجتماعية في منطقة الدلتا
+                ومحافظة الدقهلية</p>
+
+            <div class="my-2">
+                <p class="text-decoration-underline mb-0">تاريخ النادي يتلخص في 4 مراحل رئيسية:</p>
+                <ol class="my-3">
+                    <li>مرحلة التأسيس وحلم الأرض (1993 - 1997)</li>
+                    <ul class="list-style-disc mb-3">
+                        <li>الدورة الأولى (2017): خاض انتخابات قوية وفاز بمقعد الرئاسة لأول مرة برأس قائمته
+                            التي سُميت "رد الجميل" (تحيةً لعميد العائلة ومؤسس النادي الراحل ممدوح فودة).
+                        </li>
+                        <li>الدورة الثانية (2021): أعيد انتخابه لولاية ثانية بأغلبية ساحقة من الأصوات لفترة
+                            امتدت حتى عام 2026.</li>
+                        <li>الدورة الثالثة (2026): حسم مقعد الرئاسة رسمياً بالتزكية لولاية جديدة (2026 -
+                            2030) بعد تنازل المرشح المنافس حرصاً على استقرار النادي وموارده.</li>
+                    </ul>
+
+                    <li>مرحلة التأسيس وحلم الأرض (1993 - 1997)</li>
+                    <ul class="list-style-disc mb-3">
+                        <li>الدورة الأولى (2017): خاض انتخابات قوية وفاز بمقعد الرئاسة لأول مرة برأس قائمته
+                            التي سُميت "رد الجميل" (تحيةً لعميد العائلة ومؤسس النادي الراحل ممدوح فودة).
+                        </li>
+                        <li>الدورة الثانية (2021): أعيد انتخابه لولاية ثانية بأغلبية ساحقة من الأصوات لفترة
+                            امتدت حتى عام 2026.</li>
+                        <li>الدورة الثالثة (2026): حسم مقعد الرئاسة رسمياً بالتزكية لولاية جديدة (2026 -
+                            2030) بعد تنازل المرشح المنافس حرصاً على استقرار النادي وموارده.</li>
+                    </ul>
+
+                    <li>مرحلة التأسيس وحلم الأرض (1993 - 1997)</li>
+                    <ul class="list-style-disc mb-3">
+                        <li>الدورة الأولى (2017): خاض انتخابات قوية وفاز بمقعد الرئاسة لأول مرة برأس قائمته
+                            التي سُميت "رد الجميل" (تحيةً لعميد العائلة ومؤسس النادي الراحل ممدوح فودة).
+                        </li>
+                        <li>الدورة الثانية (2021): أعيد انتخابه لولاية ثانية بأغلبية ساحقة من الأصوات لفترة
+                            امتدت حتى عام 2026.</li>
+                        <li>الدورة الثالثة (2026): حسم مقعد الرئاسة رسمياً بالتزكية لولاية جديدة (2026 -
+                            2030) بعد تنازل المرشح المنافس حرصاً على استقرار النادي وموارده.</li>
+                    </ul>
+                </ol>
+            </div>
+        </div>
+
+        <div class="width-container my-3">
+            <h2 class="page-title" data-i18n="photoLibrary">مكتبة الصور</h2>
+
+            <div class="image-gallery">
+                <button type="button" class="image-gallery-arrow image-gallery-arrow-prev" aria-label="السابق" hidden>
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+
+                <div class="image-gallery-viewport">
+                    <div class="image-gallery-track">
+                        <button type="button" class="image-gallery-item">
+                            <img class="image-gallery-thumb object-fit-cover d-block w-100" src="images/about/about history/Image Gallery/Slide1.jpg" alt="ملعب التنس عند الغروب">
+                        </button>
+                        <button type="button" class="image-gallery-item">
+                            <img class="image-gallery-thumb object-fit-cover d-block w-100" src="images/about/about history/Image Gallery/slide2.jpg" alt="ملعب كرة القدم ليلاً">
+                        </button>
+                        <button type="button" class="image-gallery-item">
+                            <img class="image-gallery-thumb object-fit-cover d-block w-100" src="images/about/about history/Image Gallery/slide3.jpg" alt="تدريب الناشئين">
+                        </button>
+                        <button type="button" class="image-gallery-item">
+                            <img class="image-gallery-thumb object-fit-cover d-block w-100" src="images/about/about history/Image Gallery/slide4.jpg" alt="مبنى النادي">
+                        </button>
+                        <button type="button" class="image-gallery-item">
+                            <img class="image-gallery-thumb object-fit-cover d-block w-100" src="images/about/about history/Image Gallery/slide5.jpg" alt="ملعب التنس ليلاً">
+                        </button>
+                        <button type="button" class="image-gallery-item">
+                            <img class="image-gallery-thumb object-fit-cover d-block w-100" src="images/about/about history/Image Gallery/HistoryBg.png" alt="منشآت النادي">
+                        </button>
+                        <button type="button" class="image-gallery-item">
+                            <img class="image-gallery-thumb object-fit-cover d-block w-100" src="images/about/about history/Image Gallery/slide3.png" alt="الأنشطة الرياضية">
+                        </button>
+                    </div>
+                </div>
+
+                <button type="button" class="image-gallery-arrow image-gallery-arrow-next" aria-label="التالي" hidden>
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+
+        <div class="width-container">
+
+            <div class="footer-logo-wrap">
+                <img src="images/logo.png" alt="Hawar Club" class="footer-logo">
+            </div>
+
+            <div class="footer-row">
+
+                <p class="copyright" data-i18n="copyright">
+                    جميع الحقوق محفوظة - نادي حوار الرياضي 2024 ©
+                </p>
+
+                <p class="footer-title" data-i18n="footerTitle">نادي الحوار للألعاب الرياضية</p>
+
+                <div class="footer-social">
+                    <span class="social-label" data-i18n="follow">تابعنا</span>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/slick.min.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

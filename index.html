@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عن الرئيس</title>
+    <title>Hawar Club</title>
+    <script src="js/lang-boot.js"></script>
 
     <link rel="stylesheet" href="css/slick-theme.css" />
     <link rel="stylesheet" href="css/slick.css" />
 
     <link rel="stylesheet" href="fonts/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styleAR.css">
+    <link id="mainStylesheet" rel="stylesheet" href="css/styleAR.css">
+    <script>
+        if (window.__hawarLang === "en") {
+            document.getElementById("mainStylesheet").href = "css/styleEN.css";
+        }
+    </script>
 </head>
 <body>
 
@@ -26,7 +32,7 @@
                          class="logo">
                     <span class="brand-text">
                         <span class="brand-name">HAWAR</span>
-                        <span class="brand-sub">نادي الحوار للألعاب الرياضية</span>
+                        <span class="brand-sub" data-i18n="brandSub">نادي الحوار للألعاب الرياضية</span>
                     </span>
                 </a>
 
@@ -44,16 +50,16 @@
 
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">الرئيسية</a>
+                            <a class="nav-link active" href="index.html" data-i18n="home">الرئيسية</a>
                         </li>
                         <li class="nav-item has-dropdown">
-                            <a class="nav-link" href="#">عن النادي</a>
+                            <a class="nav-link" href="#" data-i18n="about">عن النادي</a>
                             <ul class="nav-dropdown">
                                 <li>
-                                    <a href="aboutPresident.html">رؤساء النادي</a>
+                                    <a href="aboutPresident.html" data-i18n="presidents">رؤساء النادي</a>
                                 </li>
                                 <li>
-                                    <a href="#">تاريخ النادي</a>
+                                    <a href="aboutHistory.html" data-i18n="history">تاريخ النادي</a>
                                 </li>
                             </ul>
                         </li>
@@ -89,7 +95,7 @@
                         <i class="bi bi-globe"></i>
                     </div>
 
-                    <a href="#" class="btn-membership">تجديد العضوية</a>
+                    <a href="#" class="btn-membership" data-i18n="renew">تجديد العضوية</a>
 
                 </div>
 
@@ -99,9 +105,9 @@
     </header>
 
     <!-- ===== Page Content ===== -->
-    <main>
-        <!-- page content here -->
-    </main>
+    <section class=" hawar-body">
+
+    </section>
 
     <!-- ===== Footer ===== -->
     <footer class="footer">
@@ -117,14 +123,14 @@
 
             <div class="footer-row">
 
-                <p class="copyright">
+                <p class="copyright" data-i18n="copyright">
                     جميع الحقوق محفوظة - نادي حوار الرياضي 2024 ©
                 </p>
 
-                <p class="footer-title">نادي الحوار للألعاب الرياضية</p>
+                <p class="footer-title" data-i18n="footerTitle">نادي الحوار للألعاب الرياضية</p>
 
                 <div class="footer-social">
-                    <span class="social-label">تابعنا</span>
+                    <span class="social-label" data-i18n="follow">تابعنا</span>
                     <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
                     <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                     <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
@@ -143,6 +149,7 @@
     <script src="js/slick.min.js"></script>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/language.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/main.js"></script>
 </body>

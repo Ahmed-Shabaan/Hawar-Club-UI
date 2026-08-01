@@ -12,7 +12,8 @@
 /*==============================================================================
     Placeholders
 ==============================================================================*/
-.footer-social a, .icon-btn {
+.gallery-lightbox-prev,
+.gallery-lightbox-next, .gallery-lightbox-close, .image-gallery-arrow, .footer-social a, .icon-btn {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -35,6 +36,7 @@
   --border: #E8ECF0;
   --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   --card-bg: rgba(255, 255, 255, 1);
+  --overlay-bg: rgba(255, 255, 255, .7);
   --navbar-bg: #FFFFFF;
   --navbar-text: #0A1A2F;
   --navbar-border: #E8ECF0;
@@ -65,6 +67,7 @@
   --border: #1A2F4A;
   --shadow: none;
   --card-bg: rgba(4, 22, 45, 1);
+  --overlay-bg: rgba(4, 22, 45, 0.7);
   --navbar-bg: #05162B;
   --navbar-text: #FFFFFF;
   --navbar-border: #1A2F4A;
@@ -120,6 +123,10 @@ body {
   transition: background-color 0.25s ease;
 }
 
+.object-fit-cover {
+  object-fit: cover;
+}
+
 main {
   flex: 1 0 auto;
 }
@@ -154,6 +161,7 @@ button {
   max-width: 1440px;
   margin-inline: auto;
   padding-inline: 24px;
+  position: relative;
 }
 
 /*==============================================================================
@@ -164,7 +172,7 @@ button {
 ==============================================================================*/
 .header {
   position: relative;
-  z-index: 999;
+  z-index: 1100;
 }
 
 .navbar {
@@ -292,13 +300,14 @@ button {
 .navbar-nav .nav-item.has-dropdown:hover > .nav-dropdown, .navbar-nav .nav-item.has-dropdown:focus-within > .nav-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  pointer-events: auto;
+  transition-delay: 0s;
 }
 .navbar-nav .nav-dropdown {
   position: absolute;
   top: 100%;
   inset-inline-start: 0;
-  z-index: 1000;
+  z-index: 1101;
   min-width: 180px;
   margin: 0;
   padding: 0;
@@ -308,8 +317,17 @@ button {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(8px);
-  transition: all 0.3s ease;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition-delay: 0.12s;
+}
+.navbar-nav .nav-dropdown::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 12px;
 }
 .navbar-nav .nav-dropdown li {
   border-bottom: 1px solid var(--dropdown-border);
@@ -370,9 +388,7 @@ button {
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   transition: all 0.3s ease;
 }
 .language i {
@@ -547,6 +563,186 @@ button {
   color: #ffffff;
 }
 
+/*==============================================================================
+    Global Image Gallery + Lightbox (class-based, reusable)
+    Must stay above responsive so breakpoint flex widths win.
+==============================================================================*/
+.image-gallery {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.image-gallery-viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 2px;
+  margin: -2px;
+}
+
+.image-gallery-track {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  transition: transform 0.35s ease;
+}
+
+.image-gallery-item {
+  flex: 0 0 calc((100% - 4rem) / 5);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: visible;
+  outline: none;
+}
+.image-gallery-item:focus-visible {
+  box-shadow: 0 0 0 3px rgba(218, 137, 0, 0.45);
+}
+
+.image-gallery-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 0;
+  box-shadow: 0 0 0 1px rgb(218, 137, 0);
+  transition: transform 0.3s ease;
+}
+
+.image-gallery-item:hover .image-gallery-thumb {
+  transform: scale(1.02);
+}
+
+.image-gallery-arrow {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(218, 137, 0);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.image-gallery-arrow i {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.image-gallery-arrow:hover:not(:disabled) {
+  background: #C97400;
+  color: #ffffff;
+}
+.image-gallery-arrow:disabled, .image-gallery-arrow.is-muted {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+.image-gallery-arrow[hidden] {
+  display: none !important;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.gallery-lightbox[hidden] {
+  display: none !important;
+}
+
+.gallery-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 22, 43, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.gallery-lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  inset-inline-end: 1.25rem;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+}
+.gallery-lightbox-close i {
+  font-size: 1.5rem;
+}
+
+.gallery-lightbox-prev,
+.gallery-lightbox-next {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.gallery-lightbox-prev i,
+.gallery-lightbox-next i {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+.gallery-lightbox-prev:disabled, .gallery-lightbox-prev.is-muted,
+.gallery-lightbox-next:disabled,
+.gallery-lightbox-next.is-muted {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.gallery-lightbox-prev {
+  inset-inline-start: 1rem;
+}
+
+.gallery-lightbox-next {
+  inset-inline-end: 1rem;
+}
+
+.gallery-lightbox-figure {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: 30rem;
+  height: 30rem;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgb(218, 137, 0);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.gallery-lightbox-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
 /*======================================
     Large tablets & down (< 992px)
 ======================================*/
@@ -563,8 +759,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    -moz-column-gap: 0.75rem;
-         column-gap: 0.75rem;
+    column-gap: 0.75rem;
     row-gap: 0.75rem;
   }
   .navbar-brand {
@@ -664,6 +859,9 @@ button {
   .width-container {
     padding-inline: 16px;
   }
+  .image-gallery-item {
+    flex: 0 0 calc((100% - 2rem) / 3);
+  }
 }
 /*======================================
     Tablets & phones (< 768px)
@@ -696,6 +894,13 @@ button {
   .page-title {
     font-size: 1.5rem;
   }
+  .image-gallery-item {
+    flex: 0 0 calc((100% - 1rem) / 2);
+  }
+  .image-gallery-arrow {
+    width: 36px;
+    height: 36px;
+  }
 }
 /*======================================
     Small phones (< 576px)
@@ -721,6 +926,28 @@ button {
   }
   .copyright {
     font-size: 0.8rem;
+  }
+  .image-gallery {
+    gap: 0.5rem;
+  }
+  .image-gallery-item {
+    flex: 0 0 100%;
+  }
+  .image-gallery-track {
+    gap: 0.75rem;
+  }
+  .gallery-lightbox-prev,
+  .gallery-lightbox-next {
+    width: 40px;
+    height: 40px;
+  }
+  .gallery-lightbox-prev i,
+  .gallery-lightbox-next i {
+    font-size: 1.75rem;
+  }
+  .gallery-lightbox-figure {
+    width: min(30rem, 60vw);
+    height: min(30rem, 30vh);
   }
 }
 /*==============================================================================
@@ -827,10 +1054,6 @@ button {
 }
 .about-president .president-info .president-image img {
   height: 37rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
 }
 .about-president .president-info .president-scroll {
   position: relative;
@@ -906,14 +1129,29 @@ button {
   height: 100%;
   box-shadow: none;
   transition: border-color 0.25s ease;
+  font-size: 1.4rem;
 }
 .about-president .president-slider .slider .card img {
   height: 500px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
   display: block;
+}
+
+.about-history {
+  background-image: url("../images/about/about history/HistoryBg.png");
+  background-size: cover;
+}
+.about-history .overlay {
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--overlay-bg);
+}
+.about-history .width-container {
+  z-index: 1;
+  font-size: 14px;
+}
+.about-history .bg img {
+  height: 32rem;
+  border: 1px solid var(--primary);
 }
 
 html[lang=en],
@@ -997,8 +1235,9 @@ html[lang=en] body,
   inset-inline-start: auto;
 }
 
-@media (max-width: 768px) {
-  [dir=ltr] .about-president .president-details {
-    padding-inline-end: 0;
-  }
-}/*# sourceMappingURL=styleEN.css.map */
+/*==============================================================================
+    Image Gallery / shared LTR tweaks
+==============================================================================*/
+[dir=ltr] .page-title {
+  text-align: left;
+}

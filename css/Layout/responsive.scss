@@ -142,6 +142,11 @@ html {
     .width-container {
         padding-inline: 16px;
     }
+
+    // Image gallery — 3 visible on tablet
+    .image-gallery-item {
+        flex: 0 0 calc((100% - 2rem) / 3);
+    }
 }
 
 /*======================================
@@ -182,6 +187,16 @@ html {
     .page-title {
         font-size: 1.5rem;
     }
+
+    // Image gallery — 2 visible
+    .image-gallery-item {
+        flex: 0 0 calc((100% - 1rem) / 2);
+    }
+
+    .image-gallery-arrow {
+        width: 36px;
+        height: 36px;
+    }
 }
 
 /*======================================
@@ -217,5 +232,33 @@ html {
 
     .copyright {
         font-size: 0.8rem;
+    }
+
+    // Image gallery — 1 visible
+    .image-gallery {
+        gap: 0.5rem;
+    }
+
+    .image-gallery-item {
+        flex: 0 0 100%;
+    }
+
+    .image-gallery-track {
+        gap: 0.75rem;
+    }
+
+    .gallery-lightbox-prev,
+    .gallery-lightbox-next {
+        width: 40px;
+        height: 40px;
+
+        i {
+            font-size: 1.75rem;
+        }
+    }
+
+    .gallery-lightbox-figure {
+        width: min(30rem, 60vw);
+        height: min(30rem, 30vh);
     }
 }
