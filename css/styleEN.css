@@ -1388,11 +1388,12 @@ button {
 }
 
 .btn-highlight {
-  background: rgb(173, 199, 255);
-  color: rgb(24, 22, 22);
+  background: transparent;
+  color: rgb(173, 199, 255);
   font-weight: 500;
-  padding: 0.3rem 1rem;
+  font-size: 14px;
   pointer-events: none;
+  padding: 0;
 }
 
 .news-slider {
@@ -1622,7 +1623,7 @@ button {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  min-height: 2.8em;
+  min-height: 2.5em;
 }
 .News-list .news-cardsList .card .card-body p {
   font-size: 0.9rem;
@@ -1685,6 +1686,10 @@ button {
 .news-details .image-gallery_slider {
   margin-top: 1.5rem;
   padding: 1.25rem 1.35rem 1.35rem;
+  border: 1px solid rgb(218, 137, 0);
+  border-radius: 14px;
+  background-color: var(--body-bg);
+  color: var(--text-color);
 }
 .news-details .image-gallery_slider-title {
   margin: 0 0 1rem;
@@ -1695,10 +1700,6 @@ button {
 }
 .news-details .image-gallery_slider-stage {
   margin-bottom: 1rem;
-  border: 1px solid rgb(218, 137, 0);
-  border-radius: 14px;
-  background-color: var(--card-bg);
-  color: var(--text-color);
 }
 .news-details .image-gallery_slider-main {
   display: block;
