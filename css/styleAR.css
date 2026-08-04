@@ -12,7 +12,7 @@
 /*==============================================================================
     Placeholders
 ==============================================================================*/
-.news-details .image-gallery_slider-arrow, .gallery-lightbox-prev,
+.news-details .image-gallery_slider-arrow, .News-list .select-activaties .activity-select-check, .gallery-lightbox-prev,
 .gallery-lightbox-next, .gallery-lightbox-close, .image-gallery-arrow, .footer-social a, .icon-btn {
   display: flex;
   flex-direction: row;
@@ -1389,7 +1389,7 @@ button {
 
 .btn-highlight {
   background: transparent;
-  color: rgb(173, 199, 255);
+  color: rgb(85, 143, 226);
   font-weight: 500;
   font-size: 14px;
   pointer-events: none;
@@ -1487,7 +1487,7 @@ button {
 .News-list .select-activaties {
   position: relative;
   display: inline-block;
-  min-width: 12rem;
+  min-width: 14rem;
   max-width: 100%;
   z-index: 5;
 }
@@ -1495,6 +1495,7 @@ button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1522,7 +1523,7 @@ button {
 .News-list .select-activaties .activity-select-trigger[aria-expanded=true] {
   border-color: rgb(218, 137, 0);
 }
-.News-list .select-activaties::after {
+.News-list .select-activaties .activity-select-trigger::after {
   content: "\f56b";
   font-family: "bootstrap-icons";
   font-size: 1.1rem;
@@ -1533,42 +1534,137 @@ button {
   transform: translateY(-50%);
   color: var(--text-color);
   pointer-events: none;
-  z-index: 1;
 }
 .News-list .select-activaties .activity-select-menu {
   position: absolute;
-  top: calc(100% + 0.35rem);
+  top: calc(100% + 0.4rem);
   inset-inline-start: 0;
-  inset-inline-end: 0;
+  min-width: 100%;
+  width: max(100%, 16rem);
   z-index: 20;
   margin: 0;
-  padding: 0;
-  list-style: none;
+  padding: 0.75rem 0.65rem 0.5rem;
   background: var(--dropdown-bg);
   border: 1px solid var(--dropdown-border);
+  border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 0;
-  overflow: hidden;
+  color: var(--dropdown-text);
 }
 .News-list .select-activaties .activity-select-menu[hidden] {
   display: none;
 }
-.News-list .select-activaties .activity-select-menu li {
+.News-list .select-activaties .activity-select-search {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.News-list .select-activaties .activity-select-search .bi-search {
+  position: absolute;
+  inset-inline-start: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dropdown-text);
+  opacity: 0.55;
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+.News-list .select-activaties .activity-select-search-input {
+  width: 100%;
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  padding-inline-start: 2.25rem;
+  border: 1px solid var(--dropdown-border);
+  border-radius: 8px;
+  background: var(--surface, var(--dropdown-bg));
+  color: var(--dropdown-text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  outline: none;
+}
+.News-list .select-activaties .activity-select-search-input::-moz-placeholder {
+  color: var(--dropdown-text);
+  opacity: 0.45;
+}
+.News-list .select-activaties .activity-select-search-input::placeholder {
+  color: var(--dropdown-text);
+  opacity: 0.45;
+}
+.News-list .select-activaties .activity-select-search-input:focus {
+  border-color: rgb(218, 137, 0);
+}
+.News-list .select-activaties .activity-select-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 11.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(218, 137, 0) var(--dropdown-border);
+}
+.News-list .select-activaties .activity-select-list::-webkit-scrollbar {
+  width: 5px;
+}
+.News-list .select-activaties .activity-select-list::-webkit-scrollbar-track {
+  background: var(--dropdown-border);
+  border-radius: 8px;
+}
+.News-list .select-activaties .activity-select-list::-webkit-scrollbar-thumb {
+  background: rgb(218, 137, 0);
+  border-radius: 8px;
+}
+.News-list .select-activaties .activity-select-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.45rem;
   border-bottom: 1px solid var(--dropdown-border);
-  padding: 0.85rem 1.15rem;
   color: var(--dropdown-text);
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  white-space: nowrap;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   transition: all 0.3s ease;
 }
-.News-list .select-activaties .activity-select-menu li:last-child {
+.News-list .select-activaties .activity-select-list li:last-child {
   border-bottom: 0;
 }
-.News-list .select-activaties .activity-select-menu li:hover, .News-list .select-activaties .activity-select-menu li.is-selected {
-  background: rgb(218, 137, 0);
+.News-list .select-activaties .activity-select-list li:hover {
+  background: rgba(218, 137, 0, 0.08);
+}
+.News-list .select-activaties .activity-select-list li[hidden] {
+  display: none;
+}
+.News-list .select-activaties .activity-select-check {
+  flex-shrink: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1.5px solid rgb(218, 137, 0);
+  border-radius: 3px;
+  background: transparent;
   color: #ffffff;
+  font-size: 0.75rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+.News-list .select-activaties .activity-select-check i {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.3s ease;
+}
+.News-list .select-activaties .activity-select-list li.is-checked .activity-select-check {
+  background: rgb(218, 137, 0);
+  border-color: rgb(218, 137, 0);
+}
+.News-list .select-activaties .activity-select-list li.is-checked .activity-select-check i {
+  opacity: 1;
+  transform: scale(1);
+}
+.News-list .select-activaties .activity-select-option-label {
+  flex: 1;
+  text-align: start;
+  white-space: nowrap;
 }
 .News-list .select-activaties > select.activity-select:not(.visually-hidden) {
   appearance: none;

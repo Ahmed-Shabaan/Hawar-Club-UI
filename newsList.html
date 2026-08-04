@@ -180,18 +180,49 @@
 
         <div class="width-container my-3">
             <div class="select-activaties mb-3 is-custom" data-activity-select>
-                <select class="activity-select visually-hidden" name="activity" tabindex="-1" aria-hidden="true">
+                <select class="activity-select visually-hidden" name="activity" multiple tabindex="-1"
+                    aria-hidden="true">
+                    <option value="all">الكل</option>
                     <option value="sports" selected>رياضة</option>
-                    <option value="news">أخبار</option>
+                    <option value="activities">انشطة</option>
+                    <option value="club">النادى</option>
+                    <option value="academies">الاكاديميات</option>
                 </select>
                 <button type="button" class="activity-select-trigger" aria-expanded="false"
                     aria-haspopup="listbox" aria-label="تصفية حسب النشاط">
                     <span class="activity-select-label">رياضة</span>
                 </button>
-                <ul class="activity-select-menu" role="listbox" hidden>
-                    <li role="option" data-value="sports" class="is-selected" aria-selected="true">رياضة</li>
-                    <li role="option" data-value="news" aria-selected="false">أخبار</li>
-                </ul>
+                <div class="activity-select-menu" hidden>
+                    <div class="activity-select-search">
+                        <i class="bi bi-search" aria-hidden="true"></i>
+                        <input type="search" class="activity-select-search-input"
+                            placeholder="البحث عن فئة..."
+                            data-i18n-placeholder="searchCategory"
+                            autocomplete="off" aria-label="البحث عن فئة">
+                    </div>
+                    <ul class="activity-select-list" role="listbox" aria-multiselectable="true">
+                        <li role="option" data-value="all" aria-selected="false">
+                            <span class="activity-select-check" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                            <span class="activity-select-option-label" data-i18n="catAll">الكل</span>
+                        </li>
+                        <li role="option" data-value="sports" class="is-checked" aria-selected="true">
+                            <span class="activity-select-check" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                            <span class="activity-select-option-label" data-i18n="catSports">رياضة</span>
+                        </li>
+                        <li role="option" data-value="activities" aria-selected="false">
+                            <span class="activity-select-check" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                            <span class="activity-select-option-label" data-i18n="catActivities">انشطة</span>
+                        </li>
+                        <li role="option" data-value="club" aria-selected="false">
+                            <span class="activity-select-check" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                            <span class="activity-select-option-label" data-i18n="catClub">النادى</span>
+                        </li>
+                        <li role="option" data-value="academies" aria-selected="false">
+                            <span class="activity-select-check" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                            <span class="activity-select-option-label" data-i18n="catAcademies">الاكاديميات</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
             
             <div class="news-cardsList">
