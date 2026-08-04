@@ -1389,7 +1389,7 @@ button {
 
 .btn-highlight {
   background: transparent;
-  color: rrgba(85, 143, 226, 1);
+  color: rgb(85, 143, 226);
   font-weight: 500;
   font-size: 14px;
   pointer-events: none;
