@@ -12,12 +12,14 @@
             about: "عن النادي",
             presidents: "رؤساء النادي",
             history: "تاريخ النادي",
+            news: "الأخبار",
             renew: "تجديد العضوية",
             follow: "تابعنا",
             brandSub: "نادي الحوار للألعاب الرياضية",
             copyright: "جميع الحقوق محفوظة - نادي حوار الرياضي 2024 ©",
             footerTitle: "نادي الحوار للألعاب الرياضية",
             photoLibrary: "مكتبة الصور",
+            photoGallery: "معرض الصور",
             galleryPrev: "السابق",
             galleryNext: "التالي",
             lightboxClose: "إغلاق",
@@ -33,12 +35,14 @@
             about: "About",
             presidents: "Club Presidents",
             history: "Club History",
+            news: "News",
             renew: "Renew Membership",
             follow: "Follow us",
             brandSub: "Hawar Sports Club",
             copyright: "All rights reserved - Hawar Sports Club 2024 ©",
             footerTitle: "Hawar Sports Club",
             photoLibrary: "Photo Library",
+            photoGallery: "Photo Gallery",
             galleryPrev: "Previous",
             galleryNext: "Next",
             lightboxClose: "Close",
@@ -49,6 +53,39 @@
         }
     };
 
+    var MONTHS_AR = [
+        "يناير", "فبراير", "مارس", "ابريل", "مايو", "يونيو",
+        "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+    ];
+    var MONTHS_EN = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    function pad2(n) {
+        return n < 10 ? "0" + n : String(n);
+    }
+
+    // AR: 09 ابريل 2025 | EN: 09 April 2025
+    function formatHawarDate(iso, lang) {
+        var parts = String(iso || "").split("-");
+        if (parts.length < 3) return iso || "";
+
+        var year = parseInt(parts[0], 10);
+        var monthIndex = parseInt(parts[1], 10) - 1;
+        var day = parseInt(parts[2], 10);
+        if (isNaN(year) || isNaN(monthIndex) || isNaN(day)) return iso;
+
+        var months = lang === "en" ? MONTHS_EN : MONTHS_AR;
+        return pad2(day) + " " + months[monthIndex] + " " + year;
+    }
+
+    function applyDates(lang) {
+        document.querySelectorAll("[data-date]").forEach(function (el) {
+            el.textContent = formatHawarDate(el.getAttribute("data-date"), lang);
+        });
+    }
+
     function getLang() {
         return localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "ar";
     }
@@ -57,6 +94,19 @@
         var link = document.getElementById("mainStylesheet");
         if (!link) return;
         link.href = lang === "en" ? "css/styleEN.css" : "css/styleAR.css";
+    }
+
+    function syncPaginationDirection(lang) {
+        var rtl = lang !== "en";
+        var prevIcon = rtl ? "bi bi-chevron-right" : "bi bi-chevron-left";
+        var nextIcon = rtl ? "bi bi-chevron-left" : "bi bi-chevron-right";
+
+        document.querySelectorAll(".pagination").forEach(function (pag) {
+            var prev = pag.querySelector(".pagination-prev i");
+            var next = pag.querySelector(".pagination-next i");
+            if (prev) prev.className = prevIcon;
+            if (next) next.className = nextIcon;
+        });
     }
 
     function applyI18n(lang) {
@@ -86,6 +136,9 @@
                 document.title = dict[titleEl.getAttribute("data-i18n-title")];
             }
         }
+
+        applyDates(lang);
+        syncPaginationDirection(lang);
     }
 
     function applyLang(lang, reload) {
@@ -99,6 +152,9 @@
 
         if (typeof window.syncGalleryDirection === "function") {
             window.syncGalleryDirection();
+        }
+        if (typeof window.syncImageGallerySliderDirection === "function") {
+            window.syncImageGallerySliderDirection();
         }
 
         if (reload) {

@@ -1,4 +1,4 @@
-//    Cairo Font
+﻿//    Cairo Font
 @use "sass:map";
 
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap");
@@ -110,7 +110,7 @@ $breakpoints: (
 }
 
 /*==============================================================================
-    Theme — Light is default
+    Theme â€” Light is default
 ==============================================================================*/
 
 :root {
@@ -233,6 +233,72 @@ body {
     object-fit: cover;
 }
 
+.object-position-top {
+    object-position: top;
+}
+
+// Pagination
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; // equal spacing in RTL and LTR
+    padding: 0;
+    margin: 0;
+
+    .page-item {
+        margin: 0;
+
+        // Override Bootstrap’s overlapping border margin (breaks equal gaps in RTL)
+        &:not(:first-child) .page-link {
+            margin-inline-start: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.25rem;
+        color: rgba(51, 51, 51, 1);
+        background-color: rgba(255, 255, 255, 1);
+        border: 1px solid var(--border);
+        @include transition;
+        border-radius: $radius-sm;
+        margin: 0; // use .pagination gap instead
+        font-weight: 600;
+        font-size: 13px;
+
+        &:hover,
+        &:focus {
+            color: rgba(255, 255, 255, 1);
+            background-color: var(--primary);
+            border-color: var(--border);
+        }
+
+        &:disabled,
+        &.disabled {
+            color: rgba(124, 124, 124, 1);
+            pointer-events: none;
+        }
+
+        i {
+            color: var(--text-color);
+        }
+    }
+
+    .page-item.active .page-link {
+        z-index: 3;
+        color: white !important;
+        background-color: var(--primary);
+        border-color: var(--primary);
+    }
+}
+
+
 main {
     flex: 1 0 auto;
 }
@@ -268,12 +334,12 @@ button {
     width: 100%;
     max-width: $container-width;
     margin-inline: auto;
-    padding-inline: 24px;
+    padding-inline: 2rem;
     position: relative;
 }
 
 /*==============================================================================
-    Layout Partials — Navbar & Footer only
+    Layout Partials â€” Navbar & Footer only
 ==============================================================================*/
 
 @import "Layout/navbar";
@@ -589,96 +655,95 @@ button {
     color: var(--heading);
 }
 
-// About President Section
-.about-president {
+// About President Section + News Details (shared custom scrollbar pattern)
+.about-president,
+.news-details {
     flex: 1 0 auto;
-    padding-block: 2rem 3rem;
+    padding-top: 2rem;
 
-    .president-info {
-        .president-image {
+    .president-image,
+    .news-details_image {
+        img {
+            height: 37rem;
+        }
+    }
 
-            img {
-                height: 37rem;
+    .president-title
+    {
+        color: $primary;
+        
+    }
 
-            }
+    .president-scroll,
+    .news-details-scroll {
+        position: relative;
+        max-height: none;
+    }
+
+    .president-details,
+    .news-details-content {
+        color: var(--text-color);
+        font-size: 0.9rem;
+        max-height: 34rem;
+        overflow-y: auto;
+        padding-inline-end: 1rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+    }
+
+    .president-scrollbar,
+    .news-details-scrollbar {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-end: 0;
+        width: 8px;
+        background: transparent;
+        border-radius: 50px;
+        pointer-events: auto;
+        opacity: 0;
+        @include transition(opacity, 0.2s);
+
+        &.is-visible,
+        &.is-dragging {
+            opacity: 1;
         }
 
-        .president-scroll {
-            position: relative;
-            // don't clip — only .president-details scrolls
-            max-height: none;
-        }
-
-        .president-details {
-            color: var(--text-color);
-            font-size: .9rem;
-            max-height: 34rem;
-            overflow-y: auto;
-            padding-inline-end: 1rem;
-
-            // hide native scrollbar completely (removes arrows)
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-
-            &::-webkit-scrollbar {
-                display: none;
-                width: 0;
-                height: 0;
-            }
-
-            .president-name {}
-        }
-
-        // custom scrollbar — no arrows, rounded top & bottom
-        .president-scrollbar {
+        &::before {
+            content: "";
             position: absolute;
             inset-block: 0;
-            inset-inline-end: 0;
-            width: 8px;
-            background: transparent;
-            border-radius: 50px;
-            pointer-events: auto;
-            opacity: 0;
-            @include transition(opacity, 0.2s);
-
-            &.is-visible,
-            &.is-dragging {
-                opacity: 1;
-            }
-
-            &::before {
-                content: "";
-                position: absolute;
-                inset-block: 0;
-                width: 6px;
-                background: var(--scrollbar-track);
-                border-radius: 50px;
-                pointer-events: none;
-            }
-        }
-
-        .president-scrollbar-thumb {
-            position: absolute;
-            top: 0;
-            z-index: 1;
             width: 6px;
-            min-height: 32px;
-            margin-inline: auto;
-            background: var(--scrollbar-thumb);
+            background: var(--scrollbar-track);
             border-radius: 50px;
-            // cursor: grab;
-            pointer-events: auto;
+            pointer-events: none;
+        }
+    }
 
-            &:active {
-                cursor: grabbing;
-            }
+    .president-scrollbar-thumb,
+    .news-details-scrollbar-thumb {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        width: 6px;
+        min-height: 32px;
+        margin-inline: auto;
+        background: var(--scrollbar-thumb);
+        border-radius: 50px;
+        pointer-events: auto;
+
+        &:active {
+            cursor: grabbing;
         }
     }
 
     .president-slider {
         .slider {
-
-            // Prevent border clip during slide transition
             .slick-list {
                 padding: 4px 0 8px;
                 margin: 0 -12px;
@@ -686,7 +751,7 @@ button {
 
             .slick-slide {
                 padding: 0 1.5rem;
-                margin: 0 !important; // override m-md-3 — margins get clipped by slick
+                margin: 0 !important;
 
                 >div {
                     height: 100%;
@@ -707,9 +772,12 @@ button {
                     height: 500px;
                     display: block;
                 }
-
             }
         }
+    }
+
+    .second-President {
+        background-color: var(--card-bg);
     }
 }
 
@@ -718,6 +786,7 @@ button {
 .about-history {
     background-image: url('../images/about/about history/HistoryBg.png');
     background-size: cover;
+    background-position: right;
 
     .overlay {
         z-index: 0;
@@ -737,3 +806,495 @@ button {
         }
     }
 }
+
+/*==============================================================================
+    News List Slider
+==============================================================================*/
+.btn-highlight {
+    flex-shrink: 0;
+}
+
+.btn-highlight {
+    background: transparent;
+    color: rgba(173, 199, 255, 1);
+    font-weight: 500;
+    font-size: 14px;
+    pointer-events: none;
+    padding: 0;
+}
+
+.news-slider {
+    margin-top: 1rem;
+    overflow: hidden;
+
+    .slick-list {
+        overflow: hidden;
+    }
+
+    .slick-slide {
+        overflow: hidden;
+    }
+
+    .news-slide {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        direction: rtl;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .news-slide-media {
+        margin-bottom: 1rem;
+        display: flex;
+    }
+
+    .slide-img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4 / 2;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 10px;
+    }
+
+    .news-slide-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: stretch;
+        min-width: 0;
+        max-width: 100%;
+
+
+        .news-slide-body {
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
+            padding-block: 0.75rem;
+        }
+
+        h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.35rem;
+            font-weight: 600;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        span {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        p {
+            line-height: 1.7;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        .btn-orange {
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+    }
+
+    .btn-orange {
+        color: $primary;
+        background: transparent;
+        border: 0;
+        padding: 0;
+        padding-bottom: 0.6rem;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $primary-dark;
+            background: transparent;
+            box-shadow: none;
+        }
+    }
+}
+
+
+.News-list {
+    .card-date {
+        // Day Month Year — keep glyph order (09 ابريل 2025)
+        direction: ltr;
+        unicode-bidi: isolate;
+        text-align: right;
+    }
+
+    // Activity filter — custom dropdown (matches navbar About menu colors)
+    .select-activaties {
+        position: relative;
+        display: inline-block;
+        min-width: 12rem;
+        max-width: 100%;
+        z-index: 5;
+
+        .activity-select-trigger {
+            appearance: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            width: 100%;
+            min-height: 2.75rem;
+            margin: 0;
+            padding: 0.65rem 1rem;
+            padding-inline-end: 2.75rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: start;
+            cursor: pointer;
+            @include transition;
+
+            &:hover,
+            &:focus {
+                border-color: $primary;
+                outline: none;
+            }
+
+            &[aria-expanded="true"] {
+                border-color: $primary;
+            }
+        }
+
+        // Sliders icon (end side — left in RTL)
+        &::after {
+            content: "\f56b"; // bi-sliders
+            font-family: "bootstrap-icons";
+            font-size: 1.1rem;
+            line-height: 1;
+            position: absolute;
+            inset-inline-end: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-color);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        // Open menu: same palette as .nav-dropdown
+        .activity-select-menu {
+            position: absolute;
+            top: calc(100% + 0.35rem);
+            inset-inline-start: 0;
+            inset-inline-end: 0;
+            z-index: 20;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background: var(--dropdown-bg);
+            border: 1px solid var(--dropdown-border);
+            box-shadow: $shadow-md;
+            border-radius: 0;
+            overflow: hidden;
+
+            &[hidden] {
+                display: none;
+            }
+
+            li {
+                border-bottom: 1px solid var(--dropdown-border);
+                padding: 0.85rem 1.15rem;
+                color: var(--dropdown-text);
+                font-size: 0.9rem;
+                font-weight: 500;
+                cursor: pointer;
+                white-space: nowrap;
+                @include transition;
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+
+                &:hover,
+                &.is-selected {
+                    background: $primary;
+                    color: $white;
+                }
+            }
+        }
+
+        // Fallback: native select if custom UI not used
+        > select.activity-select:not(.visually-hidden) {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            display: block;
+            width: 100%;
+            min-height: 2.75rem;
+            margin: 0;
+            padding: 0.65rem 1rem;
+            padding-inline-end: 2.75rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+
+    .news-cardsList {
+        .row {
+            align-items: stretch;
+        }
+
+        [class*="col-"] {
+            display: flex;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+
+            img {
+                height: 20rem;
+                width: 100%;
+                flex-shrink: 0;
+            }
+
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                min-height: 0;
+
+                h5 {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    min-height: calc(1em * 1.25 * 2);
+                }
+
+                p {
+                    font-size: 0.9rem;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+
+                .card-text {
+                    min-height: calc(0.9rem * 1.6 * 3); // keep excerpt space for 3 lines
+                }
+
+                .card-date {
+                    -webkit-line-clamp: 1;
+                    direction: rtl;
+                    flex-shrink: 0;
+                }
+
+                .btn-highlight {
+                    flex-shrink: 0;
+                    align-self: flex-start;
+                }
+
+                // Pin "اقرأ المزيد" to the bottom of equal-height cards
+                .d-grid,
+                .card-actions {
+                    margin-top: auto;
+                    padding-top: 0.75rem;
+                }
+
+                .btn-orange {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+
+.news-details {
+    .news-details_image img {
+        height: 25rem;
+    }
+
+    // Keep text panel same height as image so long content scrolls
+    .news-details-content {
+        max-height: 22rem;
+    }
+
+    .news-details-scroll {
+        // Match absolute scrollbar height to the clipped content panel
+        height: 22rem;
+    }
+
+    .news-details-scrollbar {
+        opacity: 0;
+
+        &.is-visible {
+            opacity: 1;
+        }
+    }
+
+    .news-details_name {
+        margin-bottom: 0.35rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .news-details_date {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+
+    .news-details_bio {
+        margin-bottom: 1rem;
+        line-height: 1.75;
+    }
+
+    // Photo gallery slider (main + thumbs) — light & dark via theme vars
+    .image-gallery_slider {
+        margin-top: 1.5rem;
+        padding: 1.25rem 1.35rem 1.35rem;
+        border: 1px solid $primary;
+        border-radius: 14px;
+        background-color: var(--body-bg);
+        color: var(--text-color);
+    }
+
+    .image-gallery_slider-title {
+        margin: 0 0 1rem;
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--heading, var(--text-color));
+        text-align: start;
+    }
+
+    .image-gallery_slider-stage {
+        margin-bottom: 1rem;
+    }
+
+    .image-gallery_slider-main {
+        display: block;
+        width: 100%;
+        height: 28rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 12px;
+        border: 1px solid $primary;
+        background-color: var(--surface);
+    }
+
+    .image-gallery_slider-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+    }
+
+    .image-gallery_slider-viewport {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        padding: 2px;
+        margin: -2px;
+    }
+
+    .image-gallery_slider-track {
+        display: flex;
+        gap: 0.75rem;
+        transition: transform 0.35s ease;
+
+        &.is-centered {
+            justify-content: center;
+            transform: none !important;
+        }
+    }
+
+    .image-gallery_slider-thumb {
+        flex: 0 0 calc((100% - 3rem) / 5); // 5 visible, 4 gaps
+        padding: 0;
+        border: 0;
+        background: transparent;
+        border-radius: 10px;
+        cursor: pointer;
+        outline: none;
+
+        img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            box-shadow: 0 0 0 1px transparent;
+            @include transition;
+        }
+
+        &:hover img {
+            opacity: 0.92;
+        }
+
+        &.is-active img {
+            border-color: $primary;
+            box-shadow: 0 0 0 1px $primary;
+        }
+
+        &:focus-visible img {
+            box-shadow: 0 0 0 2px rgba($primary, 0.55);
+        }
+    }
+
+    .image-gallery_slider-arrow {
+        @extend %flex-center;
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: var(--text-color);
+        opacity: 0.65;
+        cursor: pointer;
+        @include transition;
+
+        i {
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        &:hover:not(:disabled):not(.is-muted) {
+            opacity: 1;
+            color: $primary;
+        }
+
+        &:disabled,
+        &.is-muted {
+            opacity: 0.28;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        &[hidden] {
+            display: none !important;
+        }
+    }
+}
+
