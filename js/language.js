@@ -26,7 +26,13 @@
             pageHistoryTitle: "تاريخ النادي",
             crumbHome: "الرئيسية",
             crumbAbout: "عن النادي",
-            crumbHistory: "تاريخ النادي"
+            crumbHistory: "تاريخ النادي",
+            searchCategory: "البحث عن فئة...",
+            catAll: "الكل",
+            catSports: "رياضة",
+            catActivities: "انشطة",
+            catClub: "النادى",
+            catAcademies: "الاكاديميات"
         },
         en: {
             langLabel: "EN",
@@ -49,7 +55,13 @@
             pageHistoryTitle: "Club History",
             crumbHome: "Home",
             crumbAbout: "About",
-            crumbHistory: "Club History"
+            crumbHistory: "Club History",
+            searchCategory: "Search category...",
+            catAll: "All",
+            catSports: "Sports",
+            catActivities: "Activities",
+            catClub: "The Club",
+            catAcademies: "Academies"
         }
     };
 
@@ -120,6 +132,34 @@
         document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
             var key = el.getAttribute("data-i18n-aria");
             if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
+        });
+
+        document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+            var key = el.getAttribute("data-i18n-placeholder");
+            if (dict[key] != null) el.setAttribute("placeholder", dict[key]);
+        });
+
+        // Refresh activity filter label text after option i18n
+        document.querySelectorAll("[data-activity-select]").forEach(function (root) {
+            var label = root.querySelector(".activity-select-label");
+            var allOpt = root.querySelector('[data-value="all"] .activity-select-option-label');
+            var checked = root.querySelectorAll(
+                '.activity-select-list [role="option"].is-checked:not([data-value="all"])'
+            );
+            var allChecked = root.querySelector('[data-value="all"].is-checked');
+            if (!label) return;
+            if (allChecked || checked.length === 0) {
+                label.textContent = allOpt ? allOpt.textContent.trim() : dict.catAll;
+            } else if (checked.length === 1) {
+                var one = checked[0].querySelector(".activity-select-option-label");
+                label.textContent = one ? one.textContent.trim() : "";
+            } else {
+                var first = checked[0].querySelector(".activity-select-option-label");
+                label.textContent =
+                    (first ? first.textContent.trim() : "") +
+                    " +" +
+                    (checked.length - 1);
+            }
         });
 
         document.querySelectorAll(".language span").forEach(function (el) {

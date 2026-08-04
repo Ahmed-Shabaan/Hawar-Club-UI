@@ -343,7 +343,7 @@ function setupImageGallerySlider(root) {
     selectThumb(index);
 }
 
-// Custom activity filter dropdown (navbar About menu style)
+// Multi-select activity filter with search
 function initActivitySelects() {
     var roots = document.querySelectorAll("[data-activity-select]");
     if (!roots.length) return;
@@ -364,8 +364,89 @@ function initActivitySelects() {
         var trigger = root.querySelector(".activity-select-trigger");
         var menu = root.querySelector(".activity-select-menu");
         var label = root.querySelector(".activity-select-label");
+        var list = root.querySelector(".activity-select-list");
+        var searchInput = root.querySelector(".activity-select-search-input");
         var nativeSelect = root.querySelector("select.activity-select");
-        if (!trigger || !menu || !label) return;
+        if (!trigger || !menu || !label || !list) return;
+
+        var options = Array.prototype.slice.call(
+            list.querySelectorAll('[role="option"]')
+        );
+
+        function getOptionLabel(opt) {
+            var textEl = opt.querySelector(".activity-select-option-label");
+            return (textEl ? textEl.textContent : opt.textContent).trim();
+        }
+
+        function itemOptions() {
+            return options.filter(function (opt) {
+                return opt.getAttribute("data-value") !== "all";
+            });
+        }
+
+        function allOption() {
+            return options.find(function (opt) {
+                return opt.getAttribute("data-value") === "all";
+            });
+        }
+
+        function isChecked(opt) {
+            return opt.classList.contains("is-checked");
+        }
+
+        function setChecked(opt, checked) {
+            opt.classList.toggle("is-checked", checked);
+            opt.setAttribute("aria-selected", checked ? "true" : "false");
+        }
+
+        function syncAllFromItems() {
+            var all = allOption();
+            if (!all) return;
+            var items = itemOptions();
+            var every = items.length > 0 && items.every(isChecked);
+            setChecked(all, every);
+        }
+
+        function updateTriggerLabel() {
+            var all = allOption();
+            var items = itemOptions();
+            var selected = items.filter(isChecked);
+
+            if (all && isChecked(all) && selected.length === items.length) {
+                label.textContent = getOptionLabel(all);
+                return;
+            }
+            if (selected.length === 0) {
+                label.textContent = all ? getOptionLabel(all) : "—";
+                return;
+            }
+            if (selected.length === 1) {
+                label.textContent = getOptionLabel(selected[0]);
+                return;
+            }
+            label.textContent =
+                getOptionLabel(selected[0]) + " +" + (selected.length - 1);
+        }
+
+        function syncNativeSelect() {
+            if (!nativeSelect) return;
+            var selectedValues = options
+                .filter(isChecked)
+                .map(function (opt) {
+                    return opt.getAttribute("data-value");
+                });
+
+            Array.prototype.forEach.call(nativeSelect.options, function (opt) {
+                opt.selected = selectedValues.indexOf(opt.value) !== -1;
+            });
+            nativeSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+
+        function refresh() {
+            syncAllFromItems();
+            updateTriggerLabel();
+            syncNativeSelect();
+        }
 
         trigger.addEventListener("click", function (e) {
             e.preventDefault();
@@ -375,29 +456,65 @@ function initActivitySelects() {
             trigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
             menu.hidden = !willOpen;
             root.classList.toggle("is-open", willOpen);
+            if (willOpen && searchInput) {
+                searchInput.value = "";
+                options.forEach(function (opt) {
+                    opt.hidden = false;
+                });
+                setTimeout(function () {
+                    searchInput.focus();
+                }, 0);
+            }
         });
 
-        menu.querySelectorAll('[role="option"]').forEach(function (option) {
+        menu.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+
+        options.forEach(function (option) {
             option.addEventListener("click", function (e) {
+                e.preventDefault();
                 e.stopPropagation();
-                var value = option.getAttribute("data-value") || "";
-                var text = option.textContent.trim();
+                var value = option.getAttribute("data-value");
+                var next = !isChecked(option);
 
-                menu.querySelectorAll('[role="option"]').forEach(function (opt) {
-                    var selected = opt === option;
-                    opt.classList.toggle("is-selected", selected);
-                    opt.setAttribute("aria-selected", selected ? "true" : "false");
-                });
-
-                label.textContent = text;
-                if (nativeSelect) {
-                    nativeSelect.value = value;
-                    nativeSelect.dispatchEvent(new Event("change", { bubbles: true }));
+                if (value === "all") {
+                    options.forEach(function (opt) {
+                        setChecked(opt, next);
+                    });
+                } else {
+                    setChecked(option, next);
+                    syncAllFromItems();
                 }
 
-                closeAll();
+                updateTriggerLabel();
+                syncNativeSelect();
             });
         });
+
+        if (searchInput) {
+            searchInput.addEventListener("input", function () {
+                var q = searchInput.value.trim().toLowerCase();
+                options.forEach(function (opt) {
+                    var text = getOptionLabel(opt).toLowerCase();
+                    opt.hidden = q !== "" && text.indexOf(q) === -1;
+                });
+            });
+
+            searchInput.addEventListener("click", function (e) {
+                e.stopPropagation();
+            });
+
+            searchInput.addEventListener("keydown", function (e) {
+                e.stopPropagation();
+                if (e.key === "Escape") {
+                    closeAll();
+                    trigger.focus();
+                }
+            });
+        }
+
+        refresh();
     });
 
     document.addEventListener("click", function () {
