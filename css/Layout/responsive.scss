@@ -3,9 +3,10 @@
 ======================================*/
 
 @include respond-down(lg) {
-html {
+    html {
         font-size: 15px; // 1rem = 15px
     }
+
     // ---- Navbar ----
     // Row 1: logo (start) + toggler (end)
     // Row 2: navbar-actions
@@ -91,6 +92,7 @@ html {
                 position: static;
                 opacity: 1;
                 visibility: visible;
+                pointer-events: auto;
                 transform: none;
                 box-shadow: none;
                 border: 0;
@@ -98,6 +100,11 @@ html {
                 margin-bottom: 0.5rem;
                 background: transparent;
                 min-width: 0;
+                transition: none;
+
+                &::before {
+                    display: none;
+                }
             }
 
             > .nav-dropdown a {
@@ -147,6 +154,26 @@ html {
     .image-gallery-item {
         flex: 0 0 calc((100% - 2rem) / 3);
     }
+
+    // About History hero
+    .about-history .bg img {
+        height: 22rem;
+    }
+
+    // News slider content
+    .news-slider .news-slide-content h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/*======================================
+    Tablets & up (>= 768px)
+======================================*/
+
+@include respond-up(md) {
+    .news-slider .news-slide-media {
+        margin-bottom: 0;
+    }
 }
 
 /*======================================
@@ -154,33 +181,51 @@ html {
 ======================================*/
 
 @include respond-down(md) {
-html {
+    html {
         font-size: 14px; // 1rem = 14px
     }
-    // ---- About President: full content, no scrollbar ----
-    .about-president {
+
+    // ---- About President / News Details: full content, no scrollbar ----
+    .about-president,
+    .news-details {
         padding-block: 1.5rem 2rem;
 
-        .president-image img {
+        .president-image img,
+        .news-details_image img {
             height: auto;
             max-height: none;
         }
 
-        .president-scroll {
+        .president-scroll,
+        .news-details-scroll {
             max-height: none !important;
-            height: auto;
+            height: auto !important;
             overflow: visible;
         }
 
-        .president-details {
+        .president-details,
+        .news-details-content {
             max-height: none !important;
             height: auto;
             overflow: visible !important;
             padding-inline-end: 0;
         }
 
-        .president-scrollbar {
+        .president-scrollbar,
+        .news-details-scrollbar {
             display: none !important;
+        }
+
+        .image-gallery_slider {
+            padding: 1rem;
+        }
+
+        .image-gallery_slider-main {
+            height: 16rem;
+        }
+
+        .image-gallery_slider-thumb {
+            flex: 0 0 calc((100% - 1.5rem) / 3); // 3 thumbs visible
         }
     }
 
@@ -197,6 +242,96 @@ html {
         width: 36px;
         height: 36px;
     }
+
+    .gallery-lightbox-figure {
+        width: min(30rem, 90vw);
+        height: min(30rem, 65vh);
+    }
+
+    // About History hero
+    .about-history .bg img {
+        height: 16rem;
+    }
+
+    // News slider
+    .news-slider {
+        .news-slide-content {
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .btn-orange {
+                margin-top: 1rem; // stacked layout: normal spacing, not stretch-pin
+            }
+        }
+
+        .slide-img {
+            aspect-ratio: 16 / 10;
+        }
+    }
+
+    // Activity select — full width on tablet/mobile
+    .News-list .select-activaties {
+        display: block;
+        width: 100%;
+        min-width: 0;
+    }
+
+    // News cards — tighter fit on tablet/mobile
+    .News-list .news-cardsList {
+        .row {
+            --bs-gutter-x: 0.5rem;
+            --bs-gutter-y: 1.5rem !important;
+        }
+
+        .card {
+            padding: 0.4rem !important;
+
+            img {
+                height: 10rem;
+            }
+
+            .card-body {
+                padding: 0.4rem 0 0 !important;
+
+                .btn-highlight {
+                    margin-bottom: 0.25rem !important;
+                    padding: 0.2rem 0.6rem;
+                    font-size: 0.75rem;
+                }
+
+                h5 {
+                    font-size: 0.9rem;
+                    margin-bottom: 0.25rem;
+                    min-height: 0;
+                }
+
+                p {
+                    font-size: 0.8rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                .card-text {
+                    min-height: 0;
+                    -webkit-line-clamp: 2;
+                }
+
+                .card-date {
+                    margin-bottom: 0.25rem;
+                }
+
+                .card-actions,
+                .d-grid {
+                    padding-top: 0.35rem;
+                    margin-top: auto;
+                }
+            }
+        }
+    }
 }
 
 /*======================================
@@ -204,9 +339,10 @@ html {
 ======================================*/
 
 @include respond-down(sm) {
-html {
+    html {
         font-size: 13px; // 1rem = 13px
     }
+
     .navbar-actions {
         .btn-membership {
             padding: 0.4rem 0.6rem;
@@ -219,8 +355,8 @@ html {
         }
     }
 
-    .card{
-        img{
+    .card {
+        img {
             height: 400px !important;
         }
     }
@@ -258,7 +394,23 @@ html {
     }
 
     .gallery-lightbox-figure {
-        width: min(30rem, 60vw);
-        height: min(30rem, 30vh);
+        width: min(30rem, 92vw);
+        height: min(30rem, 70vh);
+    }
+
+    .about-history .bg img {
+        height: 12rem;
+    }
+
+    .news-slider .news-slide-content h3 {
+        font-size: 1rem;
+    }
+
+    .news-details .image-gallery_slider-main {
+        height: 12rem;
+    }
+
+    .news-details .image-gallery_slider-thumb {
+        flex: 0 0 calc((100% - 0.75rem) / 2); // 2 thumbs visible
     }
 }

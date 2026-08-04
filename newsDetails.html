@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Details</title>
+    <script src="js/lang-boot.js"></script>
+
+    <link rel="stylesheet" href="css/slick-theme.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+
+    <link rel="stylesheet" href="fonts/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link id="mainStylesheet" rel="stylesheet" href="css/styleAR.css">
+    <script>
+        if (window.__hawarLang === "en") {
+            document.getElementById("mainStylesheet").href = "css/styleEN.css";
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="width-container">
+
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/Images/logo.svg" alt="Hawar Club" class="logo">
+                    <span class="brand-text">
+                        <span class="brand-name">HAWAR</span>
+                        <span class="brand-sub" data-i18n="brandSub">نادي الحوار للألعاب الرياضية</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html" data-i18n="home">الرئيسية</a>
+                        </li>
+                        <li class="nav-item has-dropdown">
+                            <a class="nav-link" href="#" data-i18n="about">عن النادي</a>
+                            <ul class="nav-dropdown">
+                                <li>
+                                    <a href="aboutPresident.html" data-i18n="presidents">رؤساء النادي</a>
+                                </li>
+                                <li>
+                                    <a href="aboutHistory.html" data-i18n="history">تاريخ النادي</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="newsList.html" data-i18n="news">الأخبار</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">تواصل معنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">كن عضواً</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="navbar-actions">
+
+                    <button type="button" class="icon-btn" aria-label="بحث">
+                        <i class="bi bi-search"></i>
+                    </button>
+
+                    <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
+                        <i class="bi bi-moon" id="themeIcon"></i>
+                    </button>
+
+                    <div class="language d-flex align-items-center" role="button" tabindex="0" aria-label="اللغة">
+                        <i class="bi bi-chevron-down"></i>
+                        <span>AR</span>
+                        <i class="bi bi-globe"></i>
+                    </div>
+
+                    <a href="#" class="btn-membership" data-i18n="renew">تجديد العضوية</a>
+
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ===== News Details ===== -->
+    <section class="News-list news-details hawar-body pb-5">
+        <div class="width-container">
+            <!-- BreadCrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="#">الأخبار</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">لوريم ايبسوم</li>
+                </ol>
+            </nav>
+
+            <h1 class="page-title">لوريم ايبسوم</h1>
+        </div>
+
+        <div class="width-container">
+            <div class="news-details_info my-3">
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="news-details_image">
+                            <img class="w-100 rounded-3 object-fit-cover object-position-top"
+                                src="images/about/about president/firstPresident.png" alt="news-details Image">
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 mb-3 mb-md-0">
+                        <h2 class="news-details_name">لوريم إيبسوم</h2>
+                        <span class="news-details_date">25 يونيو 2026 | رياضة </span>
+                        <div class="news-details-scroll mt-md-3">
+                            <div class="news-details-content">
+                                <div class="my-2">
+                                    <p class="news-details_bio">
+                                        لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس
+                                        المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار
+                                        للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف
+                                        بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف.
+                                        خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي
+                                        في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار
+                                        رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة
+                                        أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus
+                                        PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
+                                        هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص. بينما تعمل جميع مولّدات نصوص لوريم إيبسوم على الإنترنت على إعادة تكرار مقاطع من نص لوريم إيبسوم نفسه عدة مرات بما تتطلبه الحاجة، يقوم مولّدنا هذا باستخدام كلمات من قاموس يحوي على أكثر من 200 كلمة لا تينية، مضاف إليها مجموعة من الجمل النموذجية، لتكوين نص لوريم إيبسوم ذو شكل منطقي قريب إلى النص الحقيقي. وبالتالي يكون النص الناتح خالي من التكرار، أو أي كلمات أو عبارات غير لائقة أو ما شابه. وهذا ما يجعله أول مولّد نص لوريم إيبسوم حقيقي على الإنترنت. هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
+
+                                    </p>
+                                    <p class="news-details_bio">
+                                        هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها
+                                        بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن
+                                        تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات
+                                        محرجة أو غير لائقة مخبأة في هذا النص. بينما تعمل جميع مولّدات نصوص لوريم إيبسوم
+                                        على الإنترنت على إعادة تكرار مقاطع من نص لوريم إيبسوم نفسه عدة مرات بما تتطلبه
+                                        الحاجة، يقوم مولّدنا هذا باستخدام كلمات من قاموس يحوي على أكثر من 200 كلمة لا
+                                        تينية، مضاف إليها مجموعة من الجمل النموذجية، لتكوين نص لوريم إيبسوم ذو شكل منطقي
+                                        قريب إلى النص الحقيقي. وبالتالي يكون النص الناتح خالي من التكرار، أو أي كلمات أو
+                                        عبارات غير لائقة أو ما شابه. وهذا ما يجعله أول مولّد نص لوريم إيبسوم حقيقي على
+                                        الإنترنت. هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
+                                        القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي
+                                        يقرأها.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="news-details-scrollbar" aria-hidden="true">
+                                <div class="news-details-scrollbar-thumb"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="width-container my-5">
+            <h3 class="h4 mb-3" data-i18n="photoGallery">معرض الصور</h3>
+            <div class="image-gallery_slider" data-image-gallery-slider>
+
+                <div class="image-gallery_slider-stage">
+                    <img class="image-gallery_slider-main"
+                        src="images/news/newsDetails/mainImage.jpg"
+                        alt="معرض الصور">
+                </div>
+
+                <div class="image-gallery_slider-nav">
+                    <button type="button" class="image-gallery_slider-arrow image-gallery_slider-arrow-prev"
+                        aria-label="السابق">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+
+                    <div class="image-gallery_slider-viewport">
+                        <div class="image-gallery_slider-track">
+                            <button type="button" class="image-gallery_slider-thumb is-active"
+                                data-src="images/news/newsDetails/mainImage.jpg" aria-label="صورة 1">
+                                <img src="images/news/newsDetails/mainImage.jpg" alt="">
+                            </button>
+                            <button type="button" class="image-gallery_slider-thumb"
+                                data-src="images/news/newsDetails/image1.jpg" aria-label="صورة 2">
+                                <img src="images/news/newsDetails/image1.jpg" alt="">
+                            </button>
+                            <button type="button" class="image-gallery_slider-thumb"
+                                data-src="images/news/newsDetails/image2.jpg" aria-label="صورة 3">
+                                <img src="images/news/newsDetails/image2.jpg" alt="">
+                            </button>
+                            <button type="button" class="image-gallery_slider-thumb"
+                                data-src="images/news/newsDetails/image3.jpg" aria-label="صورة 4">
+                                <img src="images/news/newsDetails/image3.jpg" alt="">
+                            </button>
+                            <button type="button" class="image-gallery_slider-thumb"
+                                data-src="images/news/newsDetails/image4.jpg" aria-label="صورة 5">
+                                <img src="images/news/newsDetails/image4.jpg" alt="">
+                            </button>
+                            <button type="button" class="image-gallery_slider-thumb"
+                                data-src="images/news/newsDetails/image5.jpg" aria-label="صورة 6">
+                                <img src="images/news/newsDetails/image5.jpg" alt="">
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="button" class="image-gallery_slider-arrow image-gallery_slider-arrow-next"
+                        aria-label="التالي">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="width-container mb-5">
+            <div class="news-cardsList">
+
+                <h3 class="mb-3 h4">مواضيع ذات صلة </h3>
+                <div class="row g-2 g-md-3 g-lg-4">
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card p-2">
+                            <img src="images/news/new1.jpg"
+                                class="card-img-top object-fit-cover object-position-top rounded-3" alt="News Image">
+                            <div class="card-body px-0">
+                                <button type="button" class="btn btn-highlight mb-2 rounded-pill">رياضه</button>
+                                <h5 class="card-title">لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس
+                                    المحتوى)</h5>
+                                <p class="card-date" data-date="2025-04-09">09 ابريل 2025</p>
+                                <p class="card-text">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر
+                                    عجموعة ص. </p>
+                                <div class="card-actions d-grid gap-2 d-flex justify-content-end">
+                                    <a href="#" class="btn btn-orange text-decoration-underline">اقرأ المزيد</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card p-2">
+                            <img src="images/news/new1.jpg"
+                                class="card-img-top object-fit-cover object-position-top rounded-3" alt="News Image">
+                            <div class="card-body px-0">
+                                <button type="button" class="btn btn-highlight mb-2 rounded-pill">رياضه</button>
+                                <h5 class="card-title">لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس
+                                    المحتوى)</h5>
+                                <p class="card-date" data-date="2025-04-09">09 ابريل 2025</p>
+                                <p class="card-text">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر
+                                    عندما
+                                    قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص. </p>
+                                <div class="card-actions d-grid gap-2 d-flex justify-content-end">
+                                    <a href="#" class="btn btn-orange text-decoration-underline">اقرأ المزيد</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card p-2">
+                            <img src="images/news/new1.jpg"
+                                class="card-img-top object-fit-cover object-position-top rounded-3" alt="News Image">
+                            <div class="card-body px-0">
+                                <button type="button" class="btn btn-highlight mb-2 rounded-pill">رياضه</button>
+                                <h5 class="card-title">لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس
+                                    المحتوى)</h5>
+                                <p class="card-date" data-date="2025-04-09">09 ابريل 2025</p>
+                                <p class="card-text">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر
+                                    عندما
+                                    قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص. </p>
+                                <div class="card-actions d-grid gap-2 d-flex justify-content-end">
+                                    <a href="#" class="btn btn-orange text-decoration-underline">اقرأ المزيد</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+
+        <div class="width-container">
+
+            <!-- Logo sits on the divider line -->
+            <div class="footer-logo-wrap">
+                <img src="images/logo.png" alt="Hawar Club" class="footer-logo">
+            </div>
+
+            <div class="footer-row">
+
+                <p class="copyright" data-i18n="copyright">
+                    جميع الحقوق محفوظة - نادي حوار الرياضي 2024 ©
+                </p>
+
+                <p class="footer-title" data-i18n="footerTitle">نادي الحوار للألعاب الرياضية</p>
+
+                <div class="footer-social">
+                    <span class="social-label" data-i18n="follow">تابعنا</span>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/slick.min.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

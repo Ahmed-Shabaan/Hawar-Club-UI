@@ -12,7 +12,7 @@
 /*==============================================================================
     Placeholders
 ==============================================================================*/
-.gallery-lightbox-prev,
+.news-details .image-gallery_slider-arrow, .gallery-lightbox-prev,
 .gallery-lightbox-next, .gallery-lightbox-close, .image-gallery-arrow, .footer-social a, .icon-btn {
   display: flex;
   flex-direction: row;
@@ -21,7 +21,7 @@
 }
 
 /*==============================================================================
-    Theme — Light is default
+    Theme â€” Light is default
 ==============================================================================*/
 :root {
   --primary: rgb(218, 137, 0);
@@ -124,7 +124,63 @@ body {
 }
 
 .object-fit-cover {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.object-position-top {
+  -o-object-position: top;
+     object-position: top;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+.pagination .page-item {
+  margin: 0;
+}
+.pagination .page-item:not(:first-child) .page-link {
+  margin-inline-start: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.pagination .page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  color: rgb(51, 51, 51);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 13px;
+}
+.pagination .page-link:hover, .pagination .page-link:focus {
+  color: rgb(255, 255, 255);
+  background-color: var(--primary);
+  border-color: var(--border);
+}
+.pagination .page-link:disabled, .pagination .page-link.disabled {
+  color: rgb(124, 124, 124);
+  pointer-events: none;
+}
+.pagination .page-link i {
+  color: var(--text-color);
+}
+.pagination .page-item.active .page-link {
+  z-index: 3;
+  color: white !important;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 main {
@@ -160,12 +216,12 @@ button {
   width: 100%;
   max-width: 1440px;
   margin-inline: auto;
-  padding-inline: 24px;
+  padding-inline: 2rem;
   position: relative;
 }
 
 /*==============================================================================
-    Layout Partials — Navbar & Footer only
+    Layout Partials â€” Navbar & Footer only
 ==============================================================================*/
 /*==============================================================================
     Layout / Navbar
@@ -388,7 +444,9 @@ button {
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   transition: all 0.3s ease;
 }
 .language i {
@@ -608,7 +666,8 @@ button {
   display: block;
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 16px;
   border: 0;
   box-shadow: 0 0 0 1px rgb(218, 137, 0);
@@ -738,8 +797,10 @@ button {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   border-radius: 10px;
 }
 
@@ -759,7 +820,8 @@ button {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    column-gap: 0.75rem;
+    -moz-column-gap: 0.75rem;
+         column-gap: 0.75rem;
     row-gap: 0.75rem;
   }
   .navbar-brand {
@@ -818,6 +880,7 @@ button {
     position: static;
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
     transform: none;
     box-shadow: none;
     border: 0;
@@ -825,6 +888,10 @@ button {
     margin-bottom: 0.5rem;
     background: transparent;
     min-width: 0;
+    transition: none;
+  }
+  .navbar-nav .nav-item.has-dropdown > .nav-dropdown::before {
+    display: none;
   }
   .navbar-nav .nav-item.has-dropdown > .nav-dropdown a {
     padding: 0.65rem 0.85rem;
@@ -862,6 +929,20 @@ button {
   .image-gallery-item {
     flex: 0 0 calc((100% - 2rem) / 3);
   }
+  .about-history .bg img {
+    height: 22rem;
+  }
+  .news-slider .news-slide-content h3 {
+    font-size: 1.2rem;
+  }
+}
+/*======================================
+    Tablets & up (>= 768px)
+======================================*/
+@media (min-width: 768px) {
+  .news-slider .news-slide-media {
+    margin-bottom: 0;
+  }
 }
 /*======================================
     Tablets & phones (< 768px)
@@ -870,26 +951,51 @@ button {
   html {
     font-size: 14px;
   }
-  .about-president {
+  .about-president,
+  .news-details {
     padding-block: 1.5rem 2rem;
   }
-  .about-president .president-image img {
+  .about-president .president-image img,
+  .about-president .news-details_image img,
+  .news-details .president-image img,
+  .news-details .news-details_image img {
     height: auto;
     max-height: none;
   }
-  .about-president .president-scroll {
+  .about-president .president-scroll,
+  .about-president .news-details-scroll,
+  .news-details .president-scroll,
+  .news-details .news-details-scroll {
     max-height: none !important;
-    height: auto;
+    height: auto !important;
     overflow: visible;
   }
-  .about-president .president-details {
+  .about-president .president-details,
+  .about-president .news-details-content,
+  .news-details .president-details,
+  .news-details .news-details-content {
     max-height: none !important;
     height: auto;
     overflow: visible !important;
     padding-inline-end: 0;
   }
-  .about-president .president-scrollbar {
+  .about-president .president-scrollbar,
+  .about-president .news-details-scrollbar,
+  .news-details .president-scrollbar,
+  .news-details .news-details-scrollbar {
     display: none !important;
+  }
+  .about-president .image-gallery_slider,
+  .news-details .image-gallery_slider {
+    padding: 1rem;
+  }
+  .about-president .image-gallery_slider-main,
+  .news-details .image-gallery_slider-main {
+    height: 16rem;
+  }
+  .about-president .image-gallery_slider-thumb,
+  .news-details .image-gallery_slider-thumb {
+    flex: 0 0 calc((100% - 1.5rem) / 3);
   }
   .page-title {
     font-size: 1.5rem;
@@ -900,6 +1006,69 @@ button {
   .image-gallery-arrow {
     width: 36px;
     height: 36px;
+  }
+  .gallery-lightbox-figure {
+    width: min(30rem, 90vw);
+    height: min(30rem, 65vh);
+  }
+  .about-history .bg img {
+    height: 16rem;
+  }
+  .news-slider .news-slide-content h3 {
+    font-size: 1.1rem;
+  }
+  .news-slider .news-slide-content p {
+    font-size: 0.9rem;
+  }
+  .news-slider .news-slide-content .btn-orange {
+    margin-top: 1rem;
+  }
+  .news-slider .slide-img {
+    aspect-ratio: 16/10;
+  }
+  .News-list .select-activaties {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .News-list .news-cardsList .row {
+    --bs-gutter-x: 0.5rem;
+    --bs-gutter-y: 1.5rem !important;
+  }
+  .News-list .news-cardsList .card {
+    padding: 0.4rem !important;
+  }
+  .News-list .news-cardsList .card img {
+    height: 10rem;
+  }
+  .News-list .news-cardsList .card .card-body {
+    padding: 0.4rem 0 0 !important;
+  }
+  .News-list .news-cardsList .card .card-body .btn-highlight {
+    margin-bottom: 0.25rem !important;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  .News-list .news-cardsList .card .card-body h5 {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    min-height: 0;
+  }
+  .News-list .news-cardsList .card .card-body p {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+  }
+  .News-list .news-cardsList .card .card-body .card-text {
+    min-height: 0;
+    -webkit-line-clamp: 2;
+  }
+  .News-list .news-cardsList .card .card-body .card-date {
+    margin-bottom: 0.25rem;
+  }
+  .News-list .news-cardsList .card .card-body .card-actions,
+  .News-list .news-cardsList .card .card-body .d-grid {
+    padding-top: 0.35rem;
+    margin-top: auto;
   }
 }
 /*======================================
@@ -946,8 +1115,20 @@ button {
     font-size: 1.75rem;
   }
   .gallery-lightbox-figure {
-    width: min(30rem, 60vw);
-    height: min(30rem, 30vh);
+    width: min(30rem, 92vw);
+    height: min(30rem, 70vh);
+  }
+  .about-history .bg img {
+    height: 12rem;
+  }
+  .news-slider .news-slide-content h3 {
+    font-size: 1rem;
+  }
+  .news-details .image-gallery_slider-main {
+    height: 12rem;
+  }
+  .news-details .image-gallery_slider-thumb {
+    flex: 0 0 calc((100% - 0.75rem) / 2);
   }
 }
 /*==============================================================================
@@ -1048,18 +1229,32 @@ button {
   color: var(--heading);
 }
 
-.about-president {
+.about-president,
+.news-details {
   flex: 1 0 auto;
-  padding-block: 2rem 3rem;
+  padding-top: 2rem;
 }
-.about-president .president-info .president-image img {
+.about-president .president-image img,
+.about-president .news-details_image img,
+.news-details .president-image img,
+.news-details .news-details_image img {
   height: 37rem;
 }
-.about-president .president-info .president-scroll {
+.about-president .president-title,
+.news-details .president-title {
+  color: rgb(218, 137, 0);
+}
+.about-president .president-scroll,
+.about-president .news-details-scroll,
+.news-details .president-scroll,
+.news-details .news-details-scroll {
   position: relative;
   max-height: none;
 }
-.about-president .president-info .president-details {
+.about-president .president-details,
+.about-president .news-details-content,
+.news-details .president-details,
+.news-details .news-details-content {
   color: var(--text-color);
   font-size: 0.9rem;
   max-height: 34rem;
@@ -1068,12 +1263,18 @@ button {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-.about-president .president-info .president-details::-webkit-scrollbar {
+.about-president .president-details::-webkit-scrollbar,
+.about-president .news-details-content::-webkit-scrollbar,
+.news-details .president-details::-webkit-scrollbar,
+.news-details .news-details-content::-webkit-scrollbar {
   display: none;
   width: 0;
   height: 0;
 }
-.about-president .president-info .president-scrollbar {
+.about-president .president-scrollbar,
+.about-president .news-details-scrollbar,
+.news-details .president-scrollbar,
+.news-details .news-details-scrollbar {
   position: absolute;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1084,10 +1285,19 @@ button {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-.about-president .president-info .president-scrollbar.is-visible, .about-president .president-info .president-scrollbar.is-dragging {
+.about-president .president-scrollbar.is-visible, .about-president .president-scrollbar.is-dragging,
+.about-president .news-details-scrollbar.is-visible,
+.about-president .news-details-scrollbar.is-dragging,
+.news-details .president-scrollbar.is-visible,
+.news-details .president-scrollbar.is-dragging,
+.news-details .news-details-scrollbar.is-visible,
+.news-details .news-details-scrollbar.is-dragging {
   opacity: 1;
 }
-.about-president .president-info .president-scrollbar::before {
+.about-president .president-scrollbar::before,
+.about-president .news-details-scrollbar::before,
+.news-details .president-scrollbar::before,
+.news-details .news-details-scrollbar::before {
   content: "";
   position: absolute;
   inset-block: 0;
@@ -1096,7 +1306,10 @@ button {
   border-radius: 50px;
   pointer-events: none;
 }
-.about-president .president-info .president-scrollbar-thumb {
+.about-president .president-scrollbar-thumb,
+.about-president .news-details-scrollbar-thumb,
+.news-details .president-scrollbar-thumb,
+.news-details .news-details-scrollbar-thumb {
   position: absolute;
   top: 0;
   z-index: 1;
@@ -1107,21 +1320,28 @@ button {
   border-radius: 50px;
   pointer-events: auto;
 }
-.about-president .president-info .president-scrollbar-thumb:active {
+.about-president .president-scrollbar-thumb:active,
+.about-president .news-details-scrollbar-thumb:active,
+.news-details .president-scrollbar-thumb:active,
+.news-details .news-details-scrollbar-thumb:active {
   cursor: grabbing;
 }
-.about-president .president-slider .slider .slick-list {
+.about-president .president-slider .slider .slick-list,
+.news-details .president-slider .slider .slick-list {
   padding: 4px 0 8px;
   margin: 0 -12px;
 }
-.about-president .president-slider .slider .slick-slide {
+.about-president .president-slider .slider .slick-slide,
+.news-details .president-slider .slider .slick-slide {
   padding: 0 1.5rem;
   margin: 0 !important;
 }
-.about-president .president-slider .slider .slick-slide > div {
+.about-president .president-slider .slider .slick-slide > div,
+.news-details .president-slider .slider .slick-slide > div {
   height: 100%;
 }
-.about-president .president-slider .slider .card {
+.about-president .president-slider .slider .card,
+.news-details .president-slider .slider .card {
   background: var(--card-bg);
   color: var(--text-color);
   border: 1px solid var(--primary);
@@ -1131,14 +1351,20 @@ button {
   transition: border-color 0.25s ease;
   font-size: 1.4rem;
 }
-.about-president .president-slider .slider .card img {
+.about-president .president-slider .slider .card img,
+.news-details .president-slider .slider .card img {
   height: 500px;
   display: block;
+}
+.about-president .second-President,
+.news-details .second-President {
+  background-color: var(--card-bg);
 }
 
 .about-history {
   background-image: url("../images/about/about history/HistoryBg.png");
   background-size: cover;
+  background-position: right;
 }
 .about-history .overlay {
   z-index: 0;
@@ -1152,6 +1378,419 @@ button {
 .about-history .bg img {
   height: 32rem;
   border: 1px solid var(--primary);
+}
+
+/*==============================================================================
+    News List Slider
+==============================================================================*/
+.btn-highlight {
+  flex-shrink: 0;
+}
+
+.btn-highlight {
+  background: rgb(173, 199, 255);
+  color: rgb(24, 22, 22);
+  font-weight: 500;
+  padding: 0.3rem 1rem;
+  pointer-events: none;
+}
+
+.news-slider {
+  margin-top: 1rem;
+  overflow: hidden;
+}
+.news-slider .slick-list {
+  overflow: hidden;
+}
+.news-slider .slick-slide {
+  overflow: hidden;
+}
+.news-slider .news-slide {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  direction: rtl;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.news-slider .news-slide-media {
+  margin-bottom: 1rem;
+  display: flex;
+}
+.news-slider .slide-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/2;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+  border-radius: 10px;
+}
+.news-slider .news-slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  min-width: 0;
+  max-width: 100%;
+}
+.news-slider .news-slide-content .news-slide-body {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  padding-block: 0.75rem;
+}
+.news-slider .news-slide-content h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.news-slider .news-slide-content span {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+.news-slider .news-slide-content p {
+  line-height: 1.7;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.news-slider .news-slide-content .btn-orange {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+.news-slider .btn-orange {
+  color: rgb(218, 137, 0);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  padding-bottom: 0.6rem;
+}
+.news-slider .btn-orange:hover, .news-slider .btn-orange:focus, .news-slider .btn-orange:active {
+  color: #C97400;
+  background: transparent;
+  box-shadow: none;
+}
+
+.News-list .card-date {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: right;
+}
+.News-list .select-activaties {
+  position: relative;
+  display: inline-block;
+  min-width: 12rem;
+  max-width: 100%;
+  z-index: 5;
+}
+.News-list .select-activaties .activity-select-trigger {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: 0.65rem 1rem;
+  padding-inline-end: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: start;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.News-list .select-activaties .activity-select-trigger:hover, .News-list .select-activaties .activity-select-trigger:focus {
+  border-color: rgb(218, 137, 0);
+  outline: none;
+}
+.News-list .select-activaties .activity-select-trigger[aria-expanded=true] {
+  border-color: rgb(218, 137, 0);
+}
+.News-list .select-activaties::after {
+  content: "\f56b";
+  font-family: "bootstrap-icons";
+  font-size: 1.1rem;
+  line-height: 1;
+  position: absolute;
+  inset-inline-end: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color);
+  pointer-events: none;
+  z-index: 1;
+}
+.News-list .select-activaties .activity-select-menu {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  overflow: hidden;
+}
+.News-list .select-activaties .activity-select-menu[hidden] {
+  display: none;
+}
+.News-list .select-activaties .activity-select-menu li {
+  border-bottom: 1px solid var(--dropdown-border);
+  padding: 0.85rem 1.15rem;
+  color: var(--dropdown-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+.News-list .select-activaties .activity-select-menu li:last-child {
+  border-bottom: 0;
+}
+.News-list .select-activaties .activity-select-menu li:hover, .News-list .select-activaties .activity-select-menu li.is-selected {
+  background: rgb(218, 137, 0);
+  color: #ffffff;
+}
+.News-list .select-activaties > select.activity-select:not(.visually-hidden) {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: 0.65rem 1rem;
+  padding-inline-end: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.News-list .news-cardsList .row {
+  align-items: stretch;
+}
+.News-list .news-cardsList [class*=col-] {
+  display: flex;
+}
+.News-list .news-cardsList .card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+.News-list .news-cardsList .card img {
+  height: 20rem;
+  width: 100%;
+  flex-shrink: 0;
+}
+.News-list .news-cardsList .card .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.News-list .news-cardsList .card .card-body h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  min-height: 2.8em;
+}
+.News-list .news-cardsList .card .card-body p {
+  font-size: 0.9rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.News-list .news-cardsList .card .card-body .card-text {
+  min-height: 4.32rem;
+}
+.News-list .news-cardsList .card .card-body .card-date {
+  -webkit-line-clamp: 1;
+  direction: rtl;
+  flex-shrink: 0;
+}
+.News-list .news-cardsList .card .card-body .btn-highlight {
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+.News-list .news-cardsList .card .card-body .d-grid,
+.News-list .news-cardsList .card .card-body .card-actions {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+.News-list .news-cardsList .card .card-body .btn-orange {
+  color: rgb(218, 137, 0);
+}
+
+.news-details .news-details_image img {
+  height: 25rem;
+}
+.news-details .news-details-content {
+  max-height: 22rem;
+}
+.news-details .news-details-scroll {
+  height: 22rem;
+}
+.news-details .news-details-scrollbar {
+  opacity: 0;
+}
+.news-details .news-details-scrollbar.is-visible {
+  opacity: 1;
+}
+.news-details .news-details_name {
+  margin-bottom: 0.35rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.news-details .news-details_date {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.news-details .news-details_bio {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+.news-details .image-gallery_slider {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.35rem 1.35rem;
+}
+.news-details .image-gallery_slider-title {
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--heading, var(--text-color));
+  text-align: start;
+}
+.news-details .image-gallery_slider-stage {
+  margin-bottom: 1rem;
+  border: 1px solid rgb(218, 137, 0);
+  border-radius: 14px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+.news-details .image-gallery_slider-main {
+  display: block;
+  width: 100%;
+  height: 28rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 12px;
+  border: 1px solid rgb(218, 137, 0);
+  background-color: var(--surface);
+}
+.news-details .image-gallery_slider-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.news-details .image-gallery_slider-viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 2px;
+  margin: -2px;
+}
+.news-details .image-gallery_slider-track {
+  display: flex;
+  gap: 0.75rem;
+  transition: transform 0.35s ease;
+}
+.news-details .image-gallery_slider-track.is-centered {
+  justify-content: center;
+  transform: none !important;
+}
+.news-details .image-gallery_slider-thumb {
+  flex: 0 0 calc((100% - 3rem) / 5);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+}
+.news-details .image-gallery_slider-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 1px transparent;
+  transition: all 0.3s ease;
+}
+.news-details .image-gallery_slider-thumb:hover img {
+  opacity: 0.92;
+}
+.news-details .image-gallery_slider-thumb.is-active img {
+  border-color: rgb(218, 137, 0);
+  box-shadow: 0 0 0 1px rgb(218, 137, 0);
+}
+.news-details .image-gallery_slider-thumb:focus-visible img {
+  box-shadow: 0 0 0 2px rgba(218, 137, 0, 0.55);
+}
+.news-details .image-gallery_slider-arrow {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-color);
+  opacity: 0.65;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.news-details .image-gallery_slider-arrow i {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.news-details .image-gallery_slider-arrow:hover:not(:disabled):not(.is-muted) {
+  opacity: 1;
+  color: rgb(218, 137, 0);
+}
+.news-details .image-gallery_slider-arrow:disabled, .news-details .image-gallery_slider-arrow.is-muted {
+  opacity: 0.28;
+  cursor: default;
+  pointer-events: none;
+}
+.news-details .image-gallery_slider-arrow[hidden] {
+  display: none !important;
 }
 
 html[lang=en],
@@ -1208,36 +1847,44 @@ html[lang=en] body,
   transform: translate(-50%, -50%);
 }
 
-@media (max-width: 992px) {
-  [dir=ltr] .footer-row {
-    flex-direction: column;
-  }
-  [dir=ltr] .copyright,
-  [dir=ltr] .footer-social,
-  [dir=ltr] .footer-title {
-    text-align: center;
-    justify-content: center;
-  }
-}
 /*==============================================================================
     About President
 ==============================================================================*/
-[dir=ltr] .about-president .president-details {
+[dir=ltr] .about-president .president-details,
+[dir=ltr] .about-president .news-details-content,
+[dir=ltr] .news-details .president-details,
+[dir=ltr] .news-details .news-details-content {
   padding-inline-end: 1rem;
   padding-inline-start: 0;
 }
-[dir=ltr] .about-president .president-details ul {
+[dir=ltr] .about-president .president-details ul,
+[dir=ltr] .about-president .news-details-content ul,
+[dir=ltr] .news-details .president-details ul,
+[dir=ltr] .news-details .news-details-content ul {
   padding-left: 1.25rem;
   padding-right: 0;
 }
-[dir=ltr] .about-president .president-scrollbar {
+[dir=ltr] .about-president .president-scrollbar,
+[dir=ltr] .about-president .news-details-scrollbar,
+[dir=ltr] .news-details .president-scrollbar,
+[dir=ltr] .news-details .news-details-scrollbar {
   inset-inline-end: 0;
   inset-inline-start: auto;
 }
 
 /*==============================================================================
-    Image Gallery / shared LTR tweaks
+    Image Gallery / News / shared LTR tweaks
 ==============================================================================*/
 [dir=ltr] .page-title {
   text-align: left;
 }
+[dir=ltr] .news-slider .news-slide {
+  direction: ltr;
+}
+[dir=ltr] .News-list .card-date {
+  text-align: left !important;
+  direction: ltr !important;
+}
+[dir=ltr] .pagination .page-link i {
+  transform: none;
+}/*# sourceMappingURL=styleEN.css.map */

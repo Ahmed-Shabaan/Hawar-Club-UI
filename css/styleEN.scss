@@ -76,28 +76,15 @@ html[lang="en"] body,
     }
 }
 
-@media (max-width: 992px) {
-    [dir="ltr"] {
-        .footer-row {
-            flex-direction: column;
-        }
-
-        .copyright,
-        .footer-social,
-        .footer-title {
-            text-align: center;
-            justify-content: center;
-        }
-    }
-}
-
 /*==============================================================================
     About President
 ==============================================================================*/
 
 [dir="ltr"] {
-    .about-president {
-        .president-details {
+    .about-president,
+    .news-details {
+        .president-details,
+        .news-details-content {
             padding-inline-end: 1rem;
             padding-inline-start: 0;
 
@@ -107,7 +94,8 @@ html[lang="en"] body,
             }
         }
 
-        .president-scrollbar {
+        .president-scrollbar,
+        .news-details-scrollbar {
             inset-inline-end: 0;
             inset-inline-start: auto;
         }
@@ -115,11 +103,26 @@ html[lang="en"] body,
 }
 
 /*==============================================================================
-    Image Gallery / shared LTR tweaks
+    Image Gallery / News / shared LTR tweaks
 ==============================================================================*/
 
 [dir="ltr"] {
     .page-title {
         text-align: left;
     }
+
+    .news-slider .news-slide {
+        direction: ltr;
+    }
+    
+    .News-list .card-date {
+        text-align: left !important;
+        direction: ltr !important;
+    }
+
+    // EN pagination: arrows already swapped in JS — don't mirror again
+    .pagination .page-link i {
+        transform: none;
+    }
+
 }

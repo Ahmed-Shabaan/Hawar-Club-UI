@@ -1,117 +1,138 @@
 (function () {
-    function initPresidentScroll() {
-        var wraps = document.querySelectorAll(".president-scroll");
+    var SCROLL_CONFIGS = [
+        {
+            wrap: ".president-scroll",
+            content: ".president-details",
+            track: ".president-scrollbar",
+            thumb: ".president-scrollbar-thumb"
+        },
+        {
+            wrap: ".news-details-scroll",
+            content: ".news-details-content",
+            track: ".news-details-scrollbar",
+            thumb: ".news-details-scrollbar-thumb"
+        }
+    ];
 
-        wraps.forEach(function (wrap) {
-            var content = wrap.querySelector(".president-details");
-            var track = wrap.querySelector(".president-scrollbar");
-            var thumb = wrap.querySelector(".president-scrollbar-thumb");
+    function setupCustomScroll(wrap, contentSel, trackSel, thumbSel) {
+        var content = wrap.querySelector(contentSel);
+        var track = wrap.querySelector(trackSel);
+        var thumb = wrap.querySelector(thumbSel);
 
-            if (!content || !track || !thumb) return;
+        if (!content || !track || !thumb) return;
 
-            var dragging = false;
-            var startY = 0;
-            var startScrollTop = 0;
+        var dragging = false;
+        var startY = 0;
+        var startScrollTop = 0;
 
-            function updateThumb() {
-                // Mobile: no custom scrollbar — full content visible
-                if (window.matchMedia("(max-width: 768px)").matches) {
-                    track.classList.remove("is-visible");
-                    content.style.maxHeight = "";
-                    content.scrollTop = 0;
-                    return;
-                }
-
-                var scrollHeight = content.scrollHeight;
-                var clientHeight = content.clientHeight;
-
-                if (scrollHeight <= clientHeight + 1) {
-                    track.classList.remove("is-visible");
-                    return;
-                }
-
-                track.classList.add("is-visible");
-
-                var ratio = clientHeight / scrollHeight;
-                var thumbHeight = Math.max(ratio * clientHeight, 32);
-                var maxTop = clientHeight - thumbHeight;
-                var top =
-                    maxTop <= 0
-                        ? 0
-                        : (content.scrollTop / (scrollHeight - clientHeight)) * maxTop;
-
-                thumb.style.height = thumbHeight + "px";
-                thumb.style.top = top + "px";
-                thumb.style.transform = "";
+        function updateThumb() {
+            // Mobile: no custom scrollbar — full content visible
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                track.classList.remove("is-visible");
+                wrap.style.height = "";
+                content.style.maxHeight = "";
+                content.scrollTop = 0;
+                return;
             }
 
-            function getScrollMetrics() {
-                var scrollHeight = content.scrollHeight;
-                var clientHeight = content.clientHeight;
-                var thumbHeight = Math.max(
-                    (clientHeight / scrollHeight) * clientHeight,
-                    32
-                );
-                var maxTop = clientHeight - thumbHeight;
-                var maxScroll = scrollHeight - clientHeight;
+            var scrollHeight = content.scrollHeight;
+            var clientHeight = content.clientHeight;
 
-                return { thumbHeight: thumbHeight, maxTop: maxTop, maxScroll: maxScroll };
+            if (scrollHeight <= clientHeight + 1) {
+                track.classList.remove("is-visible");
+                return;
             }
 
-            // Drag thumb with mouse
-            thumb.addEventListener("mousedown", function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                dragging = true;
-                startY = e.clientY;
-                startScrollTop = content.scrollTop;
-                document.body.style.userSelect = "none";
-                track.classList.add("is-dragging");
+            track.classList.add("is-visible");
+
+            // Keep track aligned to the visible content box
+            wrap.style.height = clientHeight + "px";
+
+            var ratio = clientHeight / scrollHeight;
+            var thumbHeight = Math.max(ratio * clientHeight, 32);
+            var maxTop = clientHeight - thumbHeight;
+            var top =
+                maxTop <= 0
+                    ? 0
+                    : (content.scrollTop / (scrollHeight - clientHeight)) * maxTop;
+
+            thumb.style.height = thumbHeight + "px";
+            thumb.style.top = top + "px";
+            thumb.style.transform = "";
+        }
+
+        function getScrollMetrics() {
+            var scrollHeight = content.scrollHeight;
+            var clientHeight = content.clientHeight;
+            var thumbHeight = Math.max(
+                (clientHeight / scrollHeight) * clientHeight,
+                32
+            );
+            var maxTop = clientHeight - thumbHeight;
+            var maxScroll = scrollHeight - clientHeight;
+
+            return { thumbHeight: thumbHeight, maxTop: maxTop, maxScroll: maxScroll };
+        }
+
+        thumb.addEventListener("mousedown", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dragging = true;
+            startY = e.clientY;
+            startScrollTop = content.scrollTop;
+            document.body.style.userSelect = "none";
+            track.classList.add("is-dragging");
+        });
+
+        document.addEventListener("mousemove", function (e) {
+            if (!dragging) return;
+
+            var metrics = getScrollMetrics();
+            if (metrics.maxTop <= 0) return;
+
+            var deltaY = e.clientY - startY;
+            var scrollDelta = (deltaY / metrics.maxTop) * metrics.maxScroll;
+            content.scrollTop = startScrollTop + scrollDelta;
+        });
+
+        document.addEventListener("mouseup", function () {
+            if (!dragging) return;
+            dragging = false;
+            document.body.style.userSelect = "";
+            track.classList.remove("is-dragging");
+        });
+
+        track.addEventListener("mousedown", function (e) {
+            if (e.target === thumb) return;
+
+            var rect = track.getBoundingClientRect();
+            var metrics = getScrollMetrics();
+            var clickY = e.clientY - rect.top;
+            var ratio = (clickY - metrics.thumbHeight / 2) / metrics.maxTop;
+
+            content.scrollTop =
+                Math.max(0, Math.min(1, ratio)) * metrics.maxScroll;
+        });
+
+        content.addEventListener("scroll", updateThumb, { passive: true });
+        window.addEventListener("resize", updateThumb);
+        updateThumb();
+        requestAnimationFrame(updateThumb);
+        window.addEventListener("load", updateThumb);
+    }
+
+    function initCustomScrolls() {
+        SCROLL_CONFIGS.forEach(function (cfg) {
+            document.querySelectorAll(cfg.wrap).forEach(function (wrap) {
+                setupCustomScroll(wrap, cfg.content, cfg.track, cfg.thumb);
             });
-
-            document.addEventListener("mousemove", function (e) {
-                if (!dragging) return;
-
-                var metrics = getScrollMetrics();
-                if (metrics.maxTop <= 0) return;
-
-                var deltaY = e.clientY - startY;
-                var scrollDelta = (deltaY / metrics.maxTop) * metrics.maxScroll;
-                content.scrollTop = startScrollTop + scrollDelta;
-            });
-
-            document.addEventListener("mouseup", function () {
-                if (!dragging) return;
-                dragging = false;
-                document.body.style.userSelect = "";
-                track.classList.remove("is-dragging");
-            });
-
-            // Click on track to jump
-            track.addEventListener("mousedown", function (e) {
-                if (e.target === thumb) return;
-
-                var rect = track.getBoundingClientRect();
-                var metrics = getScrollMetrics();
-                var clickY = e.clientY - rect.top;
-                var ratio = (clickY - metrics.thumbHeight / 2) / metrics.maxTop;
-
-                content.scrollTop = Math.max(
-                    0,
-                    Math.min(1, ratio)
-                ) * metrics.maxScroll;
-            });
-
-            content.addEventListener("scroll", updateThumb, { passive: true });
-            window.addEventListener("resize", updateThumb);
-            updateThumb();
         });
     }
 
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initPresidentScroll);
+        document.addEventListener("DOMContentLoaded", initCustomScrolls);
     } else {
-        initPresidentScroll();
+        initCustomScrolls();
     }
 })();
 
@@ -122,14 +143,14 @@ function initMultiSlider(dir) {
         console.error("Slick Slider: jQuery or Slick is not loaded");
         return;
     }
-
+    
     var $slider = jQuery(".president-slider .slider");
     if ($slider.length === 0) return;
-
+    
     if ($slider.hasClass("slick-initialized")) {
         $slider.slick("unslick");
     }
-
+    
     var slideCount = $slider.children().length;
     var showDots = slideCount > 2;
 
@@ -167,11 +188,259 @@ function initMultiSlider(dir) {
 jQuery(function () {
     var dir = document.documentElement.getAttribute("dir") || "ltr";
     initMultiSlider(dir);
+    initNewsSlider(dir);
     initImageGalleries();
+    initActivitySelects();
+    initImageGallerySliders();
 });
 
+// News details: main image + thumbnail strip
+function initImageGallerySliders() {
+    var sliders = document.querySelectorAll("[data-image-gallery-slider]");
+    if (!sliders.length) return;
+
+    sliders.forEach(function (root) {
+        setupImageGallerySlider(root);
+    });
+
+    syncImageGallerySliderDirection();
+}
+
+function getSliderThumbVisibleCount() {
+    if (window.matchMedia("(max-width: 576px)").matches) return 2;
+    if (window.matchMedia("(max-width: 768px)").matches) return 3;
+    return 5;
+}
+
+function syncImageGallerySliderDirection() {
+    var labels = galleryLabels();
+    document.querySelectorAll("[data-image-gallery-slider]").forEach(function (root) {
+        var prevBtn = root.querySelector(".image-gallery_slider-arrow-prev");
+        var nextBtn = root.querySelector(".image-gallery_slider-arrow-next");
+        setChevronIcon(prevBtn, true);
+        setChevronIcon(nextBtn, false);
+        if (prevBtn) prevBtn.setAttribute("aria-label", labels.prev);
+        if (nextBtn) nextBtn.setAttribute("aria-label", labels.next);
+        if (typeof root._sliderUpdate === "function") {
+            root._sliderUpdate();
+        }
+    });
+}
+
+window.syncImageGallerySliderDirection = syncImageGallerySliderDirection;
+
+function setupImageGallerySlider(root) {
+    var mainImg = root.querySelector(".image-gallery_slider-main");
+    var track = root.querySelector(".image-gallery_slider-track");
+    var thumbs = Array.prototype.slice.call(
+        root.querySelectorAll(".image-gallery_slider-thumb")
+    );
+    var prevBtn = root.querySelector(".image-gallery_slider-arrow-prev");
+    var nextBtn = root.querySelector(".image-gallery_slider-arrow-next");
+    if (!mainImg || !track || !thumbs.length) return;
+
+    var index = Math.max(
+        0,
+        thumbs.findIndex(function (t) {
+            return t.classList.contains("is-active");
+        })
+    );
+    var offset = 0;
+
+    function maxOffset() {
+        var visible = getSliderThumbVisibleCount();
+        return Math.max(0, thumbs.length - visible);
+    }
+
+    function update() {
+        var visible = getSliderThumbVisibleCount();
+        var max = maxOffset();
+        if (offset > max) offset = max;
+
+        // Hide arrows when fewer than 5 thumbs (no strip overflow on desktop layout)
+        var showArrows = thumbs.length >= 5;
+        var needsScroll = thumbs.length > visible;
+
+        track.classList.toggle("is-centered", !showArrows || !needsScroll);
+
+        if (prevBtn) {
+            prevBtn.hidden = !showArrows;
+            if (showArrows) {
+                var mutePrev = !needsScroll || offset <= 0;
+                prevBtn.classList.toggle("is-muted", mutePrev);
+                prevBtn.disabled = mutePrev;
+            }
+        }
+        if (nextBtn) {
+            nextBtn.hidden = !showArrows;
+            if (showArrows) {
+                var muteNext = !needsScroll || offset >= max;
+                nextBtn.classList.toggle("is-muted", muteNext);
+                nextBtn.disabled = muteNext;
+            }
+        }
+
+        // Move by one thumb width + gap, using measured first thumb
+        if (track.classList.contains("is-centered")) {
+            track.style.transform = "";
+            return;
+        }
+        var step = 0;
+        if (thumbs[0] && offset > 0) {
+            var style = window.getComputedStyle(track);
+            var gap = parseFloat(style.columnGap || style.gap) || 0;
+            step = thumbs[0].getBoundingClientRect().width + gap;
+        }
+        var rtl = isPageRtl();
+        var px = offset * step;
+        track.style.transform = "translateX(" + (rtl ? px : -px) + "px)";
+    }
+
+    function selectThumb(i) {
+        if (i < 0 || i >= thumbs.length) return;
+        index = i;
+        thumbs.forEach(function (thumb, ti) {
+            thumb.classList.toggle("is-active", ti === index);
+        });
+        var src = thumbs[index].getAttribute("data-src") ||
+            (thumbs[index].querySelector("img") && thumbs[index].querySelector("img").src);
+        if (src) {
+            mainImg.src = src;
+            var thumbImg = thumbs[index].querySelector("img");
+            if (thumbImg && thumbImg.alt) mainImg.alt = thumbImg.alt;
+        }
+
+        var visible = getSliderThumbVisibleCount();
+        if (index < offset) offset = index;
+        if (index >= offset + visible) offset = index - visible + 1;
+        update();
+    }
+
+    thumbs.forEach(function (thumb, i) {
+        thumb.addEventListener("click", function () {
+            selectThumb(i);
+        });
+    });
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", function () {
+            if (offset <= 0) return;
+            offset -= 1;
+            update();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", function () {
+            if (offset >= maxOffset()) return;
+            offset += 1;
+            update();
+        });
+    }
+
+    root._sliderUpdate = update;
+    window.addEventListener("resize", update);
+    selectThumb(index);
+}
+
+// Custom activity filter dropdown (navbar About menu style)
+function initActivitySelects() {
+    var roots = document.querySelectorAll("[data-activity-select]");
+    if (!roots.length) return;
+
+    function closeAll(except) {
+        roots.forEach(function (root) {
+            if (except && root === except) return;
+            var trigger = root.querySelector(".activity-select-trigger");
+            var menu = root.querySelector(".activity-select-menu");
+            if (!trigger || !menu) return;
+            trigger.setAttribute("aria-expanded", "false");
+            menu.hidden = true;
+            root.classList.remove("is-open");
+        });
+    }
+
+    roots.forEach(function (root) {
+        var trigger = root.querySelector(".activity-select-trigger");
+        var menu = root.querySelector(".activity-select-menu");
+        var label = root.querySelector(".activity-select-label");
+        var nativeSelect = root.querySelector("select.activity-select");
+        if (!trigger || !menu || !label) return;
+
+        trigger.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var willOpen = trigger.getAttribute("aria-expanded") !== "true";
+            closeAll(willOpen ? root : null);
+            trigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
+            menu.hidden = !willOpen;
+            root.classList.toggle("is-open", willOpen);
+        });
+
+        menu.querySelectorAll('[role="option"]').forEach(function (option) {
+            option.addEventListener("click", function (e) {
+                e.stopPropagation();
+                var value = option.getAttribute("data-value") || "";
+                var text = option.textContent.trim();
+
+                menu.querySelectorAll('[role="option"]').forEach(function (opt) {
+                    var selected = opt === option;
+                    opt.classList.toggle("is-selected", selected);
+                    opt.setAttribute("aria-selected", selected ? "true" : "false");
+                });
+
+                label.textContent = text;
+                if (nativeSelect) {
+                    nativeSelect.value = value;
+                    nativeSelect.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+
+                closeAll();
+            });
+        });
+    });
+
+    document.addEventListener("click", function () {
+        closeAll();
+    });
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeAll();
+    });
+}
+
+// News Slick Slider — 1 slide at a time
+function initNewsSlider(dir) {
+    if (typeof jQuery === "undefined" || typeof jQuery.fn.slick === "undefined") {
+        console.error("Slick Slider: jQuery or Slick is not loaded");
+        return;
+    }
+
+    var $slider = jQuery(".news-slider .slider, .talentNews-slider .slider");
+    if ($slider.length === 0) return;
+
+    $slider.each(function () {
+        var $el = jQuery(this);
+
+        if ($el.hasClass("slick-initialized")) {
+            $el.slick("unslick");
+        }
+
+        $el.slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            rtl: dir === "rtl",
+            autoplay: false,
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 500
+        });
+    });
+}
+
 /*==============================================================================
-    Global Image Gallery + Lightbox (classes only, RTL + LTR)
+Global Image Gallery + Lightbox (classes only, RTL + LTR)
 ==============================================================================*/
 
 function isPageRtl() {
