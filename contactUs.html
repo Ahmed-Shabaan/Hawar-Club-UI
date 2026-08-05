@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <script src="js/lang-boot.js"></script>
+
+    <link rel="stylesheet" href="css/slick-theme.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+
+    <link rel="stylesheet" href="fonts/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link id="mainStylesheet" rel="stylesheet" href="css/styleAR.css">
+    <script>
+        if (window.__hawarLang === "en") {
+            document.getElementById("mainStylesheet").href = "css/styleEN.css";
+        }
+    </script>
+</head>
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="width-container">
+
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/Images/logo.svg"
+                         alt="Hawar Club"
+                         class="logo">
+                    <span class="brand-text">
+                        <span class="brand-name">HAWAR</span>
+                        <span class="brand-sub" data-i18n="brandSub">نادي الحوار للألعاب الرياضية</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html" data-i18n="home">الرئيسية</a>
+                        </li>
+                        <li class="nav-item has-dropdown">
+                            <a class="nav-link" href="#" data-i18n="about">عن النادي</a>
+                            <ul class="nav-dropdown">
+                                <li>
+                                    <a href="aboutPresident.html" data-i18n="presidents">رؤساء النادي</a>
+                                </li>
+                                <li>
+                                    <a href="aboutHistory.html" data-i18n="history">تاريخ النادي</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="newsList.html" data-i18n="news">الأخبار</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contactUs.html" data-i18n="contact">تواصل معنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-i18n="beMember">كن عضواً</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="navbar-actions">
+
+                    <button type="button" class="icon-btn" aria-label="بحث">
+                        <i class="bi bi-search"></i>
+                    </button>
+
+                    <button type="button"
+                            class="icon-btn"
+                            id="themeToggle"
+                            aria-label="تبديل الوضع">
+                        <i class="bi bi-moon" id="themeIcon"></i>
+                    </button>
+
+                    <div class="language d-flex align-items-center" role="button" tabindex="0" aria-label="اللغة">
+                        <i class="bi bi-chevron-down"></i>
+                        <span>AR</span>
+                        <i class="bi bi-globe"></i>
+                    </div>
+
+                    <a href="#" class="btn-membership" data-i18n="renew">تجديد العضوية</a>
+
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ===== Page Content ===== -->
+    <section class="contact-us hawar-body pb-3">
+
+        <div class="bg position-relative">
+            <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+            <img class="w-100 object-position-top object-fit-cover" src="images/contactUs/ContactBG.jpg" alt="" srcset="">
+            <h2 class="page-subtitle position-absolute top-50 translate-middle-y mx-2 mx-md-4 text-white fw-bold fs-1 shadow-sm" data-i18n="contactSubtitle">تواصل معنا</h2>
+        </div>
+
+        <div class="width-container mt-3">
+            <!-- BreadCrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" data-i18n="crumbHome">الرئيسية</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="contact">تواصل معنا</li>
+                </ol>
+            </nav>
+
+            <h1 class="page-title" data-i18n="contact">تواصل معنا</h1>
+        </div>
+
+        <div class="width-container mt-md-5 mt-3 mb-3">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                    <div class="card p-3">
+                        <div class="card-info">
+                            <div class="location card-title">
+                                <svg width="22" height="29" viewBox="0 0 22 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 0.5C13.7886 0.5 16.4605 1.58022 18.4287 3.49902C20.3964 5.41752 21.4999 8.01705 21.5 10.7246C21.5 12.3982 20.9476 14.2293 20.0654 16.0771C19.1854 17.9204 17.9916 19.7499 16.7441 21.4141C13.815 25.3215 8.18496 25.3215 5.25586 21.4141C4.0084 19.7499 2.81463 17.9204 1.93457 16.0771C1.05236 14.2293 0.5 12.3982 0.5 10.7246L0.512695 10.2188C0.641081 7.69505 1.72648 5.29771 3.57129 3.49902C5.53947 1.58022 8.21136 0.5 11 0.5ZM11 1.28711C8.44031 1.28711 5.98271 2.2785 4.16895 4.04688C2.35484 5.81563 1.33311 8.21763 1.33301 10.7246C1.33301 12.273 1.8554 14.0203 2.73535 15.8408L2.91602 16.2061C3.89668 18.1439 5.21996 20.0635 6.5625 21.7764L6.56348 21.7783C8.84719 24.6683 13.1528 24.6683 15.4365 21.7783L15.4375 21.7764C16.78 20.0635 18.1033 18.1439 19.084 16.2061C20.0707 14.2547 20.667 12.3765 20.667 10.7246C20.6669 8.21763 19.6452 5.81563 17.8311 4.04688C16.0173 2.2785 13.5597 1.28711 11 1.28711Z" fill="#DA8900" stroke="#DA8900"/>
+                                    <path d="M11 5.86133C12.3301 5.86133 13.6033 6.37669 14.54 7.29004C15.4763 8.20292 15.9999 9.43825 16 10.7236C16 12.009 15.4762 13.2443 14.54 14.1572C13.6033 15.0706 12.3301 15.5859 11 15.5859C9.66989 15.5859 8.39673 15.0706 7.45996 14.1572C6.52377 13.2443 6 12.009 6 10.7236C6.00005 9.43825 6.5237 8.20292 7.45996 7.29004C8.39673 6.37669 9.66989 5.86133 11 5.86133ZM11 6.64844C9.89905 6.64844 8.84089 7.07526 8.05859 7.83789C7.27589 8.60102 6.83306 9.6388 6.83301 10.7236C6.83301 11.8085 7.27585 12.8462 8.05859 13.6094C8.84091 14.3721 9.89896 14.7988 11 14.7988C12.101 14.7988 13.1591 14.3721 13.9414 13.6094C14.7242 12.8462 15.167 11.8085 15.167 10.7236C15.1669 9.6388 14.7241 8.60102 13.9414 7.83789C13.1591 7.07526 12.1009 6.64844 11 6.64844Z" fill="#DA8900" stroke="#DA8900"/>
+                                </svg>
+
+                                <span class="location-text mx-3" data-i18n="address">الموقع</span>
+                            </div>
+                            <div class="card-text text-decoration-underline" data-i18n="addressText">
+                                المشاية السفلية، ميت خميس وكفر الموجي، أول المنصورة، محافظة الدقهلية 7650048
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                    <div class="card p-3">
+                        <div class="card-info">
+                            <div class="phonenumbers card-title">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.40625 0.503906C4.67511 0.520694 4.93762 0.593837 5.17578 0.719727C5.41394 0.845626 5.62279 1.02166 5.78809 1.23438L8.25488 4.40527V4.4043C8.61271 4.86436 8.73809 5.46421 8.59668 6.03027V6.03125L7.84473 9.04199V9.04297C7.78549 9.28227 7.78877 9.53291 7.85449 9.77051C7.92029 10.0082 8.04677 10.2256 8.2207 10.4004H8.22168L11.5996 13.7793L11.6006 13.7803C11.7756 13.9544 11.9925 14.0807 12.2305 14.1465C12.4684 14.2123 12.7194 14.2148 12.959 14.1553H12.96L15.9688 13.4023C16.2483 13.3329 16.5404 13.3283 16.8223 13.3877C17.1036 13.447 17.3683 13.5692 17.5957 13.7451V13.7461L20.7666 16.2129C21.669 16.9154 21.7512 18.2489 20.9443 19.0547H20.9434L19.5225 20.4766C18.6806 21.3184 17.4644 21.7025 16.3145 21.3945L16.0859 21.3232C12.5279 20.073 9.29757 18.0358 6.63574 15.3643L6.63477 15.3633L6.14062 14.8574C3.71137 12.2967 1.84799 9.24999 0.675781 5.91504C0.2758 4.77696 0.582473 3.54121 1.3623 2.65137L1.52441 2.47852L2.94434 1.05664C3.1348 0.86611 3.36423 0.71836 3.61621 0.623047C3.86815 0.527777 4.13742 0.48713 4.40625 0.503906ZM4.37793 0.96875C4.17514 0.956163 3.97127 0.98761 3.78125 1.05957C3.63889 1.11353 3.50657 1.18984 3.38867 1.28516L3.27539 1.38672L1.85352 2.80957C1.0692 3.59552 0.756713 4.73455 1.11719 5.76172V5.7627C2.34735 9.25245 4.3466 12.4205 6.96582 15.0342V15.0352C9.41649 17.4914 12.355 19.4025 15.5889 20.6455L16.2393 20.8848C17.2023 21.2229 18.2644 20.9695 19.041 20.29L19.1924 20.1484L20.6143 18.7266C20.7579 18.5831 20.8695 18.4106 20.9414 18.2207C21.0134 18.0307 21.0438 17.8268 21.0312 17.624C21.0186 17.4214 20.963 17.2235 20.8682 17.0439C20.7733 16.8644 20.6408 16.7067 20.4805 16.582L17.3086 14.1162L17.002 14.5107L17.0869 14.4014L17.3086 14.1152H17.3076C17.1363 13.9828 16.9375 13.8903 16.7256 13.8457C16.5136 13.8011 16.2942 13.8052 16.084 13.8574H16.083L13.0723 14.6094C12.754 14.6883 12.4205 14.6842 12.1045 14.5967C11.7884 14.5091 11.4999 14.3409 11.2676 14.1094L7.8916 10.7314H7.89062C7.65938 10.4994 7.49194 10.2112 7.4043 9.89551C7.31667 9.57981 7.3121 9.24678 7.39062 8.92871L8.14453 5.91699V5.91602C8.19663 5.70609 8.20071 5.48707 8.15625 5.27539C8.11166 5.06342 8.01923 4.86374 7.88672 4.69238L7.88574 4.69141L5.41992 1.51953C5.29524 1.35915 5.13762 1.22674 4.95801 1.13184C4.77848 1.037 4.58057 0.98139 4.37793 0.96875Z" fill="#DA8900" stroke="#DA8900"/>
+                                </svg>
+                                <span class="phonenumbers-text mx-3" data-i18n="phoneNumbers">ارقام التليفون</span>
+                            </div>
+                            <div class="card-text text-decoration-underline">
+                                <span class="d-block">+20 50 2200390</span>
+                                <span class="d-block">+20 50 2200390</span>
+                                <span class="d-block">+20 50 2200390</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                    <div class="card p-3">
+                        <div class="card-info">
+                            <div class="email card-title">
+                                <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.75 0.25H19.25C19.9106 0.25 20.5462 0.520225 21.0156 1.00391C21.4851 1.48775 21.7499 2.14571 21.75 2.83301V14.167C21.7499 14.8543 21.4851 15.5123 21.0156 15.9961C20.5462 16.4798 19.9106 16.75 19.25 16.75H2.75C2.08941 16.75 1.45383 16.4798 0.984375 15.9961C0.514868 15.5123 0.250084 14.8543 0.25 14.167V2.83301C0.250084 2.14571 0.514868 1.48775 0.984375 1.00391C1.45383 0.520225 2.08941 0.25 2.75 0.25ZM12.6914 9.40332L11 10.4482L9.30859 9.40332L9.1748 9.32129L9.04297 9.40527L1.28809 14.3213L1.13379 14.4189L1.17969 14.5947C1.27124 14.9479 1.47417 15.2619 1.75781 15.4863C2.00595 15.6826 2.30379 15.8005 2.61523 15.8271L2.75 15.833H19.25C19.6096 15.833 19.9585 15.7115 20.2422 15.4873C20.5258 15.2632 20.7285 14.9496 20.8203 14.5967L20.8662 14.4199L20.7119 14.3223L12.957 9.40527L12.8252 9.32129L12.6914 9.40332ZM1.125 13.3535L1.50879 13.1104L7.98242 9.00586L8.31934 8.79199L7.97949 8.58203L1.50684 4.58008L1.125 4.34375V13.3535ZM20.4932 4.58008L14.0205 8.58203L13.6807 8.79199L14.0176 9.00586L20.4912 13.1104L20.875 13.3535V4.34375L20.4932 4.58008ZM2.75 1.16699C2.3167 1.16699 1.90274 1.34405 1.59863 1.65723C1.29482 1.97024 1.12508 2.39347 1.125 2.83301V3.28027L1.24316 3.35352L10.8682 9.30371L11 9.38477L11.1318 9.30371L20.7568 3.35352L20.875 3.28027V2.83301C20.8749 2.39347 20.7052 1.97024 20.4014 1.65723C20.0973 1.34405 19.6833 1.16699 19.25 1.16699H2.75Z" fill="#DA8900" stroke="#DA8900" stroke-width="0.5"/>
+                                </svg>
+                                <span class="email-text mx-3" data-i18n="emails">الايميل</span>
+                            </div>
+                            <div class="card-text text-decoration-underline">
+                                <span class="d-block">example@email.com</span>
+                                <span class="d-block">example2@email.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                    <div class="card p-3">
+                        <div class="card-info">
+                            <div class="working-hours card-title">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.3125 4.625C10.3622 4.625 10.4101 4.64452 10.4453 4.67969C10.4805 4.71485 10.5 4.76277 10.5 4.8125V6.83301C10.5002 10.1888 12.2962 13.2875 15.207 14.9561H15.208C15.2498 14.9813 15.2796 15.0222 15.292 15.0693C15.3043 15.1167 15.2977 15.1675 15.2734 15.21C15.2491 15.2524 15.2091 15.2834 15.1621 15.2969C15.1153 15.3102 15.0653 15.3052 15.0225 15.2822L10.2197 12.5381V12.5371C10.191 12.5207 10.167 12.4973 10.1504 12.4688C10.1339 12.4402 10.125 12.4079 10.125 12.375V4.8125L10.1396 4.74121C10.149 4.71857 10.162 4.69734 10.1797 4.67969C10.2149 4.64452 10.2628 4.625 10.3125 4.625Z" fill="#DA8900" stroke="#DA8900"/>
+                                    <path d="M11 0.5C13.7848 0.5 16.4557 1.60606 18.4248 3.5752C20.3939 5.54433 21.5 8.21523 21.5 11C21.5 13.7848 20.3939 16.4557 18.4248 18.4248C16.4557 20.3939 13.7848 21.5 11 21.5C8.21523 21.5 5.54433 20.3939 3.5752 18.4248C1.60606 16.4557 0.5 13.7848 0.5 11C0.5 8.21523 1.60606 5.54433 3.5752 3.5752C5.54433 1.60606 8.21523 0.5 11 0.5ZM11 0.875C8.31468 0.875 5.73963 1.94201 3.84082 3.84082C1.94201 5.73963 0.875 8.31468 0.875 11C0.875 13.6853 1.94201 16.2604 3.84082 18.1592C5.73963 20.058 8.31468 21.125 11 21.125C13.6853 21.125 16.2604 20.058 18.1592 18.1592C20.058 16.2604 21.125 13.6853 21.125 11C21.125 8.31468 20.058 5.73963 18.1592 3.84082C16.2604 1.94201 13.6853 0.875 11 0.875Z" fill="#DA8900" stroke="#DA8900"/>
+                                </svg>
+                                <span class="working-hours-text mx-3" data-i18n="workingHours">مواعيد العمل</span>
+                            </div>
+                            <div class="card-text" data-i18n="workingHoursText">
+                                يومياً من الساعة 8:00 صباحاً حتى الساعة 12:00 منتصف الليل.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="width-container mb-5">
+            <div class="contact_location">
+                <img class=" w-100 object-position-top object-fit-cover" src="images/contactUs/map.png" alt="" srcset="">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+
+        <div class="width-container">
+
+            <!-- Logo sits on the divider line -->
+            <div class="footer-logo-wrap">
+                <img src="images/logo.png"
+                     alt="Hawar Club"
+                     class="footer-logo">
+            </div>
+
+            <div class="footer-row">
+
+                <p class="copyright" data-i18n="copyright">
+                    جميع الحقوق محفوظة - نادي حوار الرياضي 2024 ©
+                </p>
+
+                <p class="footer-title" data-i18n="footerTitle">نادي الحوار للألعاب الرياضية</p>
+
+                <div class="footer-social">
+                    <span class="social-label" data-i18n="follow">تابعنا</span>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/slick.min.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
