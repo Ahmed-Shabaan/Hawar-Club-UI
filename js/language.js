@@ -13,6 +13,8 @@
             presidents: "رؤساء النادي",
             history: "تاريخ النادي",
             news: "الأخبار",
+            contact: "تواصل معنا",
+            beMember: "كن عضواً",
             renew: "تجديد العضوية",
             follow: "تابعنا",
             brandSub: "نادي الحوار للألعاب الرياضية",
@@ -32,7 +34,14 @@
             catSports: "رياضة",
             catActivities: "انشطة",
             catClub: "النادى",
-            catAcademies: "الاكاديميات"
+            catAcademies: "الاكاديميات",
+            contactSubtitle: "تواصل معنا",
+            address: "الموقع",
+            addressText: "المشاية السفلية، ميت خميس وكفر الموجي، أول المنصورة، محافظة الدقهلية 7650048",
+            phoneNumbers: "ارقام التليفون",
+            emails: "الايميل",
+            workingHours: "مواعيد العمل",
+            workingHoursText: "يومياً من الساعة 8:00 صباحاً حتى الساعة 12:00 منتصف الليل."
         },
         en: {
             langLabel: "EN",
@@ -42,6 +51,8 @@
             presidents: "Club Presidents",
             history: "Club History",
             news: "News",
+            contact: "Contact Us",
+            beMember: "Become a Member",
             renew: "Renew Membership",
             follow: "Follow us",
             brandSub: "Hawar Sports Club",
@@ -61,7 +72,14 @@
             catSports: "Sports",
             catActivities: "Activities",
             catClub: "The Club",
-            catAcademies: "Academies"
+            catAcademies: "Academies",
+            contactSubtitle: "Contact Us",
+            address: "Location",
+            addressText: "Al Mashayah Al Sofleyah, Mit Khamis and Kafr Al Mougi, First Mansoura, Dakahlia Governorate 7650048",
+            phoneNumbers: "Phone numbers",
+            emails: "Email",
+            workingHours: "Working hours",
+            workingHoursText: "Daily from 8:00 AM until 12:00 midnight."
         }
     };
 

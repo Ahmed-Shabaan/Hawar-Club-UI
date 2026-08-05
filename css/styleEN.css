@@ -1890,6 +1890,29 @@ button {
   display: none !important;
 }
 
+.contact-us .bg .overlay {
+  background-color: rgba(24, 22, 22, 0.5);
+}
+.contact-us .card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  height: 10rem;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+}
+.contact-us .card .card-title {
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+.contact-us .card .card-text {
+  font-size: 0.9rem;
+}
+.contact-us .contact_location img {
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  height: 35rem;
+}
+
 html[lang=en],
 [dir=ltr] {
   direction: ltr;
