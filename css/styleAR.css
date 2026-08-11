@@ -124,13 +124,11 @@ body {
 }
 
 .object-fit-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .object-position-top {
-  -o-object-position: top;
-     object-position: top;
+  object-position: top;
 }
 
 .pagination {
@@ -444,9 +442,7 @@ button {
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   transition: all 0.3s ease;
 }
 .language i {
@@ -666,8 +662,7 @@ button {
   display: block;
   width: 100%;
   aspect-ratio: 4/3;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 16px;
   border: 0;
   box-shadow: 0 0 0 1px rgb(218, 137, 0);
@@ -797,10 +792,8 @@ button {
   display: block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
   border-radius: 10px;
 }
 
@@ -820,8 +813,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    -moz-column-gap: 0.75rem;
-         column-gap: 0.75rem;
+    column-gap: 0.75rem;
     row-gap: 0.75rem;
   }
   .navbar-brand {
@@ -975,11 +967,15 @@ button {
   [data-theme=dark] .page-home .navbar .icon-btn {
     color: #fff;
   }
-  .home-hero,
+  .home-hero {
+    height: 70vh;
+    min-height: 70vh;
+  }
   .home-hero-slider,
   .home-hero-slide,
   .home-hero-content {
-    min-height: 70vh;
+    min-height: 100%;
+    height: 100%;
   }
   .home-intro,
   .home-stories,
@@ -1494,10 +1490,8 @@ button {
   width: 100%;
   height: 100%;
   aspect-ratio: 4/2;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+  object-fit: cover;
+  object-position: top;
   border-radius: 10px;
 }
 .news-slider .news-slide-content {
@@ -1564,9 +1558,7 @@ button {
   z-index: 5;
 }
 .News-list .select-activaties .activity-select-trigger {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   position: relative;
   display: flex;
   align-items: center;
@@ -1652,10 +1644,6 @@ button {
   font-size: 0.85rem;
   outline: none;
 }
-.News-list .select-activaties .activity-select-search-input::-moz-placeholder {
-  color: var(--dropdown-text);
-  opacity: 0.45;
-}
 .News-list .select-activaties .activity-select-search-input::placeholder {
   color: var(--dropdown-text);
   opacity: 0.45;
@@ -1694,9 +1682,7 @@ button {
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   transition: all 0.3s ease;
 }
 .News-list .select-activaties .activity-select-list li:last-child {
@@ -1874,10 +1860,8 @@ button {
   display: block;
   width: 100%;
   height: 28rem;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
   border-radius: 12px;
   border: 1px solid rgb(218, 137, 0);
   background-color: var(--surface);
@@ -1958,8 +1942,7 @@ button {
   display: block;
   width: 100%;
   aspect-ratio: 16/10;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 10px;
   border: 1px solid transparent;
   box-shadow: 0 0 0 1px transparent;
@@ -2130,6 +2113,8 @@ button {
 
 .home-hero {
   position: relative;
+  height: 100vh;
+  height: 100svh;
   min-height: 100vh;
   background: #05162B;
   overflow: hidden;
@@ -2137,9 +2122,16 @@ button {
 .home-hero .slick-dotted.slick-slider {
   margin-bottom: 0 !important;
 }
+.home-hero .home-hero-slider,
+.home-hero .slick-list,
+.home-hero .slick-track,
+.home-hero .slick-slide,
+.home-hero .slick-slide > div {
+  height: 100%;
+}
 .home-hero .slick-list,
 .home-hero .slick-track {
-  height: 100%;
+  min-height: 100%;
 }
 .home-hero .slick-dots {
   position: absolute;
@@ -2212,7 +2204,8 @@ button {
 .home-hero-slider,
 .home-hero-slide {
   position: relative;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100%;
 }
 
 .home-hero-image {
@@ -2220,10 +2213,8 @@ button {
   inset: 0;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .home-hero-overlay {
@@ -2238,7 +2229,8 @@ button {
   z-index: 2;
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100%;
   padding-block: calc(88px + 2rem) 5rem;
 }
 
@@ -2508,10 +2500,6 @@ button {
   min-height: 2.85rem;
   color: #0A1A2F;
 }
-.home-join-form .form-control::-moz-placeholder, .home-join-form .form-select::-moz-placeholder {
-  color: rgba(100, 102, 114, 0.6);
-  opacity: 1;
-}
 .home-join-form .form-control::placeholder,
 .home-join-form .form-select::placeholder {
   color: rgba(100, 102, 114, 0.6);
@@ -2660,10 +2648,6 @@ button {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
 }
-[data-theme=dark] .home-join-form .form-control::-moz-placeholder, [data-theme=dark] .home-join-form .form-select::-moz-placeholder {
-  color: rgba(100, 102, 114, 0.6);
-  opacity: 1;
-}
 [data-theme=dark] .home-join-form .form-control::placeholder,
 [data-theme=dark] .home-join-form .form-select::placeholder {
   color: rgba(100, 102, 114, 0.6);
@@ -2680,4 +2664,4 @@ button {
 }
 [data-theme=dark] .home-join-submit:hover {
   background: #C97400;
-}/*# sourceMappingURL=styleAR.css.map */
+}

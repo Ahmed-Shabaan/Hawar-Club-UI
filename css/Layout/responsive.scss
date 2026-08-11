@@ -213,11 +213,16 @@
         }
     }
 
-    .home-hero,
+    .home-hero {
+        height: 70vh;
+        min-height: 70vh;
+    }
+
     .home-hero-slider,
     .home-hero-slide,
     .home-hero-content {
-        min-height: 70vh;
+        min-height: 100%;
+        height: 100%;
     }
 
     .home-intro,

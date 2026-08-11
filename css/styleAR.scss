@@ -1612,6 +1612,8 @@ button {
 // Hero
 .home-hero {
     position: relative;
+    height: 100vh;
+    height: 100svh;
     min-height: 100vh;
     background: $navy-deep;
     overflow: hidden;
@@ -1620,9 +1622,17 @@ button {
         margin-bottom: 0 !important;
     }
 
+    .home-hero-slider,
+    .slick-list,
+    .slick-track,
+    .slick-slide,
+    .slick-slide > div {
+        height: 100%;
+    }
+
     .slick-list,
     .slick-track {
-        height: 100%;
+        min-height: 100%;
     }
 
     .slick-dots {
@@ -1707,7 +1717,8 @@ button {
 .home-hero-slider,
 .home-hero-slide {
     position: relative;
-    min-height: 100vh;
+    height: 100%;
+    min-height: 100%;
 }
 
 .home-hero-image {
@@ -1736,7 +1747,8 @@ button {
     z-index: 2;
     display: flex;
     align-items: center;
-    min-height: 100vh;
+    height: 100%;
+    min-height: 100%;
     padding-block: calc(#{$navbar-height} + 2rem) 5rem;
 }
 
