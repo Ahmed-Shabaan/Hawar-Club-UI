@@ -1,9 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawar Club</title>
+    <link rel="icon" href="images/ImageWithFallback.svg" type="image/svg+xml">
     <script src="js/lang-boot.js"></script>
 
     <link rel="stylesheet" href="css/slick-theme.css" />
@@ -18,7 +20,8 @@
         }
     </script>
 </head>
-<body>
+
+<body class="page-home">
 
     <!-- ===== Navbar ===== -->
     <header class="header">
@@ -27,22 +30,15 @@
             <div class="width-container">
 
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/Images/logo.svg"
-                         alt="Hawar Club"
-                         class="logo">
+                    <img src="images/ImageWithFallback.svg" alt="Hawar Club" class="logo">
                     <span class="brand-text">
                         <span class="brand-name">HAWAR</span>
                         <span class="brand-sub" data-i18n="brandSub">نادي الحوار للألعاب الرياضية</span>
                     </span>
                 </a>
 
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#mainNavbar"
-                        aria-controls="mainNavbar"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -70,7 +66,7 @@
                             <a class="nav-link" href="contactUs.html" data-i18n="contact">تواصل معنا</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">كن عضواً</a>
+                            <a class="nav-link" href="#" data-i18n="beMember">كن عضواً</a>
                         </li>
                     </ul>
 
@@ -82,10 +78,7 @@
                         <i class="bi bi-search"></i>
                     </button>
 
-                    <button type="button"
-                            class="icon-btn"
-                            id="themeToggle"
-                            aria-label="تبديل الوضع">
+                    <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
                         <i class="bi bi-moon" id="themeIcon"></i>
                     </button>
 
@@ -95,7 +88,7 @@
                         <i class="bi bi-globe"></i>
                     </div>
 
-                    <a href="#" class="btn-membership" data-i18n="renew">تجديد العضوية</a>
+                    <a href="#homeJoin" class="btn-membership" data-i18n="joinMembership">انضم للعضوية</a>
 
                 </div>
 
@@ -104,35 +97,296 @@
 
     </header>
 
-    <!-- ===== Page Content ===== -->
-    <section class=" hawar-body">
-        <div class="width-container">
-            <!-- BreadCrumb -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
-                    <li class="breadcrumb-item"><a href="#">عن النادى</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">رؤساء النادى</li>
-                </ol>
-            </nav>
+    <main>
+        <!-- ===== Hero ===== -->
+        <section class="home-hero">
+            <div class="home-hero-slider slider">
+                <div class="home-hero-slide">
+                    <img class="home-hero-image" src="images/homeSlide1.jpg" alt="">
+                    <div class="home-hero-overlay"></div>
+                    <div class="width-container home-hero-content">
+                        <div class="home-hero-panel">
+                            <h1 class="home-hero-title" data-i18n="homeHeroTitle1">ملعب كرة القدم</h1>
+                            <p class="home-hero-text" data-i18n="homeHeroText1">
+                                مرافق رياضية بمعايير عالمية لتدريب الفرق والناشئين، وبيئة محفّزة لكل من يعشق الحركة.
+                            </p>
+                            <a href="aboutHistory.html" class="btn home-hero-btn" data-i18n="homeHeroCta">عرض
+                                التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-hero-slide">
+                    <img class="home-hero-image" src="images/homeSlide2.jpg" alt="">
+                    <div class="home-hero-overlay"></div>
+                    <div class="width-container home-hero-content">
+                        <div class="home-hero-panel">
+                            <h1 class="home-hero-title" data-i18n="homeHeroTitle2">مجتمع رياضي متكامل</h1>
+                            <p class="home-hero-text" data-i18n="homeHeroText2">
+                                برامج تدريبية، بطولات، وأنشطة تجمع اللاعبين والعائلات في تجربة رياضية استثنائية.
+                            </p>
+                            <a href="newsList.html" class="btn home-hero-btn" data-i18n="homeHeroCta">عرض التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-hero-slide">
+                    <img class="home-hero-image" src="images/story1.png" alt="">
+                    <div class="home-hero-overlay"></div>
+                    <div class="width-container home-hero-content">
+                        <div class="home-hero-panel">
+                            <h1 class="home-hero-title" data-i18n="homeHeroTitle3">أكاديميات الحوار</h1>
+                            <p class="home-hero-text" data-i18n="homeHeroText3">
+                                برامج تدريبية متخصصة للناشئين تحت إشراف مدربين محترفين في بيئة آمنة ومحفّزة.
+                            </p>
+                            <a href="newsList.html" class="btn home-hero-btn" data-i18n="homeHeroCta">عرض التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-hero-slide">
+                    <img class="home-hero-image" src="images/story2.png" alt="">
+                    <div class="home-hero-overlay"></div>
+                    <div class="width-container home-hero-content">
+                        <div class="home-hero-panel">
+                            <h1 class="home-hero-title" data-i18n="homeHeroTitle4">لياقة بلا حدود</h1>
+                            <p class="home-hero-text" data-i18n="homeHeroText4">
+                                صالات ومرافق مفتوحة طوال اليوم لتناسب جدولك وتساعدك على تحقيق أهدافك الرياضية.
+                            </p>
+                            <a href="aboutHistory.html" class="btn home-hero-btn" data-i18n="homeHeroCta">عرض
+                                التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-hero-slide">
+                    <img class="home-hero-image" src="images/story3.png" alt="">
+                    <div class="home-hero-overlay"></div>
+                    <div class="width-container home-hero-content">
+                        <div class="home-hero-panel">
+                            <h1 class="home-hero-title" data-i18n="homeHeroTitle5">بطولات وذكريات</h1>
+                            <p class="home-hero-text" data-i18n="homeHeroText5">
+                                منافسات وفعاليات تجمع الأعضاء والعائلات في أجواء رياضية مليئة بالحماس والانتماء.
+                            </p>
+                            <a href="newsList.html" class="btn home-hero-btn" data-i18n="homeHeroCta">عرض التفاصيل</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <h1 class="page-title">رؤساء النادى</h1>
-        </div>
-    </section>
+        <!-- ===== Intro ===== -->
+        <section class="home-intro">
+            <div class="width-container">
+                <div class="row align-items-center g-4 g-lg-5">
+                    <div class="col-lg-5">
+                        <div class="home-welcome">
+                            <span class="home-welcome-line" aria-hidden="true"></span>
+                            <span class="home-welcome-text" data-i18n="homeWelcome">مرحباً</span>
+                        </div>
+                        <h2 class="home-intro-title" data-i18n="homeIntroTitle">
+                            نادٍ صُمم خصيصاً لمن لا يتوقفون عن الحركة.
+                        </h2>
+                    </div>
+                    <div class="col-lg-7 mx-auto">
+                        <p class="home-intro-text mt-md-4" data-i18n="homeIntroText1">
+                            على مدار أكثر من عقدين، كان هوار بمثابة ملاذٍ خاص للعائلات والرياضيين المحترفين والهواة
+                            الشغوفين على حد سواء. وتمتد مرافقنا عبر مساحة ستين فداناً صُممت بعناية فائقة، لتجمع بين
+                            معايير الأداء العالية التي لا تقبل المساومة وأجواء الألفة والدفء التي تميز نوادي الأعضاء
+                        </p>
+                        <p class="home-intro-text mt-2" data-i18n="homeIntroText2">
+                            لقد صُمم كل ملعب وحوض سباحة واستوديو انطلاقاً من قناعة راسخة: وهي أن الرياضة -في أبهى صورها-
+                            تمثل أسلوب حياة. </p>
+                        <a href="aboutHistory.html" class="home-text-link">
+                            <div class="d-flex align-items-center gap-2">
+                                <span data-i18n="homeDiscoverMore">اكتشف قصتنا</span>
+                                <i class="bi bi-arrow-left"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Stories ===== -->
+        <section class="home-stories">
+            <div class="width-container">
+                <div class="home-stories-head">
+                    <div class="home-welcome">
+                        <span class="home-welcome-line" aria-hidden="true"></span>
+                        <span class="home-welcome-text" data-i18n="homeLatestNews">أحدث الأخبار</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="home-stories-title" data-i18n="homeStoriesTitle">قصص من النادي</h2>
+                        <a href="newsList.html" class="home-text-link">
+                            <span data-i18n="homeViewAll">شاهد الكل</span>
+                            <i class="bi bi-arrow-left"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="row g-3 g-md-4 g-lg-5">
+                    <div class="col-md-4">
+                        <article class="home-story-card">
+                            <img src="images/story1.png" alt=""
+                                class="home-story-img object-fit-cover object-position-top">
+                            <div class="home-story-body mx-2">
+                                <h3 class="home-story-title" data-i18n="homeStoryTitle1">لوريم إيبسوم هو ببساطة نص شكلي
+                                    (بمعنى أن الغاية هي الشكل وليس المحتوى)</h3>
+                                <p class="home-story-text" data-i18n="homeStoryText1">
+                                    كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة
+                                    مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص.
+                                </p>
+                                <a href="newsDetails.html"
+                                    class="home-text-link is-navy d-flex justify-content-end ms-2 text-decoration-underline">
+                                    <span data-i18n="readMore">اقرأ المزيد</span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="home-story-card">
+                            <img src="images/story2.png" alt=""
+                                class="home-story-img object-fit-cover object-position-top">
+                            <div class="home-story-body mx-2">
+                                <h3 class="home-story-title" data-i18n="homeStoryTitle2">لوريم إيبسوم هو ببساطة نص شكلي
+                                    (بمعنى أن الغاية هي الشكل وليس المحتوى)</h3>
+                                <p class="home-story-text" data-i18n="homeStoryText2">
+                                    كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة
+                                    مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص.
+                                </p>
+                                <a href="newsDetails.html"
+                                    class="home-text-link is-navy d-flex justify-content-end ms-2 text-decoration-underline">
+                                    <span data-i18n="readMore">اقرأ المزيد</span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="home-story-card">
+                            <img src="images/story3.png" alt=""
+                                class="home-story-img object-fit-cover object-position-top">
+                            <div class="home-story-body mx-2">
+                                <h3 class="home-story-title" data-i18n="homeStoryTitle3">لوريم إيبسوم هو ببساطة نص شكلي
+                                    (بمعنى أن الغاية هي الشكل وليس المحتوى)</h3>
+                                <p class="home-story-text" data-i18n="homeStoryText3">
+                                    كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة
+                                    مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص.
+                                </p>
+                                <a href="newsDetails.html"
+                                    class="home-text-link is-navy d-flex justify-content-end ms-2 text-decoration-underline">
+                                    <span data-i18n="readMore">اقرأ المزيد</span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== App ===== -->
+        <section class="home-app">
+            <div class="home-app-overlay"></div>
+            <div class="width-container home-app-inner">
+                <div class="row align-items-center g-4 g-lg-5">
+                    <div class="col-lg-6 order-lg-1 order-1">
+                        <div class="home-phone">
+                            <img src="images/phone.png" alt="" class="home-phone-img">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 order-lg-2 order-2">
+                        <div class="home-welcome">
+                            <span class="home-welcome-line" aria-hidden="true"></span>
+                            <span class="home-welcome-text" data-i18n="homeAppLabel">تطبيق جوال</span>
+                        </div>
+                        <h2 class="home-app-title">
+                            <span class="d-md-block" data-i18n="homeAppTitle1">ناديك ، </span>
+                            <span class="home-app-accent d-md-block" data-i18n="homeAppTitle2">في جيبك</span>
+                        </h2>
+                        <p class="home-app-text" data-i18n="homeAppText">
+                            حمّل التطبيق الرسمي لنادي الحوار الرياضي، ولا تفوّت أي مباراة أو تحديث أو ميزة مخصصة
+                            للأعضاء.
+                        </p>
+                        <div class="home-store-badges">
+                            <a href="#" class="home-store-badge" aria-label="Google Play">
+                                <i class="bi bi-google-play"></i>
+                                <span>
+                                    <small data-i18n="homeGetItOn">احصل عليه من</small>
+                                    <strong>Google Play</strong>
+                                </span>
+                            </a>
+                            <a href="#" class="home-store-badge" aria-label="App Store">
+                                <i class="bi bi-apple"></i>
+                                <span>
+                                    <small data-i18n="homeDownloadOn">حمّله من</small>
+                                    <strong>App Store</strong>
+                                </span>
+                            </a>
+                        </div>
+                        <p class="home-app-note" data-i18n="homeAppNote">تنزيل مجاني. متاح على iOS و Android</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Join ===== -->
+        <section class="home-join" id="homeJoin">
+            <div class="width-container">
+                <div class="row g-4 g-lg-5 align-items-center">
+                    <div class="col-lg-5">
+                        <div class="home-section-label" data-i18n="contact">تواصل معنا</div>
+                        <h2 class="home-join-title" data-i18n="homeJoinTitle">انضم إلى عائلة الحوار</h2>
+                        <p class="home-join-text" data-i18n="homeJoinText">
+                            سواء كنت تفكر في الحصول على العضوية، أو تخطط لإقامة فعالية، أو تشعر ببساطة بالفضول لمعرفة
+                            المزيد عن الحياة في "الحوار"، فإن فريق خدمات الضيوف لدينا مستعد لمساعدتك.
+                        </p>
+                    </div>
+                    <div class="col-lg-7">
+                        <form class="home-join-form" action="#" method="post">
+                            <div class="mb-3">
+                                <label class="form-label" for="joinName" data-i18n="homeFullName">الاسم الكامل</label>
+                                <input type="text" class="form-control" id="joinName" name="fullName"
+                                    data-i18n-placeholder="homeNamePlaceholder" placeholder="أدخل اسمك الكامل" required
+                                    autocomplete="name">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="joinEmail" data-i18n="homeEmail">البريد
+                                    الإلكتروني</label>
+                                <input type="email" class="form-control" id="joinEmail" name="email"
+                                    data-i18n-placeholder="homeEmailPlaceholder" placeholder="your@email.com" required
+                                    autocomplete="email">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="joinPhone" data-i18n="homePhone">رقم الهاتف</label>
+                                <div class="home-phone-field">
+                                    <select class="form-select home-phone-code" name="countryCode"
+                                        aria-label="Country code">
+                                        <option value="+20" selected>+20</option>
+                                        <option value="+966">+966</option>
+                                        <option value="+971">+971</option>
+                                    </select>
+                                    <input type="tel" class="form-control" id="joinPhone" name="phone"
+                                        data-i18n-placeholder="homePhonePlaceholder" placeholder="رقم الهاتف" required
+                                        autocomplete="tel-national">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn home-join-submit" data-i18n="homeSend">إرسال</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- ===== Footer ===== -->
     <footer class="footer">
 
         <div class="width-container">
 
-            <!-- Logo sits on the divider line -->
             <div class="footer-logo-wrap">
-                <img src="images/logo.png"
-                     alt="Hawar Club"
-                     class="footer-logo">
+                <img src="images/ImageWithFallback.svg" alt="Hawar Club" class="footer-logo">
             </div>
 
-            <div class="footer-row">
+            <div class="footer-row pt-5">
 
                 <p class="copyright" data-i18n="copyright">
                     جميع الحقوق محفوظة - نادي حوار الرياضي 2024 ©
@@ -155,7 +409,6 @@
 
     </footer>
 
-
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/slick.min.js"></script>
 
@@ -164,4 +417,5 @@
     <script src="js/theme.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
