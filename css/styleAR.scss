@@ -1806,7 +1806,7 @@ button {
 
 .home-intro-title {
     margin: 0;
-    font-size: clamp(4rem, 3vw, 2.6rem);
+    font-size: clamp(2.6rem, 4vw, 4rem);
     font-weight: 600;
     line-height: 1.35;
     color: $navy;
@@ -1903,7 +1903,7 @@ button {
 
 .home-app-title {
     margin: 0 0 1rem;
-    font-size: clamp(4rem, 3.5vw, 3rem);
+    font-size: clamp(2.6rem, 3.5vw, 4rem);
     font-weight: 700;
     line-height: 1.25;
     color: $navy;
@@ -1996,7 +1996,7 @@ button {
 
 .home-join-title {
     margin: 0 0 1rem;
-    font-size: clamp(4rem, 2.8vw, 2.4rem);
+    font-size: clamp(2.4rem, 2.8vw, 4rem);
     font-weight: 600;
     color: $navy;
 }
