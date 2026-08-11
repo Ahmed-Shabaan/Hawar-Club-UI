@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Details</title>
+    <link rel="icon" href="images/ImageWithFallback.svg" type="image/svg+xml">
     <script src="js/lang-boot.js"></script>
 
     <link rel="stylesheet" href="css/slick-theme.css" />
@@ -29,7 +30,7 @@
             <div class="width-container">
 
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/Images/logo.svg" alt="Hawar Club" class="logo">
+                    <img src="images/ImageWithFallback.svg" alt="Hawar Club" class="logo">
                     <span class="brand-text">
                         <span class="brand-name">HAWAR</span>
                         <span class="brand-sub" data-i18n="brandSub">نادي الحوار للألعاب الرياضية</span>
@@ -137,7 +138,18 @@
                                         رقائق "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة
                                         أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus
                                         PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.
-                                        هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص. بينما تعمل جميع مولّدات نصوص لوريم إيبسوم على الإنترنت على إعادة تكرار مقاطع من نص لوريم إيبسوم نفسه عدة مرات بما تتطلبه الحاجة، يقوم مولّدنا هذا باستخدام كلمات من قاموس يحوي على أكثر من 200 كلمة لا تينية، مضاف إليها مجموعة من الجمل النموذجية، لتكوين نص لوريم إيبسوم ذو شكل منطقي قريب إلى النص الحقيقي. وبالتالي يكون النص الناتح خالي من التكرار، أو أي كلمات أو عبارات غير لائقة أو ما شابه. وهذا ما يجعله أول مولّد نص لوريم إيبسوم حقيقي على الإنترنت. هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
+                                        هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها
+                                        بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن
+                                        تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات
+                                        محرجة أو غير لائقة مخبأة في هذا النص. بينما تعمل جميع مولّدات نصوص لوريم إيبسوم
+                                        على الإنترنت على إعادة تكرار مقاطع من نص لوريم إيبسوم نفسه عدة مرات بما تتطلبه
+                                        الحاجة، يقوم مولّدنا هذا باستخدام كلمات من قاموس يحوي على أكثر من 200 كلمة لا
+                                        تينية، مضاف إليها مجموعة من الجمل النموذجية، لتكوين نص لوريم إيبسوم ذو شكل منطقي
+                                        قريب إلى النص الحقيقي. وبالتالي يكون النص الناتح خالي من التكرار، أو أي كلمات أو
+                                        عبارات غير لائقة أو ما شابه. وهذا ما يجعله أول مولّد نص لوريم إيبسوم حقيقي على
+                                        الإنترنت. هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي
+                                        القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي
+                                        يقرأها.
 
                                     </p>
                                     <p class="news-details_bio">
@@ -170,9 +182,15 @@
             <div class="image-gallery_slider" data-image-gallery-slider>
 
                 <div class="image-gallery_slider-stage">
-                    <img class="image-gallery_slider-main"
-                        src="images/news/newsDetails/mainImage.jpg"
-                        alt="معرض الصور">
+                    <button type="button" class="image-gallery_slider-main-arrow image-gallery_slider-main-arrow-prev"
+                        aria-label="السابق">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <img class="image-gallery_slider-main" src="images/news/newsDetails/mainImage.jpg" alt="معرض الصور">
+                    <button type="button" class="image-gallery_slider-main-arrow image-gallery_slider-main-arrow-next"
+                        aria-label="التالي">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
                 </div>
 
                 <div class="image-gallery_slider-nav">
@@ -232,10 +250,12 @@
                                 <h5 class="card-title">لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس
                                     المحتوى)</h5>
                                 <p class="card-date" data-date="2025-04-09">09 ابريل 2025</p>
-                                <p class="card-text mb-0">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر
+                                <p class="card-text mb-0">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس
+                                    عشر
                                     عجموعة ص. </p>
                                 <div class="card-actions d-grid gap-2 d-flex justify-content-end">
-                                    <a href="newsDetails.html" class="btn btn-orange text-decoration-underline">اقرأ المزيد</a>
+                                    <a href="newsDetails.html" class="btn btn-orange text-decoration-underline">اقرأ
+                                        المزيد</a>
                                 </div>
                             </div>
                         </div>
@@ -250,11 +270,13 @@
                                 <h5 class="card-title">لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس
                                     المحتوى)</h5>
                                 <p class="card-date" data-date="2025-04-09">09 ابريل 2025</p>
-                                <p class="card-text mb-0">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر
+                                <p class="card-text mb-0">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس
+                                    عشر
                                     عندما
                                     قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص. </p>
                                 <div class="card-actions d-grid gap-2 d-flex justify-content-end">
-                                    <a href="newsDetails.html" class="btn btn-orange text-decoration-underline">اقرأ المزيد</a>
+                                    <a href="newsDetails.html" class="btn btn-orange text-decoration-underline">اقرأ
+                                        المزيد</a>
                                 </div>
                             </div>
                         </div>
@@ -269,15 +291,17 @@
                                 <h5 class="card-title">لوريم إيبسوم هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس
                                     المحتوى)</h5>
                                 <p class="card-date" data-date="2025-04-09">09 ابريل 2025</p>
-                                <p class="card-text mb-0">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر
+                                <p class="card-text mb-0">كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس
+                                    عشر
                                     عندما
                                     قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص. </p>
                                 <div class="card-actions d-grid gap-2 d-flex justify-content-end">
-                                    <a href="newsDetails.html" class="btn btn-orange text-decoration-underline">اقرأ المزيد</a>
+                                    <a href="newsDetails.html" class="btn btn-orange text-decoration-underline">اقرأ
+                                        المزيد</a>
                                 </div>
                             </div>
                         </div>
-                    </div>                                
+                    </div>
                 </div>
             </div>
         </div>
@@ -290,7 +314,7 @@
 
             <!-- Logo sits on the divider line -->
             <div class="footer-logo-wrap">
-                <img src="images/logo.png" alt="Hawar Club" class="footer-logo">
+                <img src="images/ImageWithFallback.svg" alt="Hawar Club" class="footer-logo">
             </div>
 
             <div class="footer-row">
