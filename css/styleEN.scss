@@ -122,7 +122,19 @@ html[lang="en"] body,
 
     // EN pagination: arrows already swapped in JS — don't mirror again
     .pagination .page-link i {
-        transform: none;
+        transform: none; 
     }
 
+    .home-hero-overlay {
+        background: linear-gradient(
+            270deg,
+            rgba(5, 22, 43, 0.15) 0%,
+            rgba(5, 22, 43, 0.55) 45%,
+            rgba(5, 22, 43, 0.82) 100%
+        );
+    }
+
+    .home-phone-field .form-control {
+        text-align: left;
+    }
 }

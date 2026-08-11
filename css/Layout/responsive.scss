@@ -185,6 +185,48 @@
         font-size: 14px; // 1rem = 14px
     }
 
+    .page-home .navbar {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(29px);
+        -webkit-backdrop-filter: blur(29px);
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        border-bottom: 0;
+
+        .nav-link,
+        .brand-name,
+        .brand-sub,
+        .language,
+        .icon-btn {
+            color: var(--text-color);
+        }
+    }
+
+    [data-theme="dark"] .page-home .navbar {
+        background: rgba(4, 22, 45, 0.27);
+
+        .nav-link,
+        .brand-name,
+        .brand-sub,
+        .language,
+        .icon-btn {
+            color: #fff;
+        }
+    }
+
+    .home-hero,
+    .home-hero-slider,
+    .home-hero-slide,
+    .home-hero-content {
+        min-height: 70vh;
+    }
+
+    .home-intro,
+    .home-stories,
+    .home-app,
+    .home-join {
+        padding-block: 3rem;
+    }
+
     // ---- About President / News Details: full content, no scrollbar ----
     .about-president,
     .news-details {
@@ -222,6 +264,23 @@
 
         .image-gallery_slider-main {
             height: 16rem;
+        }
+
+        .image-gallery_slider-main-arrow {
+            width: 2.25rem;
+            height: 2.25rem;
+
+            i {
+                font-size: 1.15rem;
+            }
+        }
+
+        .image-gallery_slider-main-arrow-prev {
+            inset-inline-start: 0.5rem;
+        }
+
+        .image-gallery_slider-main-arrow-next {
+            inset-inline-end: 0.5rem;
         }
 
         .image-gallery_slider-thumb {
@@ -412,5 +471,29 @@
 
     .news-details .image-gallery_slider-thumb {
         flex: 0 0 calc((100% - 0.75rem) / 2); // 2 thumbs visible
+    }
+
+    .home-intro,
+    .home-stories,
+    .home-app,
+    .home-join {
+        padding-block: 2.75rem;
+    }
+
+    .home-hero-panel {
+        max-width: 100%;
+    }
+
+    .home-stories-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .home-story-img {
+        height: 12rem;
+    }
+
+    .home-phone-img {
+        width: min(100%, 16rem);
     }
 }

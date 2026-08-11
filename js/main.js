@@ -189,10 +189,51 @@ jQuery(function () {
     var dir = document.documentElement.getAttribute("dir") || "ltr";
     initMultiSlider(dir);
     initNewsSlider(dir);
+    initHomeHeroSlider(dir);
     initImageGalleries();
     initActivitySelects();
     initImageGallerySliders();
+    syncHomeLinkArrows();
 });
+
+// Home page hero slider
+function initHomeHeroSlider(dir) {
+    if (typeof jQuery === "undefined" || typeof jQuery.fn.slick === "undefined") {
+        return;
+    }
+
+    var $slider = jQuery(".home-hero-slider");
+    if ($slider.length === 0) return;
+
+    if ($slider.hasClass("slick-initialized")) {
+        $slider.slick("unslick");
+    }
+
+    $slider.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        rtl: dir === "rtl",
+        autoplay: true,
+        autoplaySpeed: 4500,
+        dots: true,
+        arrows: false,
+        infinite: true,
+        fade: true,
+        cssEase: "linear",
+        speed: 600,
+        pauseOnHover: true
+    });
+}
+
+function syncHomeLinkArrows() {
+    var rtl = isPageRtl();
+    var cls = rtl ? "bi bi-arrow-left" : "bi bi-arrow-right";
+    document.querySelectorAll(".home-text-link i").forEach(function (icon) {
+        icon.className = cls;
+    });
+}
+
+window.syncHomeLinkArrows = syncHomeLinkArrows;
 
 // News details: main image + thumbnail strip
 function initImageGallerySliders() {
@@ -217,10 +258,16 @@ function syncImageGallerySliderDirection() {
     document.querySelectorAll("[data-image-gallery-slider]").forEach(function (root) {
         var prevBtn = root.querySelector(".image-gallery_slider-arrow-prev");
         var nextBtn = root.querySelector(".image-gallery_slider-arrow-next");
+        var mainPrev = root.querySelector(".image-gallery_slider-main-arrow-prev");
+        var mainNext = root.querySelector(".image-gallery_slider-main-arrow-next");
         setChevronIcon(prevBtn, true);
         setChevronIcon(nextBtn, false);
+        setChevronIcon(mainPrev, true);
+        setChevronIcon(mainNext, false);
         if (prevBtn) prevBtn.setAttribute("aria-label", labels.prev);
         if (nextBtn) nextBtn.setAttribute("aria-label", labels.next);
+        if (mainPrev) mainPrev.setAttribute("aria-label", labels.prev);
+        if (mainNext) mainNext.setAttribute("aria-label", labels.next);
         if (typeof root._sliderUpdate === "function") {
             root._sliderUpdate();
         }
@@ -237,6 +284,8 @@ function setupImageGallerySlider(root) {
     );
     var prevBtn = root.querySelector(".image-gallery_slider-arrow-prev");
     var nextBtn = root.querySelector(".image-gallery_slider-arrow-next");
+    var mainPrev = root.querySelector(".image-gallery_slider-main-arrow-prev");
+    var mainNext = root.querySelector(".image-gallery_slider-main-arrow-next");
     if (!mainImg || !track || !thumbs.length) return;
 
     var index = Math.max(
@@ -252,12 +301,28 @@ function setupImageGallerySlider(root) {
         return Math.max(0, thumbs.length - visible);
     }
 
+    function updateMainArrows() {
+        var hasMany = thumbs.length > 1;
+        if (mainPrev) {
+            mainPrev.hidden = !hasMany;
+            var mutePrev = index <= 0;
+            mainPrev.classList.toggle("is-muted", mutePrev);
+            mainPrev.disabled = mutePrev;
+        }
+        if (mainNext) {
+            mainNext.hidden = !hasMany;
+            var muteNext = index >= thumbs.length - 1;
+            mainNext.classList.toggle("is-muted", muteNext);
+            mainNext.disabled = muteNext;
+        }
+    }
+
     function update() {
         var visible = getSliderThumbVisibleCount();
         var max = maxOffset();
         if (offset > max) offset = max;
 
-        // Hide arrows when fewer than 5 thumbs (no strip overflow on desktop layout)
+        // Hide thumb-strip arrows when fewer than 5 thumbs
         var showArrows = thumbs.length >= 5;
         var needsScroll = thumbs.length > visible;
 
@@ -279,6 +344,8 @@ function setupImageGallerySlider(root) {
                 nextBtn.disabled = muteNext;
             }
         }
+
+        updateMainArrows();
 
         // Move by one thumb width + gap, using measured first thumb
         if (track.classList.contains("is-centered")) {
@@ -335,6 +402,18 @@ function setupImageGallerySlider(root) {
             if (offset >= maxOffset()) return;
             offset += 1;
             update();
+        });
+    }
+
+    if (mainPrev) {
+        mainPrev.addEventListener("click", function () {
+            selectThumb(index - 1);
+        });
+    }
+
+    if (mainNext) {
+        mainNext.addEventListener("click", function () {
+            selectThumb(index + 1);
         });
     }
 
