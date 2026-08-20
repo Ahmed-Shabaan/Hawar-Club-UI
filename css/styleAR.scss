@@ -2227,3 +2227,1708 @@ button {
         }
     }
 }
+
+
+/*==============================================================================
+    Renew Membership — تجديد العضوية (Light Mode)
+==============================================================================*/
+
+.renew_membership {
+    flex: 1 0 auto;
+
+    .renew-flow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 980px;
+        margin-inline: auto;
+        padding-block: 0.75rem 1rem;
+    }
+
+    .progress-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1.75rem;
+    }
+
+    .progress-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.45rem;
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: 110px;
+    }
+
+    .progress-step {
+        @include circle(32px);
+        min-width: 32px;
+        border: 1.5px solid #C5CDD8;
+        background: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+        flex-shrink: 0;
+
+        span,
+        .progress-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1;
+            color: #1A1A1A;
+        }
+
+        .progress-check {
+            display: none;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1;
+            color: $white;
+        }
+
+        &.current {
+            background: $white;
+            border-color: $primary;
+
+            .progress-number {
+                color: $primary;
+                display: inline;
+            }
+
+            .progress-check {
+                display: none;
+            }
+        }
+
+        &.completed {
+            background: $navy;
+            border-color: $navy;
+
+            .progress-number {
+                display: none;
+            }
+
+            .progress-check {
+                display: inline-flex;
+            }
+        }
+    }
+
+    .progress-label {
+        font-size: 0.78rem;
+        font-weight: 500;
+        line-height: 1.35;
+        text-align: center;
+        color: #1A1A1A;
+        white-space: nowrap;
+    }
+
+    .progress-item.current .progress-label {
+        color: $primary;
+        font-weight: 700;
+    }
+
+    .progress-item.completed .progress-label {
+        color: #1A1A1A;
+        font-weight: 500;
+    }
+
+    .progress-line {
+        flex: 1 1 auto;
+        height: 2px;
+        min-width: 12px;
+        max-width: 72px;
+        margin-top: 15px;
+        background: #C5CDD8;
+
+        &.active {
+            background: $navy;
+        }
+    }
+
+    .renew-panel {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+
+        &.is-active {
+            display: flex;
+        }
+    }
+
+    .renew-title {
+        margin: 0 0 1rem;
+        font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+        font-weight: 700;
+        line-height: 1.6;
+        color: var(--heading);
+        display: flex;
+        align-self: flex-start;
+    }
+
+    .renew-card {
+        position: relative;
+        width: 100%;
+        padding: 1.6rem 1.75rem 1.5rem;
+        background: $white;
+        border: 1.5px solid $primary;
+        border-radius: $radius-md;
+        box-shadow: $shadow-sm;
+        overflow: visible;
+    }
+
+    .renew-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-bottom: 1.35rem;
+    }
+
+    .renew-instructions {
+        flex: 1 1 auto;
+        min-width: 0;
+        text-align: start;
+
+        ul {
+            margin: 0;
+            padding-inline-start: 1.15rem;
+            list-style: disc;
+        }
+
+        li {
+            margin-bottom: 0.45rem;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--heading);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--heading);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            word-break: break-word;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+
+    .renew-card-image {
+        position: relative;
+        flex: 0 0 auto;
+        width: min(46%, 280px);
+        z-index: 1;
+    }
+
+    .id-card-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+    }
+
+    .renew-number-highlight {
+        position: absolute;
+        left: 28%;
+        top: 62%;
+        width: 28%;
+        height: 16%;
+        background: transparent;
+        border-radius: 2px;
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0;
+    }
+
+    .renew-arrow {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 4;
+        overflow: visible;
+    }
+
+    .dotted-arrow {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+
+        path {
+            fill: none;
+            stroke: #E8A23A;
+            stroke-width: 1.7;
+            stroke-dasharray: 3.5 4.5;
+            stroke-linecap: round;
+        }
+
+        .arrow-head {
+            stroke-dasharray: none;
+            stroke-linejoin: round;
+            stroke-width: 1.7;
+        }
+    }
+
+    .renew-error-banner {
+        display: none;
+        align-items: center;
+        gap: 0.55rem;
+        width: 100%;
+        margin-bottom: 1.15rem;
+        padding: 0.7rem 1rem;
+        background: #FEE2E2;
+        border-radius: 8px;
+        color: #B91C1C;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: start;
+
+        i {
+            font-size: 1.1rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        &[hidden] {
+            display: none !important;
+        }
+
+        &:not([hidden]) {
+            display: flex;
+        }
+    }
+
+    .renew-form {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .renew-form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        label {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--heading);
+            text-align: start;
+        }
+
+        input {
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 48px;
+            padding: 0 1rem;
+            border: 1px solid #D5DCE5;
+            border-radius: 8px;
+            outline: none;
+            background: $white;
+            color: var(--heading);
+            font-family: inherit;
+            font-size: 1rem;
+            text-align: start;
+            @include transition(border-color background-color box-shadow, 0.2s);
+
+            &::placeholder {
+                color: #9AA3B0;
+                opacity: 1;
+            }
+
+            &:focus {
+                border-color: $primary;
+                box-shadow: 0 0 0 0.15rem rgba($primary, 0.18);
+            }
+        }
+    }
+
+    .renew-form-row {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .renew-submit {
+        flex: 0 0 auto;
+        min-width: 132px;
+        height: 48px;
+        padding: 0 1.35rem;
+        border: 0;
+        border-radius: 8px;
+        background: $navy;
+        color: $white;
+        font-family: inherit;
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        @include transition(background-color transform, 0.2s);
+
+        &:hover {
+            background: $navy-deep;
+        }
+
+        &:active {
+            transform: translateY(1px);
+        }
+    }
+
+    .renew-member-card,
+    .renew-fees-card {
+        width: 100%;
+        background: $white;
+        border: 1.5px solid $primary;
+        border-radius: $radius-md;
+        overflow: hidden;
+    }
+
+    .renew-member-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+        padding: 1.15rem 1.35rem;
+    }
+
+    .renew-member-info {
+        min-width: 0;
+        text-align: start;
+
+        p {
+            margin: 0 0 0.4rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--heading);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .renew-member-status {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.4rem;
+    }
+
+    .renew-status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        white-space: nowrap;
+
+        i {
+            font-size: 1.05rem;
+        }
+
+        &.is-expired {
+            background: #FDECEC;
+            color: #D32F2F;
+        }
+    }
+
+    .renew-status-date {
+        margin: 0;
+        font-size: 0.82rem;
+        color: #6B7280;
+        white-space: nowrap;
+    }
+
+    .renew-fees-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.85rem 1.35rem;
+        font-size: 0.95rem;
+        color: var(--heading);
+        border-bottom: 1px solid #E8ECF0;
+
+        &:last-of-type {
+            border-bottom: 0;
+        }
+    }
+
+    .renew-fees-total {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.95rem 1.35rem;
+        background: #F6E7C8;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--heading);
+
+        strong {
+            color: $primary;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+    }
+
+    .renew-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        width: 100%;
+        margin-top: 0.35rem;
+    }
+
+    .renew-btn-back,
+    .renew-btn-next {
+        height: 50px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        @include transition(background-color border-color transform, 0.2s);
+
+        &:active {
+            transform: translateY(1px);
+        }
+    }
+
+    .renew-btn-back {
+        flex: 0 0 160px;
+        background: $white;
+        border: 1.5px solid $navy;
+        color: $navy;
+
+        &:hover {
+            background: #F6F9FC;
+        }
+    }
+
+    .renew-btn-next {
+        flex: 1 1 auto;
+        background: $navy;
+        border: 0;
+        color: $white;
+
+        &:hover {
+            background: $navy-deep;
+        }
+    }
+
+    .renew-otp-card {
+        width: 100%;
+        padding: 1.35rem 1.5rem 1.15rem;
+        background: $white;
+        border: 1.5px solid $primary;
+        border-radius: $radius-md;
+        box-shadow: $shadow-sm;
+    }
+
+    .renew-otp-title {
+        margin: 0 0 1.15rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--heading);
+        text-align: start;
+    }
+
+    .renew-otp-methods {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+    }
+
+    .renew-otp-method {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        min-height: 92px;
+        padding: 0.85rem 1rem;
+        border: 1.5px solid #E5E7EB;
+        border-radius: 10px;
+        background: #F3F4F6;
+        cursor: pointer;
+        @include transition(border-color background-color box-shadow, 0.2s);
+
+        input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        &.is-selected {
+            background: #E8F5E9;
+            border-color: #66BB6A;
+            box-shadow: inset 0 0 0 1px rgba(#66BB6A, 0.15);
+        }
+    }
+
+    .renew-otp-radio {
+        @include circle(18px);
+        min-width: 18px;
+        border: 1.5px solid #D1D5DB;
+        background: $white;
+        flex-shrink: 0;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: transparent;
+            @include transition(background-color, 0.2s);
+        }
+    }
+
+    .renew-otp-method.is-selected .renew-otp-radio {
+        border-color: $primary;
+
+        &::after {
+            background: $primary;
+        }
+    }
+
+    .renew-otp-method-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+        min-width: 0;
+    }
+
+    .renew-otp-method-head {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: var(--heading);
+
+        .bi-whatsapp {
+            color: #25D366;
+            font-size: 1.15rem;
+        }
+
+        .bi-envelope {
+            color: #6B7280;
+            font-size: 1.05rem;
+        }
+    }
+
+    .renew-otp-method-value {
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: #4B5563;
+        word-break: break-all;
+    }
+
+    .renew-otp-limit {
+        margin: 1rem 0 0;
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: #6B7280;
+        text-align: start;
+    }
+
+    .renew-verify-banner {
+        width: 100%;
+        padding: 0.85rem 1.15rem;
+        border-radius: 8px;
+        background: #E8F5E9;
+        color: #2E7D32;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-align: start;
+        line-height: 1.6;
+
+        strong {
+            font-weight: 700;
+            margin-inline-start: 0.25rem;
+        }
+    }
+
+    .renew-verify-card {
+        width: 100%;
+        padding: 1.35rem 1.5rem 1.15rem;
+        background: $white;
+        border: 1.5px solid $primary;
+        border-radius: $radius-md;
+        box-shadow: $shadow-sm;
+    }
+
+    .renew-verify-instruction {
+        margin: 0 0 1.15rem;
+        font-size: 0.98rem;
+        font-weight: 700;
+        line-height: 1.75;
+        color: var(--heading);
+        text-align: start;
+
+        strong {
+            font-weight: 800;
+        }
+    }
+
+    .renew-verify-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        margin-bottom: 1rem;
+    }
+
+    .renew-verify-label {
+        margin: 0;
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: #6B7280;
+        text-align: start;
+    }
+
+    .renew-otp-digits-wrap {
+        padding: 0.85rem 1rem;
+        border: 1px solid #D5DCE5;
+        border-radius: 8px;
+        background: $white;
+    }
+
+    .renew-otp-digits {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        direction: ltr;
+    }
+
+    .renew-otp-digit {
+        flex: 1 1 0;
+        min-width: 0;
+        height: 42px;
+        padding: 0;
+        border: 0;
+        border-bottom: 2px solid #C5CDD8;
+        border-radius: 0;
+        background: transparent;
+        color: var(--heading);
+        font-family: inherit;
+        font-size: 1.35rem;
+        font-weight: 600;
+        text-align: center;
+        outline: none;
+        @include transition(border-color, 0.2s);
+
+        &:focus {
+            border-bottom-color: $primary;
+        }
+
+        &::placeholder {
+            color: #C5CDD8;
+        }
+    }
+
+    .renew-verify-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .renew-resend-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: $primary;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+
+        i {
+            font-size: 1.05rem;
+        }
+
+        &:hover {
+            color: $primary-dark;
+        }
+    }
+
+    .renew-verify-footer .renew-otp-limit {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #6B7280;
+    }
+
+    .renew-payment-member-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+        width: 100%;
+        padding: 1.15rem 1.35rem;
+        background: $white;
+        border: 1.5px solid $primary;
+        border-radius: $radius-md;
+    }
+
+    .renew-payment-total-preview {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.2rem;
+        text-align: end;
+
+        span {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--heading);
+        }
+
+        strong {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: $primary;
+            line-height: 1.2;
+        }
+    }
+
+    .renew-payment-card {
+        width: 100%;
+        padding: 0;
+        background: $white;
+        border: 1.5px solid $primary;
+        border-radius: $radius-md;
+        box-shadow: $shadow-sm;
+        overflow: hidden;
+    }
+
+    .renew-payment-methods {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .renew-payment-method {
+        border-bottom: 1px solid #E8ECF0;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &.is-selected .renew-payment-method-head {
+            background: rgba($primary, 0.08);
+        }
+
+        &.is-selected .renew-otp-radio {
+            border-color: $primary;
+
+            &::after {
+                background: $primary;
+            }
+        }
+    }
+
+    .renew-payment-method-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        width: 100%;
+        margin: 0;
+        padding: 1rem 1.25rem;
+        cursor: pointer;
+
+        input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    .renew-payment-method-content {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        min-width: 0;
+    }
+
+    .renew-payment-method-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        text-align: start;
+
+        strong {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--heading);
+            line-height: 1.5;
+        }
+
+        span {
+            font-size: 0.88rem;
+            color: #6B7280;
+            line-height: 1.45;
+        }
+    }
+
+    .renew-payment-fee {
+        flex: 0 0 auto;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #6B7280;
+        white-space: nowrap;
+        text-align: end;
+    }
+
+    .renew-payment-details {
+        padding: 0 1.25rem 1.15rem 3.15rem;
+        border-top: 1px solid #EEF2F6;
+        background: rgba($primary, 0.04);
+    }
+
+    .renew-fawry-note {
+        margin: 0.85rem 0 0.15rem;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: var(--heading);
+        text-align: start;
+    }
+
+    .renew-card-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        margin-top: 0.85rem;
+
+        label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #6B7280;
+            text-align: start;
+        }
+
+        input {
+            width: 100%;
+            height: 44px;
+            padding: 0 0.85rem;
+            border: 1px solid #D5DCE5;
+            border-radius: 8px;
+            background: $white;
+            color: var(--heading);
+            font-family: inherit;
+            font-size: 0.95rem;
+            text-align: start;
+
+            &:focus {
+                outline: none;
+                border-color: $primary;
+                box-shadow: 0 0 0 0.12rem rgba($primary, 0.18);
+            }
+        }
+    }
+
+    .renew-card-number-wrap {
+        position: relative;
+
+        input {
+            unicode-bidi: plaintext;
+            letter-spacing: 0.04em;
+            padding-inline-start: 0.85rem;
+            // padding-inline-end: 5.5rem;
+        }
+    }
+
+    .renew-card-brands {
+        position: absolute;
+        inset-inline-end: 0.75rem;
+        inset-inline-start: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        pointer-events: none;
+    }
+
+    .renew-card-brand {
+        display: block;
+        width: auto;
+        max-height: 18px;
+        object-fit: contain;
+    }
+
+    .renew-card-brand-visa {
+        max-height: 14px;
+    }
+
+    .renew-card-brand-mastercard {
+        max-height: 18px;
+    }
+
+    [dir="rtl"] & .renew-card-number-wrap input {
+        direction: ltr;
+        text-align: right;
+    }
+
+    .renew-card-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .renew-payment-breakdown {
+        padding: 1rem 1.25rem 1.1rem;
+        border-top: 1px solid #E8ECF0;
+        background: #FAFBFC;
+
+        h4 {
+            margin: 0 0 0.75rem;
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--heading);
+            text-align: start;
+        }
+    }
+
+    .renew-payment-breakdown-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.45rem;
+        font-size: 0.92rem;
+        color: var(--heading);
+
+        &.is-total {
+            margin-top: 0.55rem;
+            margin-bottom: 0;
+            padding-top: 0.55rem;
+            border-top: 1px solid #E8ECF0;
+            font-size: 1rem;
+            font-weight: 700;
+
+            strong {
+                color: $primary;
+                font-size: 1.15rem;
+                font-weight: 800;
+            }
+        }
+    }
+
+    .renew-confirm-card {
+        width: 100%;
+        padding: 2rem 1.5rem 1.5rem;
+        background: $white;
+        border: 1.5px solid $primary;
+        border-radius: $radius-md;
+        box-shadow: $shadow-sm;
+        text-align: center;
+    }
+
+    .renew-confirm-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        // width: 72px;
+        // height: 72px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        font-size: 2rem;
+
+        &.is-success {
+            background: transparent;
+            color: #34A853;
+
+            svg {
+                display: block;
+                width: 88px;
+                height: 88px;
+            }
+        }
+
+        &.is-pending {
+            background: transparent;
+            color: $primary;
+
+            svg {
+                display: block;
+                width: 88px;
+                height: 88px;
+            }
+
+            i {
+                font-size: 3.5rem;
+                color: $primary;
+            }
+        }
+    }
+
+    .renew-confirm-title {
+        margin: 0 0 0.65rem;
+        font-size: 1.15rem;
+        font-weight: 800;
+        line-height: 1.6;
+        color: $navy;
+    }
+
+    .renew-confirm-order {
+        margin: 0;
+        font-size: 0.92rem;
+        color: #6B7280;
+
+        strong {
+            display: inline-block;
+            margin-inline-start: 0.35rem;
+            font-weight: 700;
+            color: var(--heading);
+            direction: ltr;
+        }
+    }
+
+    .renew-confirm-alert {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0.45rem;
+        margin: 1rem 0 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--heading);
+        text-align: start;
+
+        i {
+            flex: 0 0 auto;
+            margin-top: 0.15rem;
+            color: $primary;
+            font-size: 1rem;
+        }
+    }
+
+    .renew-fawry-code-box {
+        margin-top: 1rem;
+        padding: 0.85rem 1rem;
+        background: #F3F5F7;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .renew-fawry-code-label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.82rem;
+        color: #6B7280;
+    }
+
+    .renew-fawry-code-value {
+        display: block;
+        font-size: 1.65rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: $navy;
+    }
+
+    .renew-confirm-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .renew-confirm-actions-row {
+        display: flex;
+        align-items: stretch;
+        gap: 0.75rem;
+        width: 100%;
+
+        .renew-confirm-membership-btn,
+        .renew-btn-renew {
+            flex: 1 1 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            padding: 0 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            text-decoration: none;
+            border: 0;
+            border-radius: 8px;
+            background: rgba(13, 31, 55, 1);
+            color: $white;
+            cursor: pointer;
+            white-space: nowrap;
+            @include transition(background-color, 0.2s);
+
+            &:hover {
+                background: rgba(10, 24, 42, 1);
+                color: $white;
+            }
+        }
+    }
+
+    .renew-btn-outline,
+    .renew-btn-home,
+    .renew-btn-compact {
+        height: 50px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        @include transition(background-color border-color transform, 0.2s);
+
+        &:active {
+            transform: translateY(1px);
+        }
+    }
+
+    .renew-btn-outline {
+        flex: 1 1 0;
+        background: $white;
+        border: 1.5px solid $primary;
+        color: $primary;
+
+        &:hover {
+            background: rgba($primary, 0.06);
+        }
+    }
+
+    .renew-btn-compact {
+        flex: 1 1 0;
+    }
+
+    .renew-btn-home {
+        width: 100%;
+        background: $primary;
+        border: 0;
+        color: $white;
+
+        &:hover {
+            background: darken($primary, 6%);
+        }
+    }
+
+    @include respond-down(lg) {
+        .progress-label {
+            font-size: 0.68rem;
+            white-space: normal;
+        }
+
+        .progress-item {
+            max-width: 90px;
+        }
+    }
+
+    @include respond-down(md) {
+        .renew-card {
+            padding: 1.25rem 1.15rem 1.15rem;
+        }
+
+        .renew-card-top {
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .renew-card-image {
+            width: min(80%, 280px);
+        }
+
+        .renew-arrow,
+        .renew-number-highlight {
+            display: none;
+        }
+
+        .renew-instructions {
+            width: 100%;
+
+            li {
+                font-size: 0.9rem;
+            }
+        }
+
+        .renew-form-row {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .renew-submit {
+            width: 100%;
+        }
+
+        .progress-step {
+            @include circle(26px);
+            min-width: 26px;
+
+            .progress-number {
+                font-size: 0.72rem;
+            }
+        }
+
+        .progress-line {
+            margin-top: 12px;
+            max-width: 28px;
+        }
+
+        .progress-label {
+            font-size: 0.62rem;
+        }
+
+        .renew-member-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .renew-member-status {
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .renew-nav {
+            flex-direction: column-reverse;
+        }
+
+        .renew-btn-back,
+        .renew-btn-next {
+            width: 100%;
+            flex: none;
+        }
+
+        .renew-otp-methods {
+            grid-template-columns: 1fr;
+        }
+
+        .renew-payment-member-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .renew-payment-total-preview {
+            align-items: flex-start;
+            text-align: start;
+        }
+
+        .renew-payment-method-content {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .renew-payment-details {
+            padding-inline-start: 1.25rem;
+        }
+
+        .renew-confirm-actions-row {
+            flex-direction: column;
+        }
+
+        .renew-card-row {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+[data-theme="dark"] .renew_membership {
+    .renew-title {
+        color: var(--heading);
+    }
+
+    .renew-card,
+    .renew-member-card,
+    .renew-fees-card,
+    .renew-otp-card {
+        background: var(--surface);
+        border-color: $primary;
+        box-shadow: none;
+    }
+
+    .renew-instructions li,
+    .renew-instructions a,
+    .renew-form-group label,
+    .renew-otp-title,
+    .renew-otp-limit,
+    .progress-label {
+        color: var(--heading);
+    }
+
+    .renew-instructions a:hover {
+        color: $primary;
+    }
+
+    .renew-form-group input {
+        background: rgba($white, 0.06);
+        border-color: var(--border);
+        color: var(--heading);
+
+        &::placeholder {
+            color: rgba($white, 0.45);
+        }
+
+        &:focus {
+            background: rgba($white, 0.1);
+            border-color: $primary;
+            box-shadow: 0 0 0 0.15rem rgba($primary, 0.25);
+        }
+    }
+
+    .renew-error-banner {
+        background: linear-gradient(to right, rgba(139, 18, 18, 0.55) 0%, rgba(80, 16, 24, 0.28) 42%, rgba(13, 31, 55, 0) 100%);
+        border: 0;
+        color: #E11D1D;
+        font-weight: 700;
+
+        i {
+            color: #B91C1C;
+        }
+    }
+
+    .progress-step {
+        background: var(--surface);
+        border-color: rgba($white, 0.25);
+
+        .progress-number {
+            color: rgba($white, 0.85);
+        }
+
+        &.current {
+            background: var(--surface);
+            border-color: $primary;
+
+            .progress-number {
+                color: $primary;
+            }
+        }
+
+        &.completed {
+            background: $primary;
+            border-color: $primary;
+
+            .progress-check {
+                color: $white;
+            }
+        }
+    }
+
+    .progress-item.current .progress-label {
+        color: var(--heading);
+        font-weight: 700;
+    }
+
+    .progress-item.completed .progress-label {
+        color: rgba($white, 0.85);
+    }
+
+    .progress-item:not(.current):not(.completed) .progress-label {
+        color: rgba($white, 0.65);
+    }
+
+    .progress-line {
+        background: rgba($white, 0.2);
+
+        &.active {
+            background: $primary;
+        }
+    }
+
+    .renew-submit,
+    .renew-btn-next {
+        background: $primary;
+        color: $white;
+
+        &:hover {
+            background: $primary-dark;
+        }
+    }
+
+    .renew-btn-back {
+        background: transparent;
+        border-color: rgba($white, 0.45);
+        color: var(--heading);
+
+        &:hover {
+            background: rgba($white, 0.06);
+        }
+    }
+
+    .renew-member-info p {
+        color: var(--heading);
+    }
+
+    .renew-status-badge.is-expired {
+        background: rgba(#D32F2F, 0.18);
+        color: #F87171;
+    }
+
+    .renew-status-date {
+        color: var(--text);
+    }
+
+    .renew-fees-row {
+        color: var(--heading);
+        border-color: var(--border);
+        background: rgba($white, 0.03);
+
+        &:nth-child(even) {
+            background: rgba($white, 0.06);
+        }
+    }
+
+    .renew-fees-total {
+        background: rgba($primary, 0.22);
+        color: var(--heading);
+
+        strong {
+            color: $primary-light;
+        }
+    }
+
+    .renew-otp-method {
+        background: rgba($white, 0.04);
+        border-color: var(--border);
+
+        &.is-selected {
+            background: rgba(10, 167, 69, 0.1);
+            border-color: rgba(10, 167, 69, 1);
+            box-shadow: inset 0 0 0 1px rgba(10, 167, 69, 0.25);
+        }
+    }
+
+    .renew-otp-radio {
+        background: var(--surface);
+        border-color: rgba($white, 0.35);
+    }
+
+    .renew-otp-method.is-selected .renew-otp-radio {
+        border-color: $primary;
+
+        &::after {
+            background: $primary;
+        }
+    }
+
+    .renew-otp-method-head {
+        color: var(--heading);
+
+        .bi-envelope {
+            color: rgba($white, 0.75);
+        }
+    }
+
+    .renew-otp-method-value {
+        color: var(--text);
+    }
+
+    .dotted-arrow path {
+        stroke: $primary-light;
+    }
+
+    .renew-verify-banner {
+        background: #0D2B30;
+        color: #4ADE80;
+    }
+
+    .renew-verify-card {
+        background: var(--surface);
+        border-color: $primary;
+    }
+
+    .renew-verify-instruction,
+    .renew-verify-label {
+        color: var(--heading);
+    }
+
+    .renew-otp-digits-wrap {
+        background: rgba($white, 0.04);
+        border-color: var(--border);
+    }
+
+    .renew-otp-digit {
+        color: var(--heading);
+        border-bottom-color: rgba($white, 0.35);
+
+        &::placeholder {
+            color: rgba($white, 0.35);
+        }
+
+        &:focus {
+            border-bottom-color: $primary;
+        }
+    }
+
+    .renew-verify-footer .renew-otp-limit {
+        color: var(--text);
+    }
+
+    .renew-resend-btn {
+        color: $primary-light;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    .renew-btn-back {
+        border-color: $primary;
+        color: $primary;
+
+        &:hover {
+            background: rgba($primary, 0.12);
+        }
+    }
+
+    .renew-payment-member-card,
+    .renew-payment-card {
+        background: var(--surface);
+        border-color: $primary;
+    }
+
+    .renew-payment-method {
+        border-color: var(--border);
+
+        &.is-selected .renew-payment-method-head {
+            background: rgba($primary, 0.14);
+        }
+    }
+
+    .renew-payment-method-info strong,
+    .renew-fawry-note,
+    .renew-payment-breakdown h4,
+    .renew-payment-breakdown-row {
+        color: var(--heading);
+    }
+
+    .renew-payment-method-info span,
+    .renew-payment-fee,
+    .renew-card-field label {
+        color: var(--text);
+    }
+
+    .renew-payment-details {
+        background: rgba($white, 0.03);
+        border-color: var(--border);
+    }
+
+    .renew-card-field input {
+        background: rgba($white, 0.06);
+        border-color: var(--border);
+        color: var(--heading);
+    }
+
+    .renew-payment-breakdown {
+        background: rgba($white, 0.04);
+        border-color: var(--border);
+    }
+
+    .renew-payment-breakdown-row.is-total {
+        border-color: var(--border);
+
+        strong {
+            color: $primary-light;
+        }
+    }
+
+        .renew-payment-total-preview strong {
+        color: $primary-light;
+    }
+
+    .renew-confirm-card {
+        background: var(--card-bg);
+        border-color: $primary;
+    }
+
+    .renew-confirm-title {
+        color: #FFFFFF;
+    }
+
+    .renew-confirm-order {
+        color: rgba(255, 255, 255, 0.55);
+
+        strong {
+            color: rgba(255, 255, 255, 0.55);
+        }
+    }
+
+    .renew-confirm-alert {
+        color: rgb(218, 137, 0);
+
+        i {
+            color: rgb(218, 137, 0);
+        }
+    }
+
+    .renew-fawry-code-box {
+        background: rgba($white, 0.08);
+        border: 1px solid rgba(218, 137, 0, 0.45);
+    }
+
+    .renew-fawry-code-label {
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .renew-fawry-code-value {
+        color: #ffffff;
+    }
+
+    .renew-btn-outline {
+        background: transparent;
+        border-color: $primary;
+        color: rgb(218, 137, 0);
+
+        &:hover {
+            background: rgba($primary, 0.12);
+            color: $primary-light;
+        }
+    }
+
+    .renew-btn-home {
+        background: rgb(218, 137, 0);
+
+        &:hover {
+            background: $primary-light;
+        }
+    }
+
+    .renew-confirm-actions-row .renew-btn-renew,
+    .renew-confirm-actions-row .renew-confirm-membership-btn {
+        background: transparent;
+        border: 1.5px solid rgb(218, 137, 0);
+        color: rgb(218, 137, 0);
+
+        &:hover {
+            background: rgba(218, 137, 0, 0.12);
+            color: $primary-light;
+            border-color: $primary-light;
+        }
+    }
+}

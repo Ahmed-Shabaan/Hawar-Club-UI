@@ -2666,6 +2666,1447 @@ button {
   background: #C97400;
 }
 
+/*==============================================================================
+    Renew Membership — تجديد العضوية (Light Mode)
+==============================================================================*/
+.renew_membership {
+  flex: 1 0 auto;
+}
+.renew_membership .renew-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 980px;
+  margin-inline: auto;
+  padding-block: 0.75rem 1rem;
+}
+.renew_membership .progress-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.75rem;
+}
+.renew_membership .progress-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 110px;
+}
+.renew_membership .progress-step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  min-width: 32px;
+  border: 1.5px solid #C5CDD8;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.renew_membership .progress-step span,
+.renew_membership .progress-step .progress-number {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #1A1A1A;
+}
+.renew_membership .progress-step .progress-check {
+  display: none;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+}
+.renew_membership .progress-step.current {
+  background: #ffffff;
+  border-color: rgb(218, 137, 0);
+}
+.renew_membership .progress-step.current .progress-number {
+  color: rgb(218, 137, 0);
+  display: inline;
+}
+.renew_membership .progress-step.current .progress-check {
+  display: none;
+}
+.renew_membership .progress-step.completed {
+  background: #0A1A2F;
+  border-color: #0A1A2F;
+}
+.renew_membership .progress-step.completed .progress-number {
+  display: none;
+}
+.renew_membership .progress-step.completed .progress-check {
+  display: inline-flex;
+}
+.renew_membership .progress-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+  color: #1A1A1A;
+  white-space: nowrap;
+}
+.renew_membership .progress-item.current .progress-label {
+  color: rgb(218, 137, 0);
+  font-weight: 700;
+}
+.renew_membership .progress-item.completed .progress-label {
+  color: #1A1A1A;
+  font-weight: 500;
+}
+.renew_membership .progress-line {
+  flex: 1 1 auto;
+  height: 2px;
+  min-width: 12px;
+  max-width: 72px;
+  margin-top: 15px;
+  background: #C5CDD8;
+}
+.renew_membership .progress-line.active {
+  background: #0A1A2F;
+}
+.renew_membership .renew-panel {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 1rem;
+}
+.renew_membership .renew-panel.is-active {
+  display: flex;
+}
+.renew_membership .renew-title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--heading);
+  display: flex;
+  align-self: flex-start;
+}
+.renew_membership .renew-card {
+  position: relative;
+  width: 100%;
+  padding: 1.6rem 1.75rem 1.5rem;
+  background: #ffffff;
+  border: 1.5px solid rgb(218, 137, 0);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: visible;
+}
+.renew_membership .renew-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.35rem;
+}
+.renew_membership .renew-instructions {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: start;
+}
+.renew_membership .renew-instructions ul {
+  margin: 0;
+  padding-inline-start: 1.15rem;
+  list-style: disc;
+}
+.renew_membership .renew-instructions li {
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--heading);
+}
+.renew_membership .renew-instructions li:last-child {
+  margin-bottom: 0;
+}
+.renew_membership .renew-instructions strong {
+  font-weight: 700;
+}
+.renew_membership .renew-instructions a {
+  color: var(--heading);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
+}
+.renew_membership .renew-instructions a:hover {
+  color: rgb(218, 137, 0);
+}
+.renew_membership .renew-card-image {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(46%, 280px);
+  z-index: 1;
+}
+.renew_membership .id-card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+.renew_membership .renew-number-highlight {
+  position: absolute;
+  left: 28%;
+  top: 62%;
+  width: 28%;
+  height: 16%;
+  background: transparent;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+}
+.renew_membership .renew-arrow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+}
+.renew_membership .dotted-arrow {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.renew_membership .dotted-arrow path {
+  fill: none;
+  stroke: #E8A23A;
+  stroke-width: 1.7;
+  stroke-dasharray: 3.5 4.5;
+  stroke-linecap: round;
+}
+.renew_membership .dotted-arrow .arrow-head {
+  stroke-dasharray: none;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+.renew_membership .renew-error-banner {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  margin-bottom: 1.15rem;
+  padding: 0.7rem 1rem;
+  background: #FEE2E2;
+  border-radius: 8px;
+  color: #B91C1C;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: start;
+}
+.renew_membership .renew-error-banner i {
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.renew_membership .renew-error-banner[hidden] {
+  display: none !important;
+}
+.renew_membership .renew-error-banner:not([hidden]) {
+  display: flex;
+}
+.renew_membership .renew-form {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.renew_membership .renew-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.renew_membership .renew-form-group label {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--heading);
+  text-align: start;
+}
+.renew_membership .renew-form-group input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 48px;
+  padding: 0 1rem;
+  border: 1px solid #D5DCE5;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: var(--heading);
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: start;
+  transition: border-color background-color box-shadow 0.2s ease;
+}
+.renew_membership .renew-form-group input::placeholder {
+  color: #9AA3B0;
+  opacity: 1;
+}
+.renew_membership .renew-form-group input:focus {
+  border-color: rgb(218, 137, 0);
+  box-shadow: 0 0 0 0.15rem rgba(218, 137, 0, 0.18);
+}
+.renew_membership .renew-form-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+.renew_membership .renew-submit {
+  flex: 0 0 auto;
+  min-width: 132px;
+  height: 48px;
+  padding: 0 1.35rem;
+  border: 0;
+  border-radius: 8px;
+  background: #0A1A2F;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color transform 0.2s ease;
+}
+.renew_membership .renew-submit:hover {
+  background: #05162B;
+}
+.renew_membership .renew-submit:active {
+  transform: translateY(1px);
+}
+.renew_membership .renew-member-card,
+.renew_membership .renew-fees-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid rgb(218, 137, 0);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.renew_membership .renew-member-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.15rem 1.35rem;
+}
+.renew_membership .renew-member-info {
+  min-width: 0;
+  text-align: start;
+}
+.renew_membership .renew-member-info p {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--heading);
+}
+.renew_membership .renew-member-info p:last-child {
+  margin-bottom: 0;
+}
+.renew_membership .renew-member-status {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+.renew_membership .renew-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.renew_membership .renew-status-badge i {
+  font-size: 1.05rem;
+}
+.renew_membership .renew-status-badge.is-expired {
+  background: #FDECEC;
+  color: #D32F2F;
+}
+.renew_membership .renew-status-date {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #6B7280;
+  white-space: nowrap;
+}
+.renew_membership .renew-fees-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.35rem;
+  font-size: 0.95rem;
+  color: var(--heading);
+  border-bottom: 1px solid #E8ECF0;
+}
+.renew_membership .renew-fees-row:last-of-type {
+  border-bottom: 0;
+}
+.renew_membership .renew-fees-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.35rem;
+  background: #F6E7C8;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+.renew_membership .renew-fees-total strong {
+  color: rgb(218, 137, 0);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+.renew_membership .renew-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  margin-top: 0.35rem;
+}
+.renew_membership .renew-btn-back,
+.renew_membership .renew-btn-next {
+  height: 50px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color border-color transform 0.2s ease;
+}
+.renew_membership .renew-btn-back:active,
+.renew_membership .renew-btn-next:active {
+  transform: translateY(1px);
+}
+.renew_membership .renew-btn-back {
+  flex: 0 0 160px;
+  background: #ffffff;
+  border: 1.5px solid #0A1A2F;
+  color: #0A1A2F;
+}
+.renew_membership .renew-btn-back:hover {
+  background: #F6F9FC;
+}
+.renew_membership .renew-btn-next {
+  flex: 1 1 auto;
+  background: #0A1A2F;
+  border: 0;
+  color: #ffffff;
+}
+.renew_membership .renew-btn-next:hover {
+  background: #05162B;
+}
+.renew_membership .renew-otp-card {
+  width: 100%;
+  padding: 1.35rem 1.5rem 1.15rem;
+  background: #ffffff;
+  border: 1.5px solid rgb(218, 137, 0);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.renew_membership .renew-otp-title {
+  margin: 0 0 1.15rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--heading);
+  text-align: start;
+}
+.renew_membership .renew-otp-methods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+.renew_membership .renew-otp-method {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 92px;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 10px;
+  background: #F3F4F6;
+  cursor: pointer;
+  transition: border-color background-color box-shadow 0.2s ease;
+}
+.renew_membership .renew-otp-method input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.renew_membership .renew-otp-method.is-selected {
+  background: #E8F5E9;
+  border-color: #66BB6A;
+  box-shadow: inset 0 0 0 1px rgba(102, 187, 106, 0.15);
+}
+.renew_membership .renew-otp-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  min-width: 18px;
+  border: 1.5px solid #D1D5DB;
+  background: #ffffff;
+  flex-shrink: 0;
+  position: relative;
+}
+.renew_membership .renew-otp-radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+.renew_membership .renew-otp-method.is-selected .renew-otp-radio {
+  border-color: rgb(218, 137, 0);
+}
+.renew_membership .renew-otp-method.is-selected .renew-otp-radio::after {
+  background: rgb(218, 137, 0);
+}
+.renew_membership .renew-otp-method-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.renew_membership .renew-otp-method-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+.renew_membership .renew-otp-method-head .bi-whatsapp {
+  color: #25D366;
+  font-size: 1.15rem;
+}
+.renew_membership .renew-otp-method-head .bi-envelope {
+  color: #6B7280;
+  font-size: 1.05rem;
+}
+.renew_membership .renew-otp-method-value {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #4B5563;
+  word-break: break-all;
+}
+.renew_membership .renew-otp-limit {
+  margin: 1rem 0 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #6B7280;
+  text-align: start;
+}
+.renew_membership .renew-verify-banner {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  border-radius: 8px;
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: start;
+  line-height: 1.6;
+}
+.renew_membership .renew-verify-banner strong {
+  font-weight: 700;
+  margin-inline-start: 0.25rem;
+}
+.renew_membership .renew-verify-card {
+  width: 100%;
+  padding: 1.35rem 1.5rem 1.15rem;
+  background: #ffffff;
+  border: 1.5px solid rgb(218, 137, 0);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.renew_membership .renew-verify-instruction {
+  margin: 0 0 1.15rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.75;
+  color: var(--heading);
+  text-align: start;
+}
+.renew_membership .renew-verify-instruction strong {
+  font-weight: 800;
+}
+.renew_membership .renew-verify-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+.renew_membership .renew-verify-label {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #6B7280;
+  text-align: start;
+}
+.renew_membership .renew-otp-digits-wrap {
+  padding: 0.85rem 1rem;
+  border: 1px solid #D5DCE5;
+  border-radius: 8px;
+  background: #ffffff;
+}
+.renew_membership .renew-otp-digits {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  direction: ltr;
+}
+.renew_membership .renew-otp-digit {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-bottom: 2px solid #C5CDD8;
+  border-radius: 0;
+  background: transparent;
+  color: var(--heading);
+  font-family: inherit;
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.renew_membership .renew-otp-digit:focus {
+  border-bottom-color: rgb(218, 137, 0);
+}
+.renew_membership .renew-otp-digit::placeholder {
+  color: #C5CDD8;
+}
+.renew_membership .renew-verify-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.renew_membership .renew-resend-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(218, 137, 0);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.renew_membership .renew-resend-btn i {
+  font-size: 1.05rem;
+}
+.renew_membership .renew-resend-btn:hover {
+  color: #C97400;
+}
+.renew_membership .renew-verify-footer .renew-otp-limit {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6B7280;
+}
+.renew_membership .renew-payment-member-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1.15rem 1.35rem;
+  background: #ffffff;
+  border: 1.5px solid rgb(218, 137, 0);
+  border-radius: 12px;
+}
+.renew_membership .renew-payment-total-preview {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  text-align: end;
+}
+.renew_membership .renew-payment-total-preview span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+.renew_membership .renew-payment-total-preview strong {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: rgb(218, 137, 0);
+  line-height: 1.2;
+}
+.renew_membership .renew-payment-card {
+  width: 100%;
+  padding: 0;
+  background: #ffffff;
+  border: 1.5px solid rgb(218, 137, 0);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+.renew_membership .renew-payment-methods {
+  display: flex;
+  flex-direction: column;
+}
+.renew_membership .renew-payment-method {
+  border-bottom: 1px solid #E8ECF0;
+}
+.renew_membership .renew-payment-method:last-child {
+  border-bottom: 0;
+}
+.renew_membership .renew-payment-method.is-selected .renew-payment-method-head {
+  background: rgba(218, 137, 0, 0.08);
+}
+.renew_membership .renew-payment-method.is-selected .renew-otp-radio {
+  border-color: rgb(218, 137, 0);
+}
+.renew_membership .renew-payment-method.is-selected .renew-otp-radio::after {
+  background: rgb(218, 137, 0);
+}
+.renew_membership .renew-payment-method-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+}
+.renew_membership .renew-payment-method-head input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.renew_membership .renew-payment-method-content {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+}
+.renew_membership .renew-payment-method-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: start;
+}
+.renew_membership .renew-payment-method-info strong {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--heading);
+  line-height: 1.5;
+}
+.renew_membership .renew-payment-method-info span {
+  font-size: 0.88rem;
+  color: #6B7280;
+  line-height: 1.45;
+}
+.renew_membership .renew-payment-fee {
+  flex: 0 0 auto;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #6B7280;
+  white-space: nowrap;
+  text-align: end;
+}
+.renew_membership .renew-payment-details {
+  padding: 0 1.25rem 1.15rem 3.15rem;
+  border-top: 1px solid #EEF2F6;
+  background: rgba(218, 137, 0, 0.04);
+}
+.renew_membership .renew-fawry-note {
+  margin: 0.85rem 0 0.15rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--heading);
+  text-align: start;
+}
+.renew_membership .renew-card-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+}
+.renew_membership .renew-card-field label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #6B7280;
+  text-align: start;
+}
+.renew_membership .renew-card-field input {
+  width: 100%;
+  height: 44px;
+  padding: 0 0.85rem;
+  border: 1px solid #D5DCE5;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--heading);
+  font-family: inherit;
+  font-size: 0.95rem;
+  text-align: start;
+}
+.renew_membership .renew-card-field input:focus {
+  outline: none;
+  border-color: rgb(218, 137, 0);
+  box-shadow: 0 0 0 0.12rem rgba(218, 137, 0, 0.18);
+}
+.renew_membership .renew-card-number-wrap {
+  position: relative;
+}
+.renew_membership .renew-card-number-wrap input {
+  unicode-bidi: plaintext;
+  letter-spacing: 0.04em;
+  padding-inline-start: 0.85rem;
+}
+.renew_membership .renew-card-brands {
+  position: absolute;
+  inset-inline-end: 0.75rem;
+  inset-inline-start: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  pointer-events: none;
+}
+.renew_membership .renew-card-brand {
+  display: block;
+  width: auto;
+  max-height: 18px;
+  object-fit: contain;
+}
+.renew_membership .renew-card-brand-visa {
+  max-height: 14px;
+}
+.renew_membership .renew-card-brand-mastercard {
+  max-height: 18px;
+}
+[dir=rtl] .renew_membership .renew-card-number-wrap input {
+  direction: ltr;
+  text-align: right;
+}
+.renew_membership .renew-card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.renew_membership .renew-payment-breakdown {
+  padding: 1rem 1.25rem 1.1rem;
+  border-top: 1px solid #E8ECF0;
+  background: #FAFBFC;
+}
+.renew_membership .renew-payment-breakdown h4 {
+  margin: 0 0 0.75rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--heading);
+  text-align: start;
+}
+.renew_membership .renew-payment-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.92rem;
+  color: var(--heading);
+}
+.renew_membership .renew-payment-breakdown-row.is-total {
+  margin-top: 0.55rem;
+  margin-bottom: 0;
+  padding-top: 0.55rem;
+  border-top: 1px solid #E8ECF0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.renew_membership .renew-payment-breakdown-row.is-total strong {
+  color: rgb(218, 137, 0);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+.renew_membership .renew-confirm-card {
+  width: 100%;
+  padding: 2rem 1.5rem 1.5rem;
+  background: #ffffff;
+  border: 1.5px solid rgb(218, 137, 0);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+.renew_membership .renew-confirm-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  font-size: 2rem;
+}
+.renew_membership .renew-confirm-icon.is-success {
+  background: transparent;
+  color: #34A853;
+}
+.renew_membership .renew-confirm-icon.is-success svg {
+  display: block;
+  width: 88px;
+  height: 88px;
+}
+.renew_membership .renew-confirm-icon.is-pending {
+  background: transparent;
+  color: rgb(218, 137, 0);
+}
+.renew_membership .renew-confirm-icon.is-pending svg {
+  display: block;
+  width: 88px;
+  height: 88px;
+}
+.renew_membership .renew-confirm-icon.is-pending i {
+  font-size: 3.5rem;
+  color: rgb(218, 137, 0);
+}
+.renew_membership .renew-confirm-title {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.6;
+  color: #0A1A2F;
+}
+.renew_membership .renew-confirm-order {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #6B7280;
+}
+.renew_membership .renew-confirm-order strong {
+  display: inline-block;
+  margin-inline-start: 0.35rem;
+  font-weight: 700;
+  color: var(--heading);
+  direction: ltr;
+}
+.renew_membership .renew-confirm-alert {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--heading);
+  text-align: start;
+}
+.renew_membership .renew-confirm-alert i {
+  flex: 0 0 auto;
+  margin-top: 0.15rem;
+  color: rgb(218, 137, 0);
+  font-size: 1rem;
+}
+.renew_membership .renew-fawry-code-box {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: #F3F5F7;
+  border-radius: 10px;
+  text-align: center;
+}
+.renew_membership .renew-fawry-code-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.82rem;
+  color: #6B7280;
+}
+.renew_membership .renew-fawry-code-value {
+  display: block;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #0A1A2F;
+}
+.renew_membership .renew-confirm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+.renew_membership .renew-confirm-actions-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  width: 100%;
+}
+.renew_membership .renew-confirm-actions-row .renew-confirm-membership-btn,
+.renew_membership .renew-confirm-actions-row .renew-btn-renew {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  border: 0;
+  border-radius: 8px;
+  background: rgb(13, 31, 55);
+  color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+.renew_membership .renew-confirm-actions-row .renew-confirm-membership-btn:hover,
+.renew_membership .renew-confirm-actions-row .renew-btn-renew:hover {
+  background: rgb(10, 24, 42);
+  color: #ffffff;
+}
+.renew_membership .renew-btn-outline,
+.renew_membership .renew-btn-home,
+.renew_membership .renew-btn-compact {
+  height: 50px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color border-color transform 0.2s ease;
+}
+.renew_membership .renew-btn-outline:active,
+.renew_membership .renew-btn-home:active,
+.renew_membership .renew-btn-compact:active {
+  transform: translateY(1px);
+}
+.renew_membership .renew-btn-outline {
+  flex: 1 1 0;
+  background: #ffffff;
+  border: 1.5px solid rgb(218, 137, 0);
+  color: rgb(218, 137, 0);
+}
+.renew_membership .renew-btn-outline:hover {
+  background: rgba(218, 137, 0, 0.06);
+}
+.renew_membership .renew-btn-compact {
+  flex: 1 1 0;
+}
+.renew_membership .renew-btn-home {
+  width: 100%;
+  background: rgb(218, 137, 0);
+  border: 0;
+  color: #ffffff;
+}
+.renew_membership .renew-btn-home:hover {
+  background: rgb(73.4901960784%, 46.1842057924%, 0%);
+}
+@media (max-width: 992px) {
+  .renew_membership .progress-label {
+    font-size: 0.68rem;
+    white-space: normal;
+  }
+  .renew_membership .progress-item {
+    max-width: 90px;
+  }
+}
+@media (max-width: 768px) {
+  .renew_membership .renew-card {
+    padding: 1.25rem 1.15rem 1.15rem;
+  }
+  .renew_membership .renew-card-top {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1rem;
+  }
+  .renew_membership .renew-card-image {
+    width: min(80%, 280px);
+  }
+  .renew_membership .renew-arrow,
+  .renew_membership .renew-number-highlight {
+    display: none;
+  }
+  .renew_membership .renew-instructions {
+    width: 100%;
+  }
+  .renew_membership .renew-instructions li {
+    font-size: 0.9rem;
+  }
+  .renew_membership .renew-form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .renew_membership .renew-submit {
+    width: 100%;
+  }
+  .renew_membership .progress-step {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    min-width: 26px;
+  }
+  .renew_membership .progress-step .progress-number {
+    font-size: 0.72rem;
+  }
+  .renew_membership .progress-line {
+    margin-top: 12px;
+    max-width: 28px;
+  }
+  .renew_membership .progress-label {
+    font-size: 0.62rem;
+  }
+  .renew_membership .renew-member-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .renew_membership .renew-member-status {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .renew_membership .renew-nav {
+    flex-direction: column-reverse;
+  }
+  .renew_membership .renew-btn-back,
+  .renew_membership .renew-btn-next {
+    width: 100%;
+    flex: none;
+  }
+  .renew_membership .renew-otp-methods {
+    grid-template-columns: 1fr;
+  }
+  .renew_membership .renew-payment-member-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .renew_membership .renew-payment-total-preview {
+    align-items: flex-start;
+    text-align: start;
+  }
+  .renew_membership .renew-payment-method-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .renew_membership .renew-payment-details {
+    padding-inline-start: 1.25rem;
+  }
+  .renew_membership .renew-confirm-actions-row {
+    flex-direction: column;
+  }
+  .renew_membership .renew-card-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+[data-theme=dark] .renew_membership .renew-title {
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-card,
+[data-theme=dark] .renew_membership .renew-member-card,
+[data-theme=dark] .renew_membership .renew-fees-card,
+[data-theme=dark] .renew_membership .renew-otp-card {
+  background: var(--surface);
+  border-color: rgb(218, 137, 0);
+  box-shadow: none;
+}
+[data-theme=dark] .renew_membership .renew-instructions li,
+[data-theme=dark] .renew_membership .renew-instructions a,
+[data-theme=dark] .renew_membership .renew-form-group label,
+[data-theme=dark] .renew_membership .renew-otp-title,
+[data-theme=dark] .renew_membership .renew-otp-limit,
+[data-theme=dark] .renew_membership .progress-label {
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-instructions a:hover {
+  color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-form-group input {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border);
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+[data-theme=dark] .renew_membership .renew-form-group input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgb(218, 137, 0);
+  box-shadow: 0 0 0 0.15rem rgba(218, 137, 0, 0.25);
+}
+[data-theme=dark] .renew_membership .renew-error-banner {
+  background: linear-gradient(to right, rgba(139, 18, 18, 0.55) 0%, rgba(80, 16, 24, 0.28) 42%, rgba(13, 31, 55, 0) 100%);
+  border: 0;
+  color: #E11D1D;
+  font-weight: 700;
+}
+[data-theme=dark] .renew_membership .renew-error-banner i {
+  color: #B91C1C;
+}
+[data-theme=dark] .renew_membership .progress-step {
+  background: var(--surface);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+[data-theme=dark] .renew_membership .progress-step .progress-number {
+  color: rgba(255, 255, 255, 0.85);
+}
+[data-theme=dark] .renew_membership .progress-step.current {
+  background: var(--surface);
+  border-color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .progress-step.current .progress-number {
+  color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .progress-step.completed {
+  background: rgb(218, 137, 0);
+  border-color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .progress-step.completed .progress-check {
+  color: #ffffff;
+}
+[data-theme=dark] .renew_membership .progress-item.current .progress-label {
+  color: var(--heading);
+  font-weight: 700;
+}
+[data-theme=dark] .renew_membership .progress-item.completed .progress-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+[data-theme=dark] .renew_membership .progress-item:not(.current):not(.completed) .progress-label {
+  color: rgba(255, 255, 255, 0.65);
+}
+[data-theme=dark] .renew_membership .progress-line {
+  background: rgba(255, 255, 255, 0.2);
+}
+[data-theme=dark] .renew_membership .progress-line.active {
+  background: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-submit,
+[data-theme=dark] .renew_membership .renew-btn-next {
+  background: rgb(218, 137, 0);
+  color: #ffffff;
+}
+[data-theme=dark] .renew_membership .renew-submit:hover,
+[data-theme=dark] .renew_membership .renew-btn-next:hover {
+  background: #C97400;
+}
+[data-theme=dark] .renew_membership .renew-btn-back {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-btn-back:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+[data-theme=dark] .renew_membership .renew-member-info p {
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-status-badge.is-expired {
+  background: rgba(211, 47, 47, 0.18);
+  color: #F87171;
+}
+[data-theme=dark] .renew_membership .renew-status-date {
+  color: var(--text);
+}
+[data-theme=dark] .renew_membership .renew-fees-row {
+  color: var(--heading);
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+[data-theme=dark] .renew_membership .renew-fees-row:nth-child(even) {
+  background: rgba(255, 255, 255, 0.06);
+}
+[data-theme=dark] .renew_membership .renew-fees-total {
+  background: rgba(218, 137, 0, 0.22);
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-fees-total strong {
+  color: #F5A623;
+}
+[data-theme=dark] .renew_membership .renew-otp-method {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+}
+[data-theme=dark] .renew_membership .renew-otp-method.is-selected {
+  background: rgba(10, 167, 69, 0.1);
+  border-color: rgb(10, 167, 69);
+  box-shadow: inset 0 0 0 1px rgba(10, 167, 69, 0.25);
+}
+[data-theme=dark] .renew_membership .renew-otp-radio {
+  background: var(--surface);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+[data-theme=dark] .renew_membership .renew-otp-method.is-selected .renew-otp-radio {
+  border-color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-otp-method.is-selected .renew-otp-radio::after {
+  background: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-otp-method-head {
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-otp-method-head .bi-envelope {
+  color: rgba(255, 255, 255, 0.75);
+}
+[data-theme=dark] .renew_membership .renew-otp-method-value {
+  color: var(--text);
+}
+[data-theme=dark] .renew_membership .dotted-arrow path {
+  stroke: #F5A623;
+}
+[data-theme=dark] .renew_membership .renew-verify-banner {
+  background: #0D2B30;
+  color: #4ADE80;
+}
+[data-theme=dark] .renew_membership .renew-verify-card {
+  background: var(--surface);
+  border-color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-verify-instruction,
+[data-theme=dark] .renew_membership .renew-verify-label {
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-otp-digits-wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+}
+[data-theme=dark] .renew_membership .renew-otp-digit {
+  color: var(--heading);
+  border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+[data-theme=dark] .renew_membership .renew-otp-digit::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+[data-theme=dark] .renew_membership .renew-otp-digit:focus {
+  border-bottom-color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-verify-footer .renew-otp-limit {
+  color: var(--text);
+}
+[data-theme=dark] .renew_membership .renew-resend-btn {
+  color: #F5A623;
+}
+[data-theme=dark] .renew_membership .renew-resend-btn:hover {
+  color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-btn-back {
+  border-color: rgb(218, 137, 0);
+  color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-btn-back:hover {
+  background: rgba(218, 137, 0, 0.12);
+}
+[data-theme=dark] .renew_membership .renew-payment-member-card,
+[data-theme=dark] .renew_membership .renew-payment-card {
+  background: var(--surface);
+  border-color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-payment-method {
+  border-color: var(--border);
+}
+[data-theme=dark] .renew_membership .renew-payment-method.is-selected .renew-payment-method-head {
+  background: rgba(218, 137, 0, 0.14);
+}
+[data-theme=dark] .renew_membership .renew-payment-method-info strong,
+[data-theme=dark] .renew_membership .renew-fawry-note,
+[data-theme=dark] .renew_membership .renew-payment-breakdown h4,
+[data-theme=dark] .renew_membership .renew-payment-breakdown-row {
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-payment-method-info span,
+[data-theme=dark] .renew_membership .renew-payment-fee,
+[data-theme=dark] .renew_membership .renew-card-field label {
+  color: var(--text);
+}
+[data-theme=dark] .renew_membership .renew-payment-details {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--border);
+}
+[data-theme=dark] .renew_membership .renew-card-field input {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border);
+  color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-payment-breakdown {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border);
+}
+[data-theme=dark] .renew_membership .renew-payment-breakdown-row.is-total {
+  border-color: var(--border);
+}
+[data-theme=dark] .renew_membership .renew-payment-breakdown-row.is-total strong {
+  color: #F5A623;
+}
+[data-theme=dark] .renew_membership .renew-payment-total-preview strong {
+  color: #F5A623;
+}
+[data-theme=dark] .renew_membership .renew-confirm-card {
+  background: var(--card-bg);
+  border-color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-confirm-title {
+  color: #FFFFFF;
+}
+[data-theme=dark] .renew_membership .renew-confirm-order {
+  color: rgba(255, 255, 255, 0.55);
+}
+[data-theme=dark] .renew_membership .renew-confirm-order strong {
+  color: rgba(255, 255, 255, 0.55);
+}
+[data-theme=dark] .renew_membership .renew-confirm-alert {
+  color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-confirm-alert i {
+  color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-fawry-code-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(218, 137, 0, 0.45);
+}
+[data-theme=dark] .renew_membership .renew-fawry-code-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+[data-theme=dark] .renew_membership .renew-fawry-code-value {
+  color: #ffffff;
+}
+[data-theme=dark] .renew_membership .renew-btn-outline {
+  background: transparent;
+  border-color: rgb(218, 137, 0);
+  color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-btn-outline:hover {
+  background: rgba(218, 137, 0, 0.12);
+  color: #F5A623;
+}
+[data-theme=dark] .renew_membership .renew-btn-home {
+  background: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-btn-home:hover {
+  background: #F5A623;
+}
+[data-theme=dark] .renew_membership .renew-confirm-actions-row .renew-btn-renew,
+[data-theme=dark] .renew_membership .renew-confirm-actions-row .renew-confirm-membership-btn {
+  background: transparent;
+  border: 1.5px solid rgb(218, 137, 0);
+  color: rgb(218, 137, 0);
+}
+[data-theme=dark] .renew_membership .renew-confirm-actions-row .renew-btn-renew:hover,
+[data-theme=dark] .renew_membership .renew-confirm-actions-row .renew-confirm-membership-btn:hover {
+  background: rgba(218, 137, 0, 0.12);
+  color: #F5A623;
+  border-color: #F5A623;
+}
+
 html[lang=en],
 [dir=ltr] {
   direction: ltr;
@@ -2768,4 +4209,21 @@ html[lang=en] body,
   text-align: left;
 }
 
-/*# sourceMappingURL=styleEN.css.map */
+/*==============================================================================
+    Renew Membership
+==============================================================================*/
+[dir=ltr] .renew_membership .renew-card-top {
+  flex-direction: row-reverse;
+}
+[dir=ltr] .renew_membership .renew-instructions,
+[dir=ltr] .renew_membership .renew-form-group label,
+[dir=ltr] .renew_membership .renew-form-group input,
+[dir=ltr] .renew_membership .renew-form-error {
+  text-align: left;
+}
+[dir=ltr] .renew_membership .renew-member-status {
+  align-items: flex-end;
+}
+[dir=ltr] .renew_membership .renew-card-number-wrap input {
+  text-align: left;
+}
