@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تجديد العضويه</title>
+    <link rel="icon" href="images/ImageWithFallback.svg" type="image/svg+xml">
+    <script src="js/lang-boot.js"></script>
+
+    <link rel="stylesheet" href="css/slick-theme.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+
+    <link rel="stylesheet" href="fonts/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link id="mainStylesheet" rel="stylesheet" href="css/styleAR.css">
+    <script>
+        if (window.__hawarLang === "en") {
+            document.getElementById("mainStylesheet").href = "css/styleEN.css";
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- ===== Navbar ===== -->
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="width-container">
+
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/ImageWithFallback.svg" alt="Hawar Club" class="logo">
+                    <span class="brand-text">
+                        <span class="brand-name">HAWAR</span>
+                        <span class="brand-sub" data-i18n="brandSub">نادي الحوار للألعاب الرياضية</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html" data-i18n="home">الرئيسية</a>
+                        </li>
+                        <li class="nav-item has-dropdown">
+                            <a class="nav-link" href="#" data-i18n="about">عن النادي</a>
+                            <ul class="nav-dropdown">
+                                <li>
+                                    <a href="aboutPresident.html" data-i18n="presidents">رؤساء النادي</a>
+                                </li>
+                                <li>
+                                    <a href="aboutHistory.html" data-i18n="history">تاريخ النادي</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="newsList.html" data-i18n="news">الأخبار</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contactUs.html" data-i18n="contact">تواصل معنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-i18n="beMember">كن عضواً</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="navbar-actions">
+
+                    <button type="button" class="icon-btn" aria-label="بحث">
+                        <i class="bi bi-search"></i>
+                    </button>
+
+                    <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
+                        <i class="bi bi-moon" id="themeIcon"></i>
+                    </button>
+
+                    <div class="language d-flex align-items-center" role="button" tabindex="0" aria-label="اللغة">
+                        <i class="bi bi-chevron-down"></i>
+                        <span>AR</span>
+                        <i class="bi bi-globe"></i>
+                    </div>
+
+                    <a href="renew.html" class="btn-membership" data-i18n="renew">تجديد العضوية</a>
+
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- Renew Membership  تجديد العضويه -->
+    <section class="renew_membership hawar-body pt-3 pb-5">
+        <div class="width-container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb pt-0 m-0">
+                    <li class="breadcrumb-item"><a href="index.html" data-i18n="home">الرئيسية</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" data-i18n="renew">تجديد العضوية</li>
+                </ol>
+            </nav>
+            <h1 class="page-title m-0 p-0" data-i18n="renewMembership">تجديد العضوية</h1>
+
+        </div>
+        <div class="width-container">
+            <div class="renew-flow">
+                <div class="progress-wrapper" role="list" aria-label="خطوات تجديد العضوية">
+                    <div class="progress-item" data-step="1" role="listitem">
+                        <div class="progress-step"><span class="progress-number">1</span><i
+                                class="bi bi-check progress-check" aria-hidden="true"></i></div>
+                        <span class="progress-label" data-i18n="stepInquiry">الاستعلام</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-item" data-step="2" role="listitem">
+                        <div class="progress-step"><span class="progress-number">2</span><i
+                                class="bi bi-check progress-check" aria-hidden="true"></i></div>
+                        <span class="progress-label" data-i18n="stepMemberData">بيانات العضو</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-item" data-step="3" role="listitem">
+                        <div class="progress-step"><span class="progress-number">3</span><i
+                                class="bi bi-check progress-check" aria-hidden="true"></i></div>
+                        <span class="progress-label" data-i18n="stepPhoneConfirm">تأكيد رقم الهاتف</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-item" data-step="4" role="listitem">
+                        <div class="progress-step"><span class="progress-number">4</span><i
+                                class="bi bi-check progress-check" aria-hidden="true"></i></div>
+                        <span class="progress-label" data-i18n="stepVerify">التحقق</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-item" data-step="5" role="listitem">
+                        <div class="progress-step"><span class="progress-number">5</span><i
+                                class="bi bi-check progress-check" aria-hidden="true"></i></div>
+                        <span class="progress-label" data-i18n="stepPayment">السداد</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-item" data-step="6" role="listitem">
+                        <div class="progress-step"><span class="progress-number">6</span><i
+                                class="bi bi-check progress-check" aria-hidden="true"></i></div>
+                        <span class="progress-label" data-i18n="stepConfirm">تأكيد العملية</span>
+                    </div>
+                </div>
+
+                <h2 class="renew-title" id="renewStepTitle" data-i18n="inquireDetails">الاستعلام عن تفاصيل العضو</h2>
+
+                <div class="renew-panel is-active" data-panel="1" id="renewPanel1">
+                    <div class="renew-card">
+                        <div class="renew-card-top">
+                            <div class="renew-instructions">
+                                <ul>
+                                    <li>الاستعلام يتم من خلال إدخال <strong>رقم العضوية</strong>.</li>
+                                    <li>في حالة وجود اية استفسارات يمكن التواصل مع:</li>
+                                    <li>مكتب العضوية من خلال <a href="mailto:AlHawar@Mail.Com">AlHawar@Mail.Com</a></li>
+                                    <li>او الاتصال بمركز خدمة الاعضاء على رقم <a href="tel:0112515425"
+                                            dir="ltr">0112515425</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="renew-card-image">
+                                <img src="images/renew/HawarFrontCard.png" alt="نموذج بطاقة عضوية نادي الحوار"
+                                    class="id-card-image" id="renewCardImage">
+                                <span class="renew-number-highlight" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <div class="renew-arrow" id="renewArrow" aria-hidden="true">
+                            <svg class="dotted-arrow" id="renewArrowSvg" viewBox="0 0 100 100"
+                                preserveAspectRatio="none">
+                                <path id="renewArrowPath" d="" />
+                                <path id="renewArrowHead" class="arrow-head" d="" />
+                            </svg>
+                        </div>
+
+                        <div class="renew-error-banner" id="membershipError" role="alert" hidden>
+                            <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+                            <span data-i18n="membershipCheck">يرجى التأكد من رقم العضوية</span>
+                        </div>
+
+                        <form class="renew-form" id="renewInquiryForm" novalidate>
+                            <div class="renew-form-group">
+                                <label for="membershipNumber" data-i18n="membershipNumber">رقم العضوية</label>
+                                <div class="renew-form-row">
+                                    <input type="text" id="membershipNumber" name="membershipNumber" inputmode="numeric"
+                                        autocomplete="off" placeholder="أدخل رقم العضوية"
+                                        data-i18n-placeholder="membershipPlaceholder" required>
+                                    <button type="submit" class="renew-submit" id="renewInquireBtn"
+                                        data-i18n="inquireBtn">
+                                        إستعلام
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="renew-panel" data-panel="2" id="renewPanel2" hidden>
+                    <div class="renew-member-card">
+                        <div class="renew-member-info">
+                            <p><span data-i18n="memberNameLabel">اسم العضو</span>: <strong id="memberName">يوسف احمد عبد
+                                    الحميد</strong></p>
+                            <p><span data-i18n="membershipNumber">رقم العضوية</span>: <strong
+                                    id="memberNumber">015656</strong></p>
+                        </div>
+                        <div class="renew-member-status">
+                            <div class="renew-status-badge is-expired">
+                                <i class="bi bi-slash-circle" aria-hidden="true"></i>
+                                <span data-i18n="membershipExpired">عضوية منتهية</span>
+                            </div>
+                            <p class="renew-status-date" id="memberExpiryDate">انتهت العضوية: 30/06/2026</p>
+                        </div>
+                    </div>
+
+                    <div class="renew-fees-card">
+                        <div class="renew-fees-row">
+                            <span>بطاقات (العضو العامل)</span>
+                            <span>80.00</span>
+                        </div>
+                        <div class="renew-fees-row">
+                            <span>حمام السباحة</span>
+                            <span>80.00</span>
+                        </div>
+                        <div class="renew-fees-row">
+                            <span>ص تأمين (العضو العامل)</span>
+                            <span>80.00</span>
+                        </div>
+                        <div class="renew-fees-row">
+                            <span>رسوم أخرى (العضو العامل)</span>
+                            <span>80.00</span>
+                        </div>
+                        <div class="renew-fees-row">
+                            <span>إجمالي الموسم</span>
+                            <span>80.00</span>
+                        </div>
+                        <div class="renew-fees-total">
+                            <span data-i18n="grandTotal">الإجمالي العام</span>
+                            <strong id="memberGrandTotal">1610.000</strong>
+                        </div>
+                    </div>
+
+                    <div class="renew-nav">
+                        <button type="button" class="renew-btn-back" id="renewBackBtn"
+                            data-i18n="backBtn">الرجوع</button>
+                        <button type="button" class="renew-btn-next" id="renewNextBtn"
+                            data-i18n="nextBtn">التالي</button>
+                    </div>
+                </div>
+
+                <div class="renew-panel" data-panel="3" id="renewPanel3" hidden>
+                    <div class="renew-otp-card">
+                        <h3 class="renew-otp-title" data-i18n="selectOtpMethod">حدد طريقة إرسال الرمز</h3>
+
+                        <div class="renew-otp-methods" role="radiogroup" aria-label="طريقة إرسال الرمز">
+                            <label class="renew-otp-method is-selected">
+                                <input type="radio" name="otpMethod" value="whatsapp" checked>
+                                <span class="renew-otp-radio" aria-hidden="true"></span>
+                                <span class="renew-otp-method-body">
+                                    <span class="renew-otp-method-head">
+                                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                                        <span data-i18n="whatsappLabel">الواتس آب</span>
+                                    </span>
+                                    <span class="renew-otp-method-value" id="memberPhoneMasked"
+                                        dir="ltr">0102*****21</span>
+                                </span>
+                            </label>
+
+                            <label class="renew-otp-method">
+                                <input type="radio" name="otpMethod" value="email">
+                                <span class="renew-otp-radio" aria-hidden="true"></span>
+                                <span class="renew-otp-method-body">
+                                    <span class="renew-otp-method-head">
+                                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                                        <span data-i18n="emailLabel">البريد الإلكتروني</span>
+                                    </span>
+                                    <span class="renew-otp-method-value" id="memberEmailMasked"
+                                        dir="ltr">rwr******@gmail.com</span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <p class="renew-otp-limit" data-i18n="otpRequestCount">1/3 OTP عدد مرات طلب</p>
+                    </div>
+
+                    <div class="renew-nav">
+                        <button type="button" class="renew-btn-back" id="renewPhoneBackBtn"
+                            data-i18n="backBtn">الرجوع</button>
+                        <button type="button" class="renew-btn-next" id="renewSendCodeBtn" data-i18n="sendCodeBtn">إرسال
+                            الرمز</button>
+                    </div>
+                </div>
+
+                <div class="renew-panel" data-panel="4" id="renewPanel4" hidden>
+                    <div class="renew-verify-banner" role="status">
+                        <span data-i18n="otpSentPrefix">تم إرسال OTP إلى رقم هاتفك المسجل</span>
+                        <strong id="otpSentPhone" dir="ltr">010****1234</strong>
+                    </div>
+
+                    <div class="renew-verify-card">
+                        <p class="renew-verify-instruction">
+                            <span data-i18n="otpInstructionPrefix">أدخل الرمز المكون من 6 أرقام المرسل إلى</span>
+                            <strong id="otpInstructionPhone" dir="ltr">010****1234</strong>.
+                            <span data-i18n="otpInstructionSuffix">الكود صالح لمدة 5 دقائق ويمكن استخدامه مرة
+                                واحدة.</span>
+                        </p>
+
+                        <div class="renew-verify-field">
+                            <label class="renew-verify-label" data-i18n="enterOtpLabel">أدخل الـ OTP</label>
+                            <div class="renew-otp-digits-wrap">
+                                <div class="renew-otp-digits" id="otpDigits">
+                                    <input type="text" class="renew-otp-digit" maxlength="1" inputmode="numeric"
+                                        autocomplete="one-time-code" aria-label="1">
+                                    <input type="text" class="renew-otp-digit" maxlength="1" inputmode="numeric"
+                                        aria-label="2">
+                                    <input type="text" class="renew-otp-digit" maxlength="1" inputmode="numeric"
+                                        aria-label="3">
+                                    <input type="text" class="renew-otp-digit" maxlength="1" inputmode="numeric"
+                                        aria-label="4">
+                                    <input type="text" class="renew-otp-digit" maxlength="1" inputmode="numeric"
+                                        aria-label="5">
+                                    <input type="text" class="renew-otp-digit" maxlength="1" inputmode="numeric"
+                                        aria-label="6">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="renew-verify-footer">
+                            <button type="button" class="renew-resend-btn" id="renewResendBtn">
+                                <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                                <span data-i18n="resendOtp">إعادة إرسال</span>
+                            </button>
+                            <span class="renew-otp-limit" data-i18n="otpVerifyCount">عدد مرات طلب الـ OTP 1/3</span>
+                        </div>
+                    </div>
+
+                    <div class="renew-nav">
+                        <button type="button" class="renew-btn-back" id="renewVerifyBackBtn"
+                            data-i18n="backBtn">الرجوع</button>
+                        <button type="button" class="renew-btn-next" id="renewVerifyNextBtn"
+                            data-i18n="nextBtn">التالي</button>
+                    </div>
+                </div>
+
+                <div class="renew-panel" data-panel="5" id="renewPanel5" hidden>
+                    <div class="renew-payment-member-card">
+                        <div class="renew-member-info">
+                            <p><span data-i18n="memberNameLabel">اسم العضو</span>: <strong id="paymentMemberName">يوسف
+                                    احمد عبد الحميد</strong></p>
+                            <p><span data-i18n="membershipNumber">رقم العضوية</span>: <strong
+                                    id="paymentMemberNumber">015656</strong></p>
+                        </div>
+                        <div class="renew-payment-total-preview">
+                            <span data-i18n="grandTotal">الإجمالي العام</span>
+                            <strong id="paymentPreviewTotal">1610.000</strong>
+                        </div>
+                    </div>
+
+                    <div class="renew-payment-card">
+                        <div class="renew-payment-methods" role="radiogroup" aria-label="طرق الدفع">
+                            <div class="renew-payment-method" data-method="card">
+                                <label class="renew-payment-method-head">
+                                    <input type="radio" name="paymentMethod" value="card">
+                                    <span class="renew-otp-radio" aria-hidden="true"></span>
+                                    <span class="renew-payment-method-content">
+                                        <span class="renew-payment-method-info">
+                                            <strong data-i18n="payByCard">الدفع بالبطاقة (من خلال باي موب)</strong>
+                                            <span data-i18n="visaMastercard">فيزا / ماستركارد</span>
+                                        </span>
+                                        <span class="renew-payment-fee" data-i18n="serviceFeeCard">تكلفة الخدمة 27
+                                            ج.م</span>
+                                    </span>
+                                </label>
+                                <div class="renew-payment-details" hidden>
+                                    <div class="renew-card-field">
+                                        <label for="cardNumber" data-i18n="cardNumber">رقم البطاقة</label>
+                                        <div class="renew-card-number-wrap">
+                                            <span class="renew-card-brands" aria-hidden="true">
+                                                <img src="images/renew/selfhst_visa.png" alt=""
+                                                    class="renew-card-brand renew-card-brand-visa" width="38"
+                                                    height="12">
+                                                <img src="images/renew/logos_mastercard.png" alt=""
+                                                    class="renew-card-brand renew-card-brand-mastercard" width="28"
+                                                    height="18">
+                                            </span>
+                                            <input type="text" id="cardNumber" inputmode="numeric"
+                                                autocomplete="cc-number" placeholder="0000 0000 0000 0000"
+                                                maxlength="19">
+                                        </div>
+                                    </div>
+                                    <div class="renew-card-field">
+                                        <label for="cardHolder" data-i18n="cardHolder">إسم حامل البطاقة</label>
+                                        <input type="text" id="cardHolder" autocomplete="cc-name"
+                                            value="يوسف كريم عبد الوهاب">
+                                    </div>
+                                    <div class="renew-card-row">
+                                        <div class="renew-card-field">
+                                            <label for="cardExpiry" data-i18n="cardExpiry">تاريخ الإنتهاء</label>
+                                            <input type="text" id="cardExpiry" inputmode="numeric" autocomplete="cc-exp"
+                                                placeholder="MM/YY" dir="ltr">
+                                        </div>
+                                        <div class="renew-card-field">
+                                            <label for="cardCvv" data-i18n="cardCvv">CVV</label>
+                                            <input type="password" id="cardCvv" inputmode="numeric"
+                                                autocomplete="cc-csc" placeholder="..." dir="ltr">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="renew-payment-method" data-method="fawry">
+                                <label class="renew-payment-method-head">
+                                    <input type="radio" name="paymentMethod" value="fawry">
+                                    <span class="renew-otp-radio" aria-hidden="true"></span>
+                                    <span class="renew-payment-method-content">
+                                        <span class="renew-payment-method-info">
+                                            <strong data-i18n="payByFawry">الدفع عن طريق فوري</strong>
+                                            <span data-i18n="fawryHint">كود دفع يسدد خلال 72 ساعة من أي منفذ فوري</span>
+                                        </span>
+                                        <span class="renew-payment-fee" data-i18n="serviceFeeFawry">تكلفة الخدمة 52
+                                            ج.م</span>
+                                    </span>
+                                </label>
+                                <div class="renew-payment-details" hidden>
+                                    <p class="renew-fawry-note" data-i18n="fawryDetails">
+                                        سيتم إنشاء كود دفع فوري صالح لمدة 72 ساعة. يمكنك السداد من أي منفذ فوري أو تطبيق
+                                        فوري.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="renew-payment-breakdown" id="paymentBreakdown" hidden>
+                            <h4 data-i18n="paymentSummary">ملخص الدفع</h4>
+                            <div class="renew-payment-breakdown-row">
+                                <span data-i18n="grandTotal">الإجمالي العام</span>
+                                <span id="paymentSubtotal">1,610.00 ج.م</span>
+                            </div>
+                            <div class="renew-payment-breakdown-row">
+                                <span data-i18n="serviceFee">تكلفة الخدمة</span>
+                                <span id="paymentServiceFee">0.00 ج.م</span>
+                            </div>
+                            <div class="renew-payment-breakdown-row is-total">
+                                <span data-i18n="paymentTotal">إجمالي المبلغ</span>
+                                <strong id="paymentGrandTotal">1,610.00 ج.م</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="renew-nav">
+                        <button type="button" class="renew-btn-back" id="renewPaymentBackBtn"
+                            data-i18n="backBtn">الرجوع</button>
+                        <button type="button" class="renew-btn-next" id="renewPayBtn" data-i18n="payBtn">سداد</button>
+                    </div>
+                </div>
+
+                <div class="renew-panel" data-panel="6" id="renewPanel6" hidden>
+                    <div class="renew-confirm-success" id="renewConfirmSuccess" hidden>
+                        <div class="renew-confirm-card">
+                            <div class="renew-confirm-icon is-success" aria-hidden="true">
+                                <svg width="127" height="127" viewBox="0 0 127 127" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="63.5" cy="63.5" r="63.5" fill="#34A853" />
+                                    <path
+                                        d="M47.313 79.9163C49.2664 81.8721 52.4361 81.8718 54.3892 79.9156L91.3538 42.89C92.9465 41.2947 95.5316 41.2947 97.1243 42.89C98.7133 44.4816 98.7133 47.0593 97.1243 48.6509L54.3893 91.4563C52.4362 93.4126 49.2663 93.4128 47.313 91.4568L30.8767 74.9982C29.2872 73.4067 29.287 70.8285 30.8762 69.2367C32.4687 67.6416 35.0534 67.6413 36.6462 69.2362L47.313 79.9163Z"
+                                        fill="white" />
+                                </svg>
+
+                            </div>
+                            <h3 class="renew-confirm-title" data-i18n="paymentSuccessTitle">تم سداد الاشتراك وتجديد
+                                العضوية بنجاح</h3>
+                            <p class="renew-confirm-order">
+                                <span data-i18n="orderNumberLabel">رقم الطلب</span>
+                                <strong id="successOrderNumber">021525A5182</strong>
+                            </p>
+                        </div>
+                        <div class="renew-confirm-actions">
+                            <div class="renew-confirm-actions-row">
+                                <button type="button" class="renew-btn-outline" id="renewPrintReceiptBtn"
+                                    data-i18n="printReceipt">طباعة الإيصال</button>
+                                <a href="renew.html" class="renew-btn-renew"
+                                    data-i18n="renewNewMembership">تجديد العضوية جديدة</a>
+                            </div>
+                            <button type="button" class="renew-btn-home" id="renewHomeSuccessBtn"
+                                data-i18n="backToHome">الرجوع للشاشة الرئيسية</button>
+                        </div>
+                    </div>
+
+                    <div class="renew-confirm-pending" id="renewConfirmPending" hidden>
+                        <div class="renew-confirm-card">
+                            <div class="renew-confirm-icon is-pending" aria-hidden="true">
+                                <svg width="127" height="127" viewBox="0 0 127 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="67.7933" cy="63.21" r="56.21" stroke="#F59E0B" stroke-width="2" stroke-dasharray="2 2"/>
+<path d="M68.7917 15.8744C79.5179 15.8744 89.4027 19.4198 97.3667 25.3941C100.584 27.8124 104.278 31.4795 107.564 35.2736C108.079 35.8734 108.576 36.4625 109.056 37.0411H92.6042C91.2007 37.0411 89.8548 37.5986 88.8624 38.591C87.87 39.5833 87.3125 40.9293 87.3125 42.3327C87.3125 43.7362 87.87 45.0821 88.8624 46.0745C89.8548 47.0669 91.2007 47.6244 92.6042 47.6244H121.708C123.112 47.6244 124.458 47.0669 125.45 46.0745C126.442 45.0821 127 43.7362 127 42.3327V13.2286C127 11.8251 126.442 10.4792 125.45 9.48679C124.458 8.49441 123.112 7.9369 121.708 7.9369C120.305 7.9369 118.959 8.49441 117.967 9.48679C116.974 10.4792 116.417 11.8251 116.417 13.2286V29.3417L115.565 28.3469C112.009 24.2458 107.765 19.9701 103.722 16.9327C93.6521 9.36116 81.3905 5.27459 68.7917 5.29107C36.6448 5.29107 10.5833 31.3525 10.5833 63.4994C10.5833 95.6463 36.6448 121.708 68.7917 121.708C94.8637 121.708 116.919 104.573 124.333 80.9619C124.541 80.299 124.617 79.6014 124.556 78.9092C124.495 78.2169 124.298 77.5435 123.977 76.9273C123.656 76.3111 123.216 75.7642 122.683 75.3179C122.151 74.8716 121.535 74.5346 120.872 74.3261C120.209 74.1177 119.512 74.0418 118.82 74.1029C118.127 74.164 117.454 74.3609 116.838 74.6822C116.221 75.0036 115.675 75.4432 115.228 75.9759C114.782 76.5086 114.445 77.1239 114.237 77.7869C111.195 87.4567 105.148 95.9041 96.9751 101.9C88.8017 107.896 78.9284 111.127 68.7917 111.124C62.5375 111.124 56.3445 109.893 50.5664 107.499C44.7882 105.106 39.5381 101.598 35.1157 97.1754C30.6933 92.753 27.1853 87.5028 24.7919 81.7247C22.3985 75.9466 21.1667 69.7536 21.1667 63.4994C21.1667 57.2452 22.3985 51.0522 24.7919 45.2741C27.1853 39.496 30.6933 34.2458 35.1157 29.8234C39.5381 25.401 44.7882 21.893 50.5664 19.4996C56.3445 17.1063 62.5375 15.8744 68.7917 15.8744Z" fill="#F59E0B"/>
+<path d="M68.7917 37.0417C68.7917 35.6382 68.2342 34.2923 67.2418 33.2999C66.2494 32.3075 64.9034 31.75 63.5 31.75C62.0966 31.75 60.7506 32.3075 59.7582 33.2999C58.7659 34.2923 58.2083 35.6382 58.2083 37.0417V63.5C58.2083 64.3975 58.4366 65.2802 58.8717 66.0652C59.3068 66.8502 59.9344 67.5117 60.6954 67.9873L77.6288 78.5707C78.8189 79.3145 80.2557 79.5551 81.6232 79.2395C82.3003 79.0832 82.9401 78.7951 83.5058 78.3917C84.0716 77.9882 84.5524 77.4772 84.9207 76.8879C85.289 76.2986 85.5376 75.6426 85.6524 74.9572C85.7671 74.2718 85.7458 73.5706 85.5895 72.8935C85.4332 72.2163 85.1452 71.5766 84.7417 71.0108C84.3382 70.4451 83.8272 69.9643 83.2379 69.596L68.7917 60.5684V37.0417Z" fill="#F59E0B"/>
+</svg>
+
+                            </div>
+                            <h3 class="renew-confirm-title" data-i18n="paymentPendingTitle">تسديد الإشتراك قيد الإنتظار
+                            </h3>
+                            <p class="renew-confirm-order">
+                                <span data-i18n="orderNumberLabel">رقم الطلب</span>
+                                <strong id="pendingOrderNumber">021525A5182</strong>
+                            </p>
+                            <p class="renew-confirm-alert">
+                                <i class="bi bi-info-circle" aria-hidden="true"></i>
+                                <span id="fawryDeadlineText" data-i18n="fawryPayBefore">ادفع طلبك باستخدام كود فورى قبل
+                                    يوم 20/8/2026</span>
+                            </p>
+                            <div class="renew-fawry-code-box">
+                                <span class="renew-fawry-code-label" data-i18n="fawryCodeLabel">كود فورى</span>
+                                <strong class="renew-fawry-code-value" id="fawryCodeValue" dir="ltr">8363728282</strong>
+                            </div>
+                        </div>
+                        <div class="renew-confirm-actions">
+                            <div class="renew-confirm-actions-row">
+                                <button type="button" class="renew-btn-outline" id="renewCopyFawryBtn"
+                                    data-i18n="copyFawryCode">نسخ الكود</button>
+                                <a href="renew.html" class="renew-btn-renew"
+                                    data-i18n="renewNewMembership">تجديد العضوية جديدة</a>
+                            </div>
+                            <button type="button" class="renew-btn-home" id="renewHomePendingBtn"
+                                data-i18n="backToHome">الرجوع للشاشة الرئيسية</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+
+        <div class="width-container">
+
+            <div class="footer-logo-wrap">
+                <img src="images/ImageWithFallback.svg" alt="Hawar Club" class="footer-logo">
+            </div>
+
+            <div class="footer-row pt-5">
+
+                <p class="copyright" data-i18n="copyright">
+                    جميع الحقوق محفوظة - نادي حوار الرياضي 2024 ©
+                </p>
+
+                <p class="footer-title" data-i18n="footerTitle">نادي الحوار للألعاب الرياضية</p>
+
+                <div class="footer-social">
+                    <span class="social-label" data-i18n="follow">تابعنا</span>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/slick.min.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/renew.js"></script>
+</body>
+
+</html>

@@ -924,3 +924,35 @@ function openGalleryLightbox(items, startIndex) {
         render();
     };
 }
+
+
+// تجديد العضويه Renew Membership
+function setProgress(currentStep) {
+    const steps = document.querySelectorAll(".progress-step");
+    const lines = document.querySelectorAll(".progress-line");
+
+    steps.forEach((step, index) => {
+        const stepNumber = 6 - index;
+
+        step.classList.remove("completed", "current");
+
+        if (stepNumber > currentStep) {
+            return;
+        }
+
+        if (stepNumber === currentStep) {
+            step.classList.add("current");
+        } else {
+            step.classList.add("completed");
+        }
+    });
+
+    lines.forEach((line, index) => {
+        const lineStep = 5 - index;
+
+        line.classList.toggle(
+            "active",
+            lineStep <= currentStep
+        );
+    });
+}
