@@ -1,6 +1,5 @@
-﻿//    Cairo Font
+//    Cairo Font
 @use "sass:map";
-
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap");
 
 /*==============================================================================
@@ -213,6 +212,7 @@ html {
 .hawar-body {
     background-color: var(--body-bg);
     color: var(--text-color);
+    padding-top: 100px !important;
 }
 
 body {
@@ -343,6 +343,7 @@ button {
 ==============================================================================*/
 
 @import "Layout/navbar";
+@import "Layout/search";
 @import "Layout/footer";
 
 /*==============================================================================
@@ -1835,6 +1836,175 @@ button {
     color: $navy;
 }
 
+.facility {
+    background-color: var(--body-bg) !important;
+}
+
+.facility-head {
+    margin-bottom: 2rem;
+}
+
+.facility-welcome {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+}
+
+.facility-welcome-line {
+    display: block;
+    width: 2.75rem;
+    height: 2px;
+    background: $primary;
+    flex-shrink: 0;
+}
+
+.facility-welcome-text {
+    color: $primary;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.facility-title {
+    margin: 0;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 800;
+}
+
+.facility-slider {
+    .slick-list {
+        margin: 0 -0.6rem;
+    }
+
+    .slick-slide {
+        padding: 0 0.6rem;
+        height: auto;
+
+        > div {
+            height: 100%;
+        }
+    }
+
+    .slick-track {
+        display: flex !important;
+        align-items: stretch;
+    }
+}
+
+.facility-slide {
+    height: 100%;
+}
+
+.facility-card {
+    position: relative;
+    display: block;
+    height: clamp(22rem, 48vw, 28rem);
+    border-radius: $radius-lg;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.facility-card-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        @include transition(transform, 0.45s, ease);
+    }
+}
+
+.facility-card-overlay {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    height: 25%;
+    padding: 1.15rem 1.35rem;
+    background: linear-gradient(
+        180deg,
+        rgba(218, 137, 0, 0.88) 0%,
+        rgba(218, 137, 0, 0.98) 100%
+    );
+    text-align: center;
+    transition:
+        height 0.4s ease,
+        padding 0.4s ease,
+        background 0.4s ease,
+        justify-content 0.4s ease;
+}
+
+.facility-card-title {
+    margin: 0;
+    color: $white;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+    @include transition(transform, 0.35s, ease);
+}
+
+.facility-card-desc {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    color: $white;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.65;
+    text-align: start;
+    transform: translateY(0.65rem);
+    transition:
+        opacity 0.3s ease 0.08s,
+        transform 0.3s ease 0.08s,
+        max-height 0.4s ease;
+}
+
+.facility-card:hover,
+.facility-card:focus-within {
+    .facility-card-media img {
+        transform: scale(1.01);
+    }
+
+    .facility-card-overlay {
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 1.75rem 1.35rem 1.5rem;
+        background: linear-gradient(
+            180deg,
+            rgba(218, 137, 0, 0.72) 0%,
+            rgba(218, 137, 0, 0.9) 42%,
+            rgba(218, 137, 0, 0.98) 100%
+        );
+    }
+
+    .facility-card-title {
+        transform: none;
+    }
+
+    .facility-card-desc {
+        max-height: 12rem;
+        opacity: 1;
+        transform: translateY(0);
+        max-width: 26rem;
+        margin-inline: auto;
+    }
+}
+
 .home-story-card {
     height: 100%;
     overflow: hidden;
@@ -2101,6 +2271,7 @@ button {
 
     .home-intro-title,
     .home-stories-title,
+    .facility-title,
     .home-join-title,
     .home-story-title {
         color: $white;
@@ -2116,6 +2287,14 @@ button {
     }
 
     .home-welcome-line {
+        background: $primary;
+    }
+
+    .facility-welcome-text {
+        color: $primary;
+    }
+
+    .facility-welcome-line {
         background: $primary;
     }
 
