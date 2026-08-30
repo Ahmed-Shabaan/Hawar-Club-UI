@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hawar Club</title>
+    <link rel="icon" href="images/ImageWithFallback.svg" type="image/svg+xml">
+    <script src="js/lang-boot.js"></script>
+
+    <link rel="stylesheet" href="css/slick-theme.css" />
+    <link rel="stylesheet" href="css/slick.css" />
+
+    <link rel="stylesheet" href="fonts/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link id="mainStylesheet" rel="stylesheet" href="css/styleAR.css">
+    <link id="mainStylesheet" rel="stylesheet" href="css/styleAR.css">
+    <script>
+        if (window.__hawarLang === "en") {
+            document.getElementById("mainStylesheet").href = "css/styleEN.css";
+        }
+    </script>
+</head>
+
+<body class="page-home">
+
+    <!-- ===== Navbar ===== -->
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="width-container">
+
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/ImageWithFallback.svg" alt="Hawar Club" class="logo">
+                    <span class="brand-text">
+                        <span class="brand-name">HAWAR</span>
+                        <span class="brand-sub" data-i18n="brandSub">نادي الحوار للألعاب الرياضية</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html" data-i18n="home">الرئيسية</a>
+                        </li>
+                        <li class="nav-item has-dropdown">
+                            <a class="nav-link" href="#" data-i18n="about">عن النادي</a>
+                            <ul class="nav-dropdown">
+                                <li>
+                                    <a href="aboutPresident.html" data-i18n="presidents">رؤساء النادي</a>
+                                </li>
+                                <li>
+                                    <a href="aboutHistory.html" data-i18n="history">تاريخ النادي</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="newsList.html" data-i18n="news">الأخبار</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contactUs.html" data-i18n="contact">تواصل معنا</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-i18n="beMember">كن عضواً</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="navbar-actions">
+
+                    <div class="navbar-search">
+                        <button type="button" class="icon-btn navbar-search-toggle" aria-expanded="false"
+                            data-i18n-aria="navbarSearchAria" aria-label="بحث">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <form class="navbar-search-form" action="search.html" method="get" role="search">
+                            <div class="navbar-search-form-inner">
+                                <input type="search" name="q" class="navbar-search-input"
+                                    data-i18n-placeholder="navbarSearchPlaceholder" placeholder="ابحث..."
+                                    autocomplete="off">
+                            </div>
+                        </form>
+                    </div>
+
+                    <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
+                        <i class="bi bi-moon" id="themeIcon"></i>
+                    </button>
+
+                    <div class="language d-flex align-items-center" role="button" tabindex="0" aria-label="اللغة">
+                        <i class="bi bi-chevron-down"></i>
+                        <span>AR</span>
+                        <i class="bi bi-globe"></i>
+                    </div>
+
+                    <a href="#homeJoin" class="btn-membership" data-i18n="joinMembership">انضم للعضوية</a>
+
+                </div>
+
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <section class="search hawar-body">
+            <div class="width-container">
+                <!-- BreadCrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html" data-i18n="home">الرئيسية</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" data-i18n="searchResultsTitle">نتائج البحث</li>
+                    </ol>
+                </nav>
+
+                <h1 class="page-title" data-i18n="searchResultsTitle">نتائج البحث</h1>
+                <p id="searchResultsSummary" class="search-results-summary" hidden></p>
+            </div>
+
+            <div class="search-result mt-3 py-3">
+                <div class="width-container">
+                    <div id="searchResults"></div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+
+        <div class="width-container">
+
+            <div class="footer-logo-wrap">
+                <img src="images/ImageWithFallback.svg" alt="Hawar Club" class="footer-logo">
+            </div>
+
+            <div class="footer-row pt-5">
+
+                <p class="copyright" data-i18n="copyright">
+                    جميع الحقوق محفوظة - نادي حوار الرياضي 2024 ©
+                </p>
+
+                <p class="footer-title" data-i18n="footerTitle">نادي الحوار للألعاب الرياضية</p>
+
+                <div class="footer-social">
+                    <span class="social-label" data-i18n="follow">تابعنا</span>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/slick.min.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+</body>
+
+</html>
