@@ -124,11 +124,13 @@ body {
 }
 
 .object-fit-cover {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .object-position-top {
-  object-position: top;
+  -o-object-position: top;
+     object-position: top;
 }
 
 .pagination {
@@ -442,7 +444,9 @@ button {
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   transition: all 0.3s ease;
 }
 .language i {
@@ -662,7 +666,8 @@ button {
   display: block;
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 16px;
   border: 0;
   box-shadow: 0 0 0 1px rgb(218, 137, 0);
@@ -792,8 +797,10 @@ button {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   border-radius: 10px;
 }
 
@@ -813,7 +820,8 @@ button {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    column-gap: 0.75rem;
+    -moz-column-gap: 0.75rem;
+         column-gap: 0.75rem;
     row-gap: 0.75rem;
   }
   .navbar-brand {
@@ -1490,8 +1498,10 @@ button {
   width: 100%;
   height: 100%;
   aspect-ratio: 4/2;
-  object-fit: cover;
-  object-position: top;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
   border-radius: 10px;
 }
 .news-slider .news-slide-content {
@@ -1558,7 +1568,9 @@ button {
   z-index: 5;
 }
 .News-list .select-activaties .activity-select-trigger {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   position: relative;
   display: flex;
   align-items: center;
@@ -1644,6 +1656,10 @@ button {
   font-size: 0.85rem;
   outline: none;
 }
+.News-list .select-activaties .activity-select-search-input::-moz-placeholder {
+  color: var(--dropdown-text);
+  opacity: 0.45;
+}
 .News-list .select-activaties .activity-select-search-input::placeholder {
   color: var(--dropdown-text);
   opacity: 0.45;
@@ -1682,7 +1698,9 @@ button {
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   transition: all 0.3s ease;
 }
 .News-list .select-activaties .activity-select-list li:last-child {
@@ -1860,8 +1878,10 @@ button {
   display: block;
   width: 100%;
   height: 28rem;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   border-radius: 12px;
   border: 1px solid rgb(218, 137, 0);
   background-color: var(--surface);
@@ -1942,7 +1962,8 @@ button {
   display: block;
   width: 100%;
   aspect-ratio: 16/10;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 10px;
   border: 1px solid transparent;
   box-shadow: 0 0 0 1px transparent;
@@ -2213,8 +2234,10 @@ button {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .home-hero-overlay {
@@ -2500,6 +2523,10 @@ button {
   min-height: 2.85rem;
   color: #0A1A2F;
 }
+.home-join-form .form-control::-moz-placeholder, .home-join-form .form-select::-moz-placeholder {
+  color: rgba(100, 102, 114, 0.6);
+  opacity: 1;
+}
 .home-join-form .form-control::placeholder,
 .home-join-form .form-select::placeholder {
   color: rgba(100, 102, 114, 0.6);
@@ -2647,6 +2674,10 @@ button {
 [data-theme=dark] .home-join-form .form-select {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
+}
+[data-theme=dark] .home-join-form .form-control::-moz-placeholder, [data-theme=dark] .home-join-form .form-select::-moz-placeholder {
+  color: rgba(100, 102, 114, 0.6);
+  opacity: 1;
 }
 [data-theme=dark] .home-join-form .form-control::placeholder,
 [data-theme=dark] .home-join-form .form-select::placeholder {
@@ -2945,6 +2976,10 @@ button {
   font-size: 1rem;
   text-align: start;
   transition: border-color background-color box-shadow 0.2s ease;
+}
+.renew_membership .renew-form-group input::-moz-placeholder {
+  color: #9AA3B0;
+  opacity: 1;
 }
 .renew_membership .renew-form-group input::placeholder {
   color: #9AA3B0;
@@ -3290,6 +3325,9 @@ button {
 .renew_membership .renew-otp-digit:focus {
   border-bottom-color: rgb(218, 137, 0);
 }
+.renew_membership .renew-otp-digit::-moz-placeholder {
+  color: #C5CDD8;
+}
 .renew_membership .renew-otp-digit::placeholder {
   color: #C5CDD8;
 }
@@ -3493,7 +3531,8 @@ button {
   display: block;
   width: auto;
   max-height: 18px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .renew_membership .renew-card-brand-visa {
   max-height: 14px;
@@ -3712,7 +3751,7 @@ button {
   color: #ffffff;
 }
 .renew_membership .renew-btn-home:hover {
-  background: rgb(73.4901960784%, 46.1842057924%, 0%);
+  background: rgb(187.4, 117.7697247706, 0);
 }
 @media (max-width: 992px) {
   .renew_membership .progress-label {
@@ -3836,6 +3875,9 @@ button {
   background: rgba(255, 255, 255, 0.06);
   border-color: var(--border);
   color: var(--heading);
+}
+[data-theme=dark] .renew_membership .renew-form-group input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.45);
 }
 [data-theme=dark] .renew_membership .renew-form-group input::placeholder {
   color: rgba(255, 255, 255, 0.45);
@@ -3983,6 +4025,9 @@ button {
 [data-theme=dark] .renew_membership .renew-otp-digit {
   color: var(--heading);
   border-bottom-color: rgba(255, 255, 255, 0.35);
+}
+[data-theme=dark] .renew_membership .renew-otp-digit::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.35);
 }
 [data-theme=dark] .renew_membership .renew-otp-digit::placeholder {
   color: rgba(255, 255, 255, 0.35);
@@ -4226,4 +4271,4 @@ html[lang=en] body,
 }
 [dir=ltr] .renew_membership .renew-card-number-wrap input {
   text-align: left;
-}
+}/*# sourceMappingURL=styleEN.css.map */
