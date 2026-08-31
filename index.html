@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -74,9 +74,19 @@
 
                 <div class="navbar-actions">
 
-                    <button type="button" class="icon-btn" aria-label="بحث">
-                        <i class="bi bi-search"></i>
-                    </button>
+                    <div class="navbar-search">
+                        <button type="button" class="icon-btn navbar-search-toggle" aria-expanded="false"
+                            data-i18n-aria="navbarSearchAria" aria-label="بحث">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <form class="navbar-search-form" action="search.html" method="get" role="search">
+                            <div class="navbar-search-form-inner">
+                                <input type="search" name="q" class="navbar-search-input"
+                                data-i18n-placeholder="navbarSearchPlaceholder"
+                                placeholder="ابحث..." autocomplete="off">
+                            </div>
+                        </form>
+                    </div>
 
                     <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
                         <i class="bi bi-moon" id="themeIcon"></i>
@@ -328,6 +338,90 @@
             </div>
         </section>
 
+        <!-- ===== Facility ===== -->
+        <section class="facility pt-5 pb-5">
+            <div class="width-container">
+                <div class="facility-head">
+                    <div class="facility-welcome">
+                        <span class="facility-welcome-line" aria-hidden="true"></span>
+                        <span class="facility-welcome-text" data-i18n="homeFacilitiesLabel">مرافق مميزة</span>
+                    </div>
+                    <h2 class="facility-title" data-i18n="homeFacilitiesTitle">مساحات مصممة للتميز</h2>
+                </div>
+
+                <div class="facility-slider">
+                    <div class="slider">
+                        <div class="facility-slide">
+                            <article class="facility-card">
+                                <div class="facility-card-media">
+                                    <img src="images/facility/slide1.jpg" alt="" data-i18n-aria="homeFacilityTitle1">
+                                </div>
+                                <div class="facility-card-overlay">
+                                    <h3 class="facility-card-title" data-i18n="homeFacilityTitle1">كيدز إريا</h3>
+                                    <p class="facility-card-desc" data-i18n="homeFacilityText1">لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. سيد دو أيوسمود تيمبور إنسيديدنت أوت لابوري إت دولوري ماجنا أليكوا.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="facility-slide">
+                            <article class="facility-card">
+                                <div class="facility-card-media">
+                                    <img src="images/facility/slide2.jpg" alt="" data-i18n-aria="homeFacilityTitle2">
+                                </div>
+                                <div class="facility-card-overlay">
+                                    <h3 class="facility-card-title" data-i18n="homeFacilityTitle2">ملاعب التنس</h3>
+                                    <p class="facility-card-desc" data-i18n="homeFacilityText2">لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. سيد دو أيوسمود تيمبور إنسيديدنت أوت لابوري إت دولوري ماجنا أليكوا.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="facility-slide">
+                            <article class="facility-card">
+                                <div class="facility-card-media">
+                                    <img src="images/facility/slide-3.jpg" alt="" data-i18n-aria="homeFacilityTitle3">
+                                </div>
+                                <div class="facility-card-overlay">
+                                    <h3 class="facility-card-title" data-i18n="homeFacilityTitle3">المسبح الأولمبي</h3>
+                                    <p class="facility-card-desc" data-i18n="homeFacilityText3">لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. سيد دو أيوسمود تيمبور إنسيديدنت أوت لابوري إت دولوري ماجنا أليكوا.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="facility-slide">
+                            <article class="facility-card">
+                                <div class="facility-card-media">
+                                    <img src="images/story1.png" alt="" data-i18n-aria="homeFacilityTitle4">
+                                </div>
+                                <div class="facility-card-overlay">
+                                    <h3 class="facility-card-title" data-i18n="homeFacilityTitle4">صالة اللياقة</h3>
+                                    <p class="facility-card-desc" data-i18n="homeFacilityText4">لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. سيد دو أيوسمود تيمبور إنسيديدنت أوت لابوري إت دولوري ماجنا أليكوا.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="facility-slide">
+                            <article class="facility-card">
+                                <div class="facility-card-media">
+                                    <img src="images/story2.png" alt="" data-i18n-aria="homeFacilityTitle5">
+                                </div>
+                                <div class="facility-card-overlay">
+                                    <h3 class="facility-card-title" data-i18n="homeFacilityTitle5">الملاعب الرياضية</h3>
+                                    <p class="facility-card-desc" data-i18n="homeFacilityText5">لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. سيد دو أيوسمود تيمبور إنسيديدنت أوت لابوري إت دولوري ماجنا أليكوا.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="facility-slide">
+                            <article class="facility-card">
+                                <div class="facility-card-media">
+                                    <img src="images/story3.png" alt="" data-i18n-aria="homeFacilityTitle6">
+                                </div>
+                                <div class="facility-card-overlay">
+                                    <h3 class="facility-card-title" data-i18n="homeFacilityTitle6">النادي الاجتماعي</h3>
+                                    <p class="facility-card-desc" data-i18n="homeFacilityText6">لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسينغ إليت. سيد دو أيوسمود تيمبور إنسيديدنت أوت لابوري إت دولوري ماجنا أليكوا.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ===== Join ===== -->
         <section class="home-join" id="homeJoin">
             <div class="width-container">
@@ -416,6 +510,7 @@
     <script src="js/language.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
 </body>
 
 </html>

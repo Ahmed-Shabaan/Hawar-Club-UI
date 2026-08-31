@@ -74,9 +74,19 @@
 
                 <div class="navbar-actions">
 
-                    <button type="button" class="icon-btn" aria-label="بحث">
-                        <i class="bi bi-search"></i>
-                    </button>
+                    <div class="navbar-search">
+                        <button type="button" class="icon-btn navbar-search-toggle" aria-expanded="false"
+                            data-i18n-aria="navbarSearchAria" aria-label="بحث">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <form class="navbar-search-form" action="search.html" method="get" role="search">
+                            <div class="navbar-search-form-inner">
+                                <input type="search" name="q" class="navbar-search-input"
+                                data-i18n-placeholder="navbarSearchPlaceholder"
+                                placeholder="ابحث..." autocomplete="off">
+                            </div>
+                        </form>
+                    </div>
 
                     <button type="button" class="icon-btn" id="themeToggle" aria-label="تبديل الوضع">
                         <i class="bi bi-moon" id="themeIcon"></i>
@@ -408,6 +418,7 @@
     <script src="js/language.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
 </body>
 
 </html>

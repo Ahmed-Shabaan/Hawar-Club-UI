@@ -137,14 +137,14 @@
 })();
 
 
-// Presidents Slick Slider show 3 elements on desktop, 2 on tablet, 1 on mobile
+// Facility Slick Slider — 3 cards on desktop, 2 on tablet, 1 on mobile
 function initMultiSlider(dir) {
     if (typeof jQuery === "undefined" || typeof jQuery.fn.slick === "undefined") {
         console.error("Slick Slider: jQuery or Slick is not loaded");
         return;
     }
     
-    var $slider = jQuery(".president-slider .slider");
+    var $slider = jQuery(".facility-slider .slider");
     if ($slider.length === 0) return;
     
     if ($slider.hasClass("slick-initialized")) {
@@ -158,8 +158,9 @@ function initMultiSlider(dir) {
         slidesToShow: 3,
         slidesToScroll: 3,
         rtl: dir === "rtl",
-        autoplay: true,
-        autoplaySpeed: 3000,
+        autoplay: false,
+        autoplaySpeed: 4000,
+        pauseOnHover: true,
         dots: showDots,
         arrows: false,
         infinite: true,
